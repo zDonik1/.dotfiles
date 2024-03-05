@@ -22,8 +22,7 @@ mklink /H settings.json %userprofile%\.config\winterm-config\winterm-settings.js
 Enter `$profile` in Powershell to find the profile script and add the script
 
 ```
-$profile = "$HOME\.config\winterm-config\profile.ps1"
-. $profile
+. $HOME\.config\winterm-config\profile.ps1
 ```
 
 If execution policy doesn't allow for script exectutions, update policy
