@@ -1,0 +1,4 @@
+*.log
+*.txt
+clink_history*
+cwd_history
