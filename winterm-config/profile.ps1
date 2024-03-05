@@ -17,3 +17,5 @@ Set-Alias -Name led -Value hledger
 # environment variables
 $env:EDITOR = "nvim"
 $env:LEDGER_FILE = "D:\ledger\2024.journal"
+$env:XDG_CONFIG_HOME = $HOME + "\.config"
+$env:XDG_DATA_HOME = $HOME + "\.config"
