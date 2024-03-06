@@ -92,28 +92,19 @@ local plugins = {
 			"nvim-treesitter/nvim-treesitter-context",
 			"nvim-treesitter/nvim-treesitter-textobjects",
 			"lewis6991/gitsigns.nvim",
+			"nushell/tree-sitter-nu",
 		},
 		build = function()
 			vim.cmd("TSUpdate")
 		end,
 		opts = {
 			auto_install = true,
-			ensure_installed = {
-				"javascript",
-				"typescript",
-				"c",
-				"cpp",
-				"lua",
-				"vim",
-				"vimdoc",
-				"query",
-				"markdown",
-				"markdown_inline",
-			},
+			ensure_installed = { "lua" },
 			highlight = {
 				enable = true,
 				additional_vim_regex_highlighting = false,
 			},
+			indent = { enable = true },
 			textobjects = {
 				select = {
 					enable = true,
@@ -415,10 +406,10 @@ local plugins = {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
+					"cmake",
 					-- "tsserver",
 					-- "rust_analyzer",
 					-- "clangd",
-					-- "cmake",
 					-- "denols",
 					-- "gopls",
 					-- "golangci_lint_ls",
