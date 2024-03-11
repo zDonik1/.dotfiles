@@ -15,7 +15,7 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 vim.opt.smartindent = true
 vim.opt.showmode = false
-
+vim.opt.directory = os.getenv("XDG_DATA_HOME") .. "/nvim-data/swap"
 require("zdonik.lazy_plugins")
 
 local augroup = vim.api.nvim_create_augroup
