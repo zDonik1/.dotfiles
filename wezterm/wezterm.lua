@@ -82,10 +82,12 @@ wezterm.on("format-tab-title", function(tab)
 	if not tab.is_active then
 		return ""
 	end
+	local no_dir_title = string.gsub(tab_title(tab), "(.*[/\\])(.*)", "%2")
+	local no_ext_title = string.gsub(no_dir_title, "(.*)%..*", "%1")
 	return {
 		{ Background = { Color = catppuccin.tab_bar.background } },
 		{ Foreground = { Color = catppuccin.ansi[3] } },
-		{ Text = " " .. tab_title(tab) .. " " },
+		{ Text = " " .. no_ext_title .. " " },
 	}
 end)
 
