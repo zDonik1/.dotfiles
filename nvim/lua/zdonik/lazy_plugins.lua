@@ -272,6 +272,9 @@ local plugins = {
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
 			"petertriho/cmp-git",
+
+			"L3MON4D3/LuaSnip",
+			"VonHeikemen/lsp-zero.nvim",
 		},
 		config = function()
 			local cmp = require("cmp")
@@ -344,8 +347,6 @@ local plugins = {
 		end,
 	},
 
-	{ "L3MON4D3/LuaSnip" },
-
 	{
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v3.x",
@@ -371,8 +372,11 @@ local plugins = {
 				vim.keymap.set("n", "[d", function()
 					vim.diagnostic.goto_prev()
 				end, opts)
-				vim.keymap.set({ "n", "v" }, "<leader>vca", function()
+				vim.keymap.set("n", "<leader>vca", function()
 					vim.lsp.buf.code_action()
+				end, opts)
+				vim.keymap.set("v", "<leader>vca", function()
+					vim.lsp.buf.range_code_action()
 				end, opts)
 				vim.keymap.set("n", "<leader>vrr", function()
 					vim.lsp.buf.references()
@@ -388,21 +392,16 @@ local plugins = {
 	},
 
 	{
-		"williamboman/mason.nvim",
-		config = function()
-			require("mason").setup()
-		end,
-	},
-
-	{
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = {
+			"VonHeikemen/lsp-zero.nvim",
 			"williamboman/mason.nvim",
 			"neovim/nvim-lspconfig",
 		},
 		config = function()
 			local lsp_zero = require("lsp-zero")
 			lsp_zero.extend_lspconfig()
+			require("mason").setup({})
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
@@ -423,6 +422,9 @@ local plugins = {
 					end,
 				},
 			})
+
+			-- mason unsupported lsps
+			require("lspconfig").nushell.setup({})
 		end,
 	},
 

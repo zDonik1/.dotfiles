@@ -47,6 +47,7 @@ vim.keymap.set("n", "<leader>f", function()
 	print("Formatter disabled till end of session")
 end)
 
+-- plugin keymaps
 vim.keymap.set("n", "<leader>l", vim.cmd.Lazy)
 
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
