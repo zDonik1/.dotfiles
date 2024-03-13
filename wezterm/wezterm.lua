@@ -5,6 +5,16 @@ local catppuccin = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
 
 -- plugins
 local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
+local session_manager = require("wezterm-session-manager/session-manager")
+wezterm.on("save_session", function(window)
+	session_manager.save_state(window)
+end)
+wezterm.on("load_session", function(window)
+	session_manager.load_state(window)
+end)
+wezterm.on("restore_session", function(window)
+	session_manager.restore_state(window)
+end)
 
 wezterm.on("update-status", function(window, _)
 	local status_generator = require("wez-status-generator.plugin")
@@ -143,6 +153,8 @@ config.keys = {
 
 	{ key = "U", mods = "CTRL|SHIFT", action = wezterm.action_callback(wezterm.plugin.update_all) },
 	{ key = "s", mods = "ALT", action = workspace_switcher.switch_workspace() },
+	{ key = "S", mods = "CTRL|SHIFT", action = wezterm.action({ EmitEvent = "save_session" }) },
+	{ key = "O", mods = "CTRL|SHIFT", action = wezterm.action({ EmitEvent = "restore_session" }) },
 }
 
 local copy_mode = nil
