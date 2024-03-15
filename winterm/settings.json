@@ -7,7 +7,7 @@
         { "command": "selectAll", "keys": "ctrl+a" },
         {
             "command": { "action": "copy", "singleLine": false },
-            "keys": "ctrl+c"
+            "keys": "ctrl+shift+c"
         },
         
         {
@@ -28,7 +28,7 @@
             "keys": "alt+s"
         },
         
-        { "command": "newTab", "keys": "ctrl+t" },
+        { "command": "newTab", "keys": "ctrl+shift+t" },
         { "command": "duplicateTab", "keys": "ctrl+shift+d" },
         { "command": "closeTab", "keys": "ctrl+shift+w" },
         
@@ -46,7 +46,6 @@
         { "command": "unbound", "keys": "ctrl+insert" },
         { "command": "unbound", "keys": "alt+shift+d" },
         { "command": "unbound", "keys": "ctrl+alt+left" },
-        { "command": "unbound", "keys": "ctrl+shift+t" },
         { "command": "unbound", "keys": "shift+insert" },
         { "command": "unbound", "keys": "ctrl+shift+a" },
         { "command": "unbound", "keys": "alt+shift+minus" },
@@ -67,7 +66,7 @@
     "confirmCloseAllTabs": false,
     "copyFormatting": "none",
     "copyOnSelect": false,
-    "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+    "defaultProfile": "{7e0ae011-4ba8-4095-9efb-0a265ba2b480}",
     "firstWindowPreference": "persistedWindowLayout",
     "initialCols": 150,
     "initialRows": 50,
@@ -88,13 +87,20 @@
                 "face": "JetBrainsMono Nerd Font",
                 "size": 11.0
             },
+            "intenseTextStyle": "all"
             "opacity": 75,
             "scrollbarState": "hidden",
             "useAcrylic": true,
-            "intenseTextStyle": "all"
         },
         "list": 
         [
+            {
+                "commandline": "nu",
+                "guid": "{7e0ae011-4ba8-4095-9efb-0a265ba2b480}",
+                "hidden": false,
+                "name": "Nushell",
+                "startingDirectory": "%USERPROFILE%"
+            },
             {
                 "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
