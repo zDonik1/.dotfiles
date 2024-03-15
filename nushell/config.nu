@@ -686,4 +686,11 @@ source ./completions/just-completions.nu
 source ./completions/rg-completions.nu
 
 source ./zoxide/zoxide.nu
-source ./starship/init.nu
+use starship
+
+if "WT_SESSION" in $env {
+    $env.PROMPT_COMMAND = {||
+        $"\u{1B}]9;9;($env.PWD)\u{1B}\\"
+        starship gen_left_prompt
+    }
+}

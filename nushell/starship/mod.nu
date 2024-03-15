@@ -13,15 +13,7 @@ export-env { load-env {
     # TODO: Also Use starship vi mode indicators?
     PROMPT_INDICATOR: ""
 
-    PROMPT_COMMAND: {||
-        # jobs are not supported
-        (
-            ^'C:\Program Files\starship\bin\starship.exe' prompt
-                --cmd-duration $env.CMD_DURATION_MS
-                $"--status=($env.LAST_EXIT_CODE)"
-                --terminal-width (term size).columns
-        )
-    }
+    PROMPT_COMMAND: { gen_left_prompt }
 
     config: ($env.config? | default {} | merge {
         render_right_prompt_on_last_line: true
@@ -37,3 +29,12 @@ export-env { load-env {
         )
     }
 }}
+
+export def gen_left_prompt [] {
+    (
+        ^'C:\Program Files\starship\bin\starship.exe' prompt
+            --cmd-duration $env.CMD_DURATION_MS
+            $"--status=($env.LAST_EXIT_CODE)"
+            --terminal-width (term size).columns
+    )
+}
