@@ -9,6 +9,11 @@
             "command": { "action": "copy", "singleLine": false },
             "keys": "ctrl+shift+c"
         },
+
+        { "command": { "action": "scrollUp", "rowsToScroll": 5 }, "keys": "ctrl+up" },
+        { "command": { "action": "scrollDown", "rowsToScroll": 5 }, "keys": "ctrl+down" },
+        { "command": "scrollUpPage", "keys": "ctrl+pgup" },
+        { "command": "scrollDownPage", "keys": "ctrl+pgdn" },
         
         {
             "command": { "action": "splitPane", "split": "auto", "splitMode": "duplicate" },
@@ -61,6 +66,10 @@
         { "command": "unbound", "keys": "ctrl+alt+9" },
         { "command": "unbound", "keys": "ctrl+w" },
         { "command": "unbound", "keys": "ctrl+d" },
+        { "command": "unbound", "keys": "ctrl+shift+up" },
+        { "command": "unbound", "keys": "ctrl+shift+down" },
+        { "command": "unbound", "keys": "ctrl+shift+pgup" },
+        { "command": "unbound", "keys": "ctrl+shift+pgdn" },
     ],
     "centerOnLaunch": true,
     "confirmCloseAllTabs": false,
@@ -87,10 +96,10 @@
                 "face": "JetBrainsMono Nerd Font",
                 "size": 11.0
             },
-            "intenseTextStyle": "all"
+            "intenseTextStyle": "all",
             "opacity": 75,
             "scrollbarState": "hidden",
-            "useAcrylic": true,
+            "useAcrylic": true
         },
         "list": 
         [
