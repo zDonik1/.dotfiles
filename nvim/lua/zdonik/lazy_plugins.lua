@@ -406,7 +406,6 @@ local plugins = {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
-					"cmake",
 					-- "tsserver",
 					-- "rust_analyzer",
 					-- "clangd",
