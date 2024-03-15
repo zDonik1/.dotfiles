@@ -685,5 +685,5 @@ source ./completions/gh-completions.nu
 source ./completions/just-completions.nu
 source ./completions/rg-completions.nu
 
-source ~/.zoxide.nu
-source ~/.cache/starship/init.nu
+source ./zoxide/zoxide.nu
+source ./starship/init.nu

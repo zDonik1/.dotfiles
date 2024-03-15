@@ -32,9 +32,12 @@ $env.NU_PLUGIN_DIRS = [
 $env.Path = ($env.Path | split row (char esep) | prepend 'D:/tools/vivid')
 
 
-$env.LS_COLORS = (vivid generate catppuccin-mocha | str trim)
+if (which vivid | length) > 0 {
+    $env.LS_COLORS = (vivid generate catppuccin-mocha | str trim)
+} else {
+    $env.LS_COLORS = (source ./themes/ls-themes/catppuccin-mocha.nu)
+}
+$env.XDG_CONFIG_HOME = ($env.USERPROFILE | path join ".config")
+$env.XDG_DATA_HOME = ($env.USERPROFILE | path join ".local/share")
 $env.EDITOR = nvim
 $env.LEDGER_FILE = "D:/ledger/2024.journal"
-
-zoxide init --cmd cd nushell | save -f ~/.zoxide.nu
-starship init nu | save -f ~/.cache/starship/init.nu
