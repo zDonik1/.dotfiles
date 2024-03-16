@@ -440,7 +440,7 @@ local plugins = {
 		version = "*", -- recommended, use latest release instead of latest commit
 		lazy = true,
 		ft = "markdown",
-		cmd = { "ObsidianQuickSwitch", "ObsidianToday" },
+		cmd = { "ObsidianQuickSwitch", "ObsidianDailies", "ObsidianToday" },
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"hrsh7th/nvim-cmp",
@@ -451,6 +451,7 @@ local plugins = {
 			local mocha = require("catppuccin.palettes").get_palette("mocha")
 
 			require("obsidian").setup({
+				log_level = vim.log.levels.DEBUG,
 				sort_by = "accessed",
 				disable_frontmatter = true,
 				workspaces = {
@@ -476,11 +477,11 @@ local plugins = {
 					nvim_cmp = true,
 					min_chars = 1,
 				},
-				notes_subdir = "/",
-				new_notes_location = "notes_subdir",
+				new_notes_location = "current_dir",
 				note_id_func = function(title)
 					return title
 				end,
+				wiki_link_func = "use_path_only",
 				mappings = {
 					["gf"] = {
 						action = function()
@@ -494,6 +495,14 @@ local plugins = {
 						end,
 						opts = { buffer = true },
 					},
+				},
+				callbacks = {
+					---@param client obsidian.Client
+					---@param workspace obsidian.Workspace
+					post_set_workspace = function(client, workspace)
+						client.log.info("Changing directory to %s", workspace.path)
+						vim.cmd.cd(tostring(workspace.path))
+					end,
 				},
 				ui = {
 					hl_groups = {
