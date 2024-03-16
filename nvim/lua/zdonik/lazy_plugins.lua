@@ -49,29 +49,20 @@ local plugins = {
 			},
 		},
 		config = function()
-			local command = {
-				"rg",
-				"--color=never",
-				"--no-heading",
-				"--with-filename",
-				"--line-number",
-				"--column",
-				"--smart-case",
-				-- additional custom options
-				"--hidden",
-				"--no-ignore",
-				"--glob",
-				"!**/.git/*",
-			}
-			local file_command = command
-			table.insert(file_command, "--files")
+			local add_hidden_flags = function(command)
+				table.insert(command, "--hidden")
+				table.insert(command, "--glob")
+				table.insert(command, "!**/.git/*")
+			end
+			local vimgrep_arguments = { unpack(require("telescope.config").values.vimgrep_arguments) }
+
 			require("telescope").setup({
 				defaults = {
-					vimgrep_arguments = command,
+					vimgrep_arguments = add_hidden_flags(vimgrep_arguments),
 				},
 				pickers = {
 					find_files = {
-						find_command = file_command,
+						find_command = add_hidden_flags({ "rg", "--files" }),
 					},
 				},
 			})
