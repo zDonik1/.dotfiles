@@ -39,5 +39,7 @@ if (which vivid | length) > 0 {
 }
 $env.XDG_CONFIG_HOME = ($env.USERPROFILE | path join ".config")
 $env.XDG_DATA_HOME = ($env.USERPROFILE | path join ".local/share")
+$env.XDG_STATE_HOME = ($env.USERPROFILE | path join ".local/state")
+$env.NVIM_LOG_FILE = ($env.USERPROFILE | path join ".cache/nvim/log")
 $env.EDITOR = nvim
 $env.LEDGER_FILE = "D:/ledger/2024.journal"
