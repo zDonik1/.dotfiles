@@ -1,8 +1,6 @@
 return {
-	"epwalsh/obsidian.nvim",
-	-- dir = "D:/nvim_projects/obsidian.nvim",
-	version = "*", -- recommended, use latest release instead of latest commit
-	lazy = true,
+	-- "epwalsh/obsidian.nvim",
+	dir = "D:/nvim_projects/obsidian.nvim",
 	ft = "markdown",
 	cmd = { "ObsidianQuickSwitch", "ObsidianDailies", "ObsidianToday" },
 	dependencies = {
@@ -80,6 +78,34 @@ return {
 					ObsidianHighlightText = { bg = mocha.flamingo },
 				},
 			},
+		})
+
+		-- custom Ex commands
+		local offset_daily = function(offset)
+			local filename = vim.fn.expand("%:t:r")
+			local year, month, day = filename:match("(%d+)-(%d+)-(%d+)")
+			local date = os.time({ year = year, month = month, day = day })
+			local client = require("obsidian").get_client()
+			local note = client:_daily(date + (offset * 3600 * 24))
+			client:open_note(note)
+		end
+
+		vim.api.nvim_create_user_command("ObsidianPrevDay", function(_)
+			offset_daily(-1)
+		end, {
+			bang = false,
+			bar = false,
+			register = false,
+			desc = "Create and switch to the previous daily note based on current buffer",
+		})
+
+		vim.api.nvim_create_user_command("ObsidianNextDay", function(_)
+			offset_daily(1)
+		end, {
+			bang = false,
+			bar = false,
+			register = false,
+			desc = "Create and switch to the next daily note based on current buffer",
 		})
 	end,
 }
