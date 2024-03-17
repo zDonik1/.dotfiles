@@ -3,6 +3,35 @@ local act = wezterm.action
 local config = wezterm.config_builder()
 local catppuccin = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
 
+local catppuccin_pallete = {
+	rosewater = "#f5e0dc",
+	flamingo = "#f2cdcd",
+	pink = "#f5c2e7",
+	mauve = "#cba6f7",
+	red = "#f38ba8",
+	maroon = "#eba0ac",
+	peach = "#fab387",
+	yellow = "#f9e2af",
+	green = "#a6e3a1",
+	teal = "#94e2d5",
+	sky = "#89dceb",
+	sapphire = "#74c7ec",
+	blue = "#89b4fa",
+	lavender = "#b4befe",
+	text = "#cdd6f4",
+	subtext1 = "#bac2de",
+	subtext0 = "#a6adc8",
+	overlay2 = "#9399b2",
+	overlay1 = "#7f849c",
+	overlay0 = "#6c7086",
+	surface2 = "#585b70",
+	surface1 = "#45475a",
+	surface0 = "#313244",
+	base = "#1e1e2e",
+	mantle = "#181825",
+	crust = "#11111b",
+}
+
 -- plugins
 local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
 local session_manager = require("wezterm-session-manager/session-manager")
@@ -18,17 +47,18 @@ end)
 
 wezterm.on("update-status", function(window, _)
 	local status_generator = require("wez-status-generator.plugin")
+	local color = catppuccin_pallete.flamingo
 
 	local left_status = status_generator.generate_left_status({
 		sections = {
 			{
 				components = {
 					function()
-						return window:mux_window():get_workspace():gsub("(.*[/\\])(.*)", "%2")
+						return " " .. window:mux_window():get_workspace():gsub("(.*[/\\])(.*)", "%2")
 					end,
 				},
-				foreground = catppuccin.background,
-				background = catppuccin.ansi[5],
+				foreground = catppuccin_pallete.mantle,
+				background = color,
 			},
 			{
 				components = {
@@ -43,8 +73,8 @@ wezterm.on("update-status", function(window, _)
 						return "tab " .. active_tab_index + 1 .. ":" .. #window:mux_window():tabs()
 					end,
 				},
-				foreground = catppuccin.ansi[5],
-				background = "#313244",
+				foreground = color,
+				background = catppuccin_pallete.surface0,
 			},
 		},
 		separator = status_generator.separators.ARROW,
@@ -59,17 +89,17 @@ wezterm.on("update-status", function(window, _)
 						return wezterm.strftime("%H:%M:%S")
 					end,
 				},
-				foreground = catppuccin.ansi[5],
-				background = "#313244",
+				foreground = color,
+				background = catppuccin_pallete.surface0,
 			},
 			{
 				components = {
 					function()
-						return wezterm.strftime("%d-%b-%y")
+						return wezterm.strftime("%d-%b-%y ")
 					end,
 				},
-				foreground = catppuccin.background,
-				background = catppuccin.ansi[5],
+				foreground = catppuccin_pallete.mantle,
+				background = color,
 			},
 		},
 		separator = status_generator.separators.ARROW,
@@ -118,7 +148,7 @@ config.font_size = 11
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 config.tab_max_width = 40
-config.window_background_opacity = 0.9
+-- config.window_background_opacity = 0.9
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "NeverPrompt"
 config.win32_system_backdrop = "Acrylic"
