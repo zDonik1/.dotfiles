@@ -1,19 +1,7 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
-end
-vim.opt.rtp:prepend(lazypath)
-
-local plugins = {
+return {
 	{
 		"catppuccin/nvim",
+		name = "catppuccin.nvim",
 		lazy = false,
 		opts = {
 			show_end_of_buffer = true,
@@ -35,7 +23,7 @@ local plugins = {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		lazy = false,
 		config = function()
-			require("lualine").setup()
+			require("lualine").setup({})
 		end,
 	},
 
@@ -339,87 +327,6 @@ local plugins = {
 	},
 
 	{
-		"VonHeikemen/lsp-zero.nvim",
-		branch = "v3.x",
-		init = function()
-			require("lsp-zero").on_attach(function(_, bufnr)
-				local opts = { buffer = bufnr, remap = false }
-
-				vim.keymap.set("n", "gd", function()
-					vim.lsp.buf.definition()
-				end, opts)
-				vim.keymap.set("n", "K", function()
-					vim.lsp.buf.hover()
-				end, opts)
-				vim.keymap.set("n", "<leader>vks", function()
-					vim.lsp.buf.workspace_symbol()
-				end, opts)
-				vim.keymap.set("n", "<leader>vd", function()
-					vim.diagnostic.open_float()
-				end, opts)
-				vim.keymap.set("n", "]d", function()
-					vim.diagnostic.goto_next()
-				end, opts)
-				vim.keymap.set("n", "[d", function()
-					vim.diagnostic.goto_prev()
-				end, opts)
-				vim.keymap.set("n", "<leader>vca", function()
-					vim.lsp.buf.code_action()
-				end, opts)
-				vim.keymap.set("v", "<leader>vca", function()
-					vim.lsp.buf.range_code_action()
-				end, opts)
-				vim.keymap.set("n", "<leader>vrr", function()
-					vim.lsp.buf.references()
-				end, opts)
-				vim.keymap.set("n", "<leader>vrn", function()
-					vim.lsp.buf.rename()
-				end, opts)
-				vim.keymap.set("i", "<C-h>", function()
-					vim.lsp.buf.signature_help()
-				end, opts)
-			end)
-		end,
-	},
-
-	{
-		"williamboman/mason-lspconfig.nvim",
-		dependencies = {
-			"VonHeikemen/lsp-zero.nvim",
-			"williamboman/mason.nvim",
-			"neovim/nvim-lspconfig",
-		},
-		config = function()
-			local lsp_zero = require("lsp-zero")
-			lsp_zero.extend_lspconfig()
-			require("mason").setup({})
-			require("mason-lspconfig").setup({
-				ensure_installed = {
-					"lua_ls",
-					-- "tsserver",
-					-- "rust_analyzer",
-					-- "clangd",
-					-- "denols",
-					-- "gopls",
-					-- "golangci_lint_ls",
-					-- "pylsp",
-					--                "csharp_ls",
-				},
-				handlers = {
-					lsp_zero.default_setup,
-					lua_ls = function()
-						local lua_opts = lsp_zero.nvim_lua_ls()
-						require("lspconfig").lua_ls.setup(lua_opts)
-					end,
-				},
-			})
-
-			-- mason unsupported lsps
-			require("lspconfig").nushell.setup({})
-		end,
-	},
-
-	{
 		"mhartington/formatter.nvim",
 		cmd = "FormatWrite",
 		config = function()
@@ -430,92 +337,6 @@ local plugins = {
 					rust = { require("formatter.filetypes.rust").rustfmt },
 					cs = { require("formatter.filetypes.cs").csharpier },
 					python = { require("formatter.filetypes.python").autopep8 },
-				},
-			})
-		end,
-	},
-
-	{
-		"epwalsh/obsidian.nvim",
-		version = "*", -- recommended, use latest release instead of latest commit
-		lazy = true,
-		ft = "markdown",
-		cmd = { "ObsidianQuickSwitch", "ObsidianDailies", "ObsidianToday" },
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"hrsh7th/nvim-cmp",
-			"nvim-telescope/telescope.nvim",
-			"nvim-treesitter/nvim-treesitter",
-		},
-		config = function()
-			local mocha = require("catppuccin.palettes").get_palette("mocha")
-
-			require("obsidian").setup({
-				log_level = vim.log.levels.DEBUG,
-				sort_by = "accessed",
-				disable_frontmatter = true,
-				workspaces = {
-					{
-						name = "personal",
-						path = "~/iCloudDrive/iCloud~md~obsidian/SecondBrain",
-					},
-				},
-				daily_notes = {
-					folder = "periodic_notes",
-					template = "daily_template.md",
-				},
-				templates = {
-					subdir = "templates",
-					time_format = "%X",
-					substitutions = {
-						["time:HH:mm:ss"] = function()
-							return os.date("%X")
-						end,
-					},
-				},
-				completion = {
-					nvim_cmp = true,
-					min_chars = 1,
-				},
-				new_notes_location = "current_dir",
-				note_id_func = function(title)
-					return title
-				end,
-				wiki_link_func = "use_path_only",
-				mappings = {
-					["gf"] = {
-						action = function()
-							return require("obsidian").util.gf_passthrough()
-						end,
-						opts = { noremap = false, expr = true, buffer = true },
-					},
-					["<leader>oh"] = {
-						action = function()
-							return require("obsidian").util.toggle_checkbox()
-						end,
-						opts = { buffer = true },
-					},
-				},
-				callbacks = {
-					---@param client obsidian.Client
-					---@param workspace obsidian.Workspace
-					post_set_workspace = function(client, workspace)
-						client.log.info("Changing directory to %s", workspace.path)
-						vim.cmd.cd(tostring(workspace.path))
-					end,
-				},
-				ui = {
-					hl_groups = {
-						ObsidianTodo = { bold = true, fg = mocha.peach },
-						ObsidianDone = { bold = true, fg = mocha.sapphire },
-						ObsidianRightArrow = { bold = true, fg = mocha.peach },
-						ObsidianTilde = { bold = true, fg = mocha.red },
-						ObsidianBullet = { bold = true, fg = mocha.sky },
-						ObsidianRefText = { underline = true, fg = mocha.mauve },
-						ObsidianExtLinkIcon = { fg = mocha.mauve },
-						ObsidianTag = { italic = true, fg = mocha.teal },
-						ObsidianHighlightText = { bg = mocha.flamingo },
-					},
 				},
 			})
 		end,
@@ -551,9 +372,7 @@ local plugins = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
 		config = function()
-			require("nvim-surround").setup({
-				-- Configuration here, or leave empty to use defaults
-			})
+			require("nvim-surround").setup()
 		end,
 	},
 
@@ -586,5 +405,3 @@ local plugins = {
 		end,
 	},
 }
-
-require("lazy").setup(plugins)
