@@ -1,3 +1,39 @@
+local set_lsp_maps = function(opts)
+	vim.keymap.set("n", "gd", function()
+		vim.lsp.buf.definition()
+	end, opts)
+	vim.keymap.set("n", "K", function()
+		vim.lsp.buf.hover()
+	end, opts)
+	vim.keymap.set("n", "<leader>vks", function()
+		vim.lsp.buf.workspace_symbol()
+	end, opts)
+	vim.keymap.set("n", "<leader>vd", function()
+		vim.diagnostic.open_float()
+	end, opts)
+	vim.keymap.set("n", "]d", function()
+		vim.diagnostic.goto_next()
+	end, opts)
+	vim.keymap.set("n", "[d", function()
+		vim.diagnostic.goto_prev()
+	end, opts)
+	vim.keymap.set("n", "<leader>vca", function()
+		vim.lsp.buf.code_action()
+	end, opts)
+	vim.keymap.set("v", "<leader>vca", function()
+		vim.lsp.buf.range_code_action()
+	end, opts)
+	vim.keymap.set("n", "<leader>vrr", function()
+		vim.lsp.buf.references()
+	end, opts)
+	vim.keymap.set("n", "<leader>vrn", function()
+		vim.lsp.buf.rename()
+	end, opts)
+	vim.keymap.set("i", "<C-h>", function()
+		vim.lsp.buf.signature_help()
+	end, opts)
+end
+
 local lua_ls_opts = {
 	on_init = function(client)
 		local path = client.workspace_folders[1].name
@@ -32,84 +68,42 @@ local lua_ls_opts = {
 }
 
 return {
-	{
-		"VonHeikemen/lsp-zero.nvim",
-		branch = "v3.x",
-		init = function()
-			require("lsp-zero").on_attach(function(_, bufnr)
-				local opts = { buffer = bufnr, remap = false }
-
-				vim.keymap.set("n", "gd", function()
-					vim.lsp.buf.definition()
-				end, opts)
-				vim.keymap.set("n", "K", function()
-					vim.lsp.buf.hover()
-				end, opts)
-				vim.keymap.set("n", "<leader>vks", function()
-					vim.lsp.buf.workspace_symbol()
-				end, opts)
-				vim.keymap.set("n", "<leader>vd", function()
-					vim.diagnostic.open_float()
-				end, opts)
-				vim.keymap.set("n", "]d", function()
-					vim.diagnostic.goto_next()
-				end, opts)
-				vim.keymap.set("n", "[d", function()
-					vim.diagnostic.goto_prev()
-				end, opts)
-				vim.keymap.set("n", "<leader>vca", function()
-					vim.lsp.buf.code_action()
-				end, opts)
-				vim.keymap.set("v", "<leader>vca", function()
-					vim.lsp.buf.range_code_action()
-				end, opts)
-				vim.keymap.set("n", "<leader>vrr", function()
-					vim.lsp.buf.references()
-				end, opts)
-				vim.keymap.set("n", "<leader>vrn", function()
-					vim.lsp.buf.rename()
-				end, opts)
-				vim.keymap.set("i", "<C-h>", function()
-					vim.lsp.buf.signature_help()
-				end, opts)
-			end)
-		end,
-	},
-
-	{
+	"VonHeikemen/lsp-zero.nvim",
+	dependencies = {
+		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
-		dependencies = {
-			"VonHeikemen/lsp-zero.nvim",
-			"williamboman/mason.nvim",
-			"neovim/nvim-lspconfig",
-		},
-		config = function()
-			local lsp_zero = require("lsp-zero")
-			lsp_zero.extend_lspconfig()
-			require("mason").setup({})
-			require("mason-lspconfig").setup({
-				ensure_installed = {
-					"lua_ls",
-					-- "tsserver",
-					-- "rust_analyzer",
-					-- "clangd",
-					-- "denols",
-					-- "gopls",
-					-- "golangci_lint_ls",
-					-- "pylsp",
-					--                "csharp_ls",
-				},
-				handlers = {
-					lsp_zero.default_setup,
-					lua_ls = function()
-						local lua_opts = lsp_zero.nvim_lua_ls()
-						require("lspconfig").lua_ls.setup(lua_ls_opts)
-					end,
-				},
-			})
-
-			-- mason unsupported lsps
-			require("lspconfig").nushell.setup({})
-		end,
+		"neovim/nvim-lspconfig",
 	},
+	branch = "v3.x",
+	init = function()
+		local lsp_zero = require("lsp-zero")
+		lsp_zero.on_attach(function(_, bufnr)
+			set_lsp_maps({ buffer = bufnr, remap = false })
+		end)
+
+		lsp_zero.extend_lspconfig()
+		require("mason").setup({})
+		require("mason-lspconfig").setup({
+			ensure_installed = {
+				"lua_ls",
+				-- "tsserver",
+				-- "rust_analyzer",
+				-- "clangd",
+				-- "denols",
+				-- "gopls",
+				-- "golangci_lint_ls",
+				-- "pylsp",
+				--                "csharp_ls",
+			},
+			handlers = {
+				lsp_zero.default_setup,
+				lua_ls = function()
+					require("lspconfig").lua_ls.setup(lua_ls_opts)
+				end,
+			},
+		})
+
+		-- mason unsupported lsps
+		require("lspconfig").nushell.setup({})
+	end,
 }
