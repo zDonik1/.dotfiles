@@ -73,9 +73,10 @@ return {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
+		"j-hui/fidget.nvim",
 	},
 	branch = "v3.x",
-	init = function()
+	config = function()
 		local lsp_zero = require("lsp-zero")
 		lsp_zero.on_attach(function(_, bufnr)
 			set_lsp_maps({ buffer = bufnr, remap = false })
@@ -87,7 +88,7 @@ return {
 			ensure_installed = {
 				"lua_ls",
 				-- "tsserver",
-				-- "rust_analyzer",
+				"rust_analyzer",
 				-- "clangd",
 				-- "denols",
 				-- "gopls",
@@ -105,5 +106,33 @@ return {
 
 		-- mason unsupported lsps
 		require("lspconfig").nushell.setup({})
+
+		require("fidget").setup({
+			notification = {
+				window = {
+					normal_hl = "Comment", -- Base highlight group in the notification window
+					winblend = 0, -- Background color opacity in the notification window
+					border = "none", -- Border around the notification window
+					zindex = 45, -- Stacking priority of the notification window
+					max_width = 0, -- Maximum width of the notification window
+					max_height = 0, -- Maximum height of the notification window
+					x_padding = 1, -- Padding from right edge of window boundary
+					y_padding = 0, -- Padding from bottom edge of window boundary
+					align = "bottom", -- How to align the notification window
+					relative = "editor", -- What the notification window position is relative to
+				},
+			},
+		})
+
+		vim.diagnostic.config({
+			float = {
+				focusable = false,
+				style = "minimal",
+				border = "rounded",
+				source = "always",
+				header = "",
+				prefix = "",
+			},
+		})
 	end,
 }
