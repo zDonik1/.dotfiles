@@ -1,30 +1,9 @@
 return {
 	{
-		"catppuccin/nvim",
-		name = "catppuccin.nvim",
-		lazy = false,
-		opts = {
-			show_end_of_buffer = true,
-			custom_highlights = function(colors)
-				return {
-					["@text.emphasis"] = { fg = colors.green },
-				}
-			end,
-		},
-		config = function(_, opts)
-			require("catppuccin").setup(opts)
-
-			vim.cmd.colorscheme("catppuccin")
-		end,
-	},
-
-	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		lazy = false,
-		config = function()
-			require("lualine").setup({})
-		end,
+		config = true,
 	},
 
 	{
@@ -42,7 +21,8 @@ return {
 				table.insert(command, "--glob")
 				table.insert(command, "!**/.git/*")
 			end
-			local vimgrep_arguments = { unpack(require("telescope.config").values.vimgrep_arguments) }
+			local vimgrep_arguments =
+				{ unpack(require("telescope.config").values.vimgrep_arguments) }
 
 			require("telescope").setup({
 				defaults = {
