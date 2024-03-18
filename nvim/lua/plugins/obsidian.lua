@@ -74,7 +74,7 @@ return {
 					ObsidianBullet = { bold = true, fg = mocha.sky },
 					ObsidianRefText = { underline = true, fg = mocha.mauve },
 					ObsidianExtLinkIcon = { fg = mocha.mauve },
-					ObsidianTag = { italic = true, fg = mocha.teal },
+					ObsidianTag = { italic = true, fg = mocha.blue },
 					ObsidianHighlightText = { bg = mocha.flamingo },
 				},
 			},
