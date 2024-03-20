@@ -61,6 +61,7 @@ vim.keymap.set("n", "<leader>gi", function()
 end)
 
 vim.keymap.set("n", "<leader>oo", vim.cmd.ObsidianOpen)
+vim.keymap.set("n", "<leader>on", vim.cmd.ObsidianNew)
 vim.keymap.set("n", "<leader>oq", vim.cmd.ObsidianQuickSwitch)
 vim.keymap.set("n", "<leader>od", vim.cmd.ObsidianDailies)
 vim.keymap.set("n", "<leader>oy", vim.cmd.ObsidianToday)

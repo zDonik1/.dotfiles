@@ -2,7 +2,7 @@ return {
 	-- "epwalsh/obsidian.nvim",
 	dir = "D:/nvim_projects/obsidian.nvim",
 	ft = "markdown",
-	cmd = { "ObsidianQuickSwitch", "ObsidianDailies", "ObsidianToday" },
+	cmd = { "ObsidianQuickSwitch", "ObsidianDailies", "ObsidianToday", "ObsidianNew" },
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"hrsh7th/nvim-cmp",
@@ -24,6 +24,7 @@ return {
 			daily_notes = {
 				folder = "periodic_notes",
 				template = "daily_template.md",
+				alias_format = "%Y-%m-%d",
 			},
 			templates = {
 				subdir = "templates",
