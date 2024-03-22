@@ -1,4 +1,4 @@
-const color_palette = {
+export const color_palette = {
     rosewater: "#f5e0dc"
     flamingo: "#f2cdcd"
     pink: "#f5c2e7"
@@ -76,20 +76,20 @@ export def main [] { return {
 
     shape_and: { fg: $color_palette.pink attr: "b" }
     shape_binary: { fg: $color_palette.pink attr: "b" }
-    shape_block: { fg: $color_palette.blue attr: "b" }
+    shape_block: { fg: $color_palette.sapphire attr: "b" }
     shape_bool: $color_palette.teal
     shape_custom: $color_palette.green
     shape_datetime: { fg: $color_palette.teal attr: "b" }
     shape_directory: $color_palette.teal
-    shape_external: $color_palette.teal
+    shape_external: $color_palette.blue
     shape_externalarg: { fg: $color_palette.green attr: "b" }
     shape_filepath: $color_palette.teal
-    shape_flag: { fg: $color_palette.blue attr: "b" }
+    shape_flag: { fg: $color_palette.sapphire attr: "b" }
     shape_float: { fg: $color_palette.pink attr: "b" }
-    shape_garbage: { fg: $color_palette.text bg: $color_palette.red attr: "b" }
+    shape_garbage: { fg: $color_palette.red attr: "b" }
     shape_globpattern: { fg: $color_palette.teal attr: "b" }
     shape_int: { fg: $color_palette.pink attr: "b" }
-    shape_internalcall: { fg: $color_palette.teal attr: "b" }
+    shape_internalcall: { fg: $color_palette.blue attr: "b" }
     shape_list: { fg: $color_palette.teal attr: "b" }
     shape_literal: $color_palette.blue
     shape_match_pattern: $color_palette.green
@@ -104,7 +104,7 @@ export def main [] { return {
     shape_signature: { fg: $color_palette.green attr: "b" }
     shape_string: $color_palette.green
     shape_string_interpolation: { fg: $color_palette.teal attr: "b" }
-    shape_table: { fg: $color_palette.blue attr: "b" }
+    shape_table: { fg: $color_palette.sapphire attr: "b" }
     shape_variable: $color_palette.pink
 
     background: $color_palette.base
