@@ -30,6 +30,7 @@ $env.NU_PLUGIN_DIRS = [
 
 # PATH entries
 $env.Path = ($env.Path | split row (char esep) | prepend 'D:/tools/vivid')
+$env.Path = ($env.Path | split row (char esep) | prepend 'C:/Program Files/Git/bin')
 
 
 if (which vivid | length) > 0 {
