@@ -677,6 +677,7 @@ alias la = ls -la
 def lg [] { ls | sort-by type name -i | grid -c | str trim }
 alias j = just
 alias led = hledger
+alias n = nvim
 
 # completions
 source ./completions/cargo-completions.nu

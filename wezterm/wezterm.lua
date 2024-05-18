@@ -180,6 +180,7 @@ config.keys = {
 	{ key = "7", mods = "CTRL", action = act.ActivateTab(6) },
 	{ key = "8", mods = "CTRL", action = act.ActivateTab(7) },
 	{ key = "9", mods = "CTRL", action = act.ActivateTab(-1) },
+	{ key = "W", mods = "CTRL", action = act.CloseCurrentPane({ confirm = true }) },
 
 	{ key = "U", mods = "CTRL|SHIFT", action = wezterm.action_callback(wezterm.plugin.update_all) },
 	{ key = "s", mods = "ALT", action = workspace_switcher.switch_workspace() },

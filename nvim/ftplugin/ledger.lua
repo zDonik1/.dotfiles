@@ -1,1 +1,1 @@
-vim.keymap.set("n", "<leader>lc", "^Wi* <esc>", { buffer = true })
+vim.keymap.set("n", "<leader>lc", "^Ea *<esc>", { buffer = true })

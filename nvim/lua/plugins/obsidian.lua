@@ -2,7 +2,13 @@ return {
 	-- "epwalsh/obsidian.nvim",
 	dir = "D:/nvim_projects/obsidian.nvim",
 	ft = "markdown",
-	cmd = { "ObsidianQuickSwitch", "ObsidianDailies", "ObsidianToday", "ObsidianNew" },
+	cmd = {
+		"ObsidianQuickSwitch",
+		"ObsidianDailies",
+		"ObsidianToday",
+		"ObsidianNew",
+		"ObsidianTag",
+	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"hrsh7th/nvim-cmp",
