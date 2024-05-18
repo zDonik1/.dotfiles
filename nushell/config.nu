@@ -1,4 +1,4 @@
-use ./themes/nu-themes/catppuccin-mocha.nu
+use ~/.config/nushell/themes/nu-themes/catppuccin-mocha.nu
 
 # The default config record. This is where much of your global configuration is setup.
 $env.config = {
@@ -680,14 +680,14 @@ alias led = hledger
 alias n = nvim
 
 # completions
-source ./completions/cargo-completions.nu
-source ./completions/git-completions.nu
-source ./completions/gh-completions.nu
-source ./completions/just-completions.nu
-source ./completions/rg-completions.nu
+source ~/.config/nushell/completions/cargo-completions.nu
+source ~/.config/nushell/completions/git-completions.nu
+source ~/.config/nushell/completions/gh-completions.nu
+source ~/.config/nushell/completions/just-completions.nu
+source ~/.config/nushell/completions/rg-completions.nu
 
-source ./zoxide/zoxide.nu
-source ./starship/mod.nu
+source ~/.config/nushell/zoxide/zoxide.nu
+use ~/.config/nushell/starship/mod.nu
 
 if "WT_SESSION" in $env {
     $env.PROMPT_COMMAND = {||
