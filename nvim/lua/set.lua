@@ -13,4 +13,6 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 vim.opt.smartindent = true
 vim.opt.showmode = false
-vim.opt.directory = os.getenv("XDG_DATA_HOME") .. "/nvim-data/swap"
+if os.getenv("XDG_DATA_HOME") then
+    vim.opt.directory = os.getenv("XDG_DATA_HOME") .. "/nvim-data/swap"
+end

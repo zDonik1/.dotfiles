@@ -1,12 +1,10 @@
-# this file is both a valid
-# - overlay which can be loaded with `overlay use starship.nu`
-# - module which can be used with `use starship.nu`
-# - script which can be used with `source starship.nu`
+let starship_exec = if (sys | get host.name | str contains Windows) { 'C:\Program Files\starship\bin\starship.exe'  } else { "/home/linuxbrew/.linuxbrew/bin/starship" }
+
 export-env { load-env {
     STARSHIP_SHELL: "nu"
     STARSHIP_SESSION_KEY: (random chars -l 16)
     PROMPT_MULTILINE_INDICATOR: (
-        ^'C:\Program Files\starship\bin\starship.exe' prompt --continuation
+        ^$starship_exec prompt --continuation
     )
 
     # Does not play well with default character module.
@@ -21,7 +19,7 @@ export-env { load-env {
 
     PROMPT_COMMAND_RIGHT: {||
         (
-            ^'C:\Program Files\starship\bin\starship.exe' prompt
+            ^$starship_exec prompt
                 --right
                 --cmd-duration $env.CMD_DURATION_MS
                 $"--status=($env.LAST_EXIT_CODE)"
@@ -32,7 +30,7 @@ export-env { load-env {
 
 export def gen_left_prompt [] {
     (
-        ^'C:\Program Files\starship\bin\starship.exe' prompt
+        ^$starship_exec prompt
             --cmd-duration $env.CMD_DURATION_MS
             $"--status=($env.LAST_EXIT_CODE)"
             --terminal-width (term size).columns

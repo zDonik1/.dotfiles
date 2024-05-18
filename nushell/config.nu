@@ -686,7 +686,7 @@ source ./completions/just-completions.nu
 source ./completions/rg-completions.nu
 
 source ./zoxide/zoxide.nu
-use starship
+source ./starship/mod.nu
 
 if "WT_SESSION" in $env {
     $env.PROMPT_COMMAND = {||

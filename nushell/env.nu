@@ -28,19 +28,27 @@ $env.NU_PLUGIN_DIRS = [
     ($nu.default-config-dir | path join 'plugins') # add <nushell-config-dir>/plugins
 ]
 
-# PATH entries
-$env.Path = ($env.Path | split row (char esep) | prepend 'D:/tools/vivid')
-$env.Path = ($env.Path | split row (char esep) | prepend 'C:/Program Files/Git/bin')
+let is_windows = (sys | get host.name | str contains Windows)
 
+# PATH entries
+if $is_windows {
+    $env.Path = ($env.Path | split row (char esep) | prepend 'D:/tools/vivid')
+    $env.Path = ($env.Path | split row (char esep) | prepend 'C:/Program Files/Git/bin')
+} else {
+    $env.PATH = ($env.PATH | split row (char esep) | prepend '/home/linuxbrew/.linuxbrew/bin')
+    $env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/nvim-linux64/bin')
+}
+
+let home = if $is_windows { $env.USERPROFILE } else { $env.HOME }
 
 if (which vivid | length) > 0 {
     $env.LS_COLORS = (vivid generate catppuccin-mocha | str trim)
 } else {
     $env.LS_COLORS = (source ./themes/ls-themes/catppuccin-mocha.nu)
 }
-$env.XDG_CONFIG_HOME = ($env.USERPROFILE | path join ".config")
-$env.XDG_DATA_HOME = ($env.USERPROFILE | path join ".local/share")
-$env.XDG_STATE_HOME = ($env.USERPROFILE | path join ".local/state")
-$env.NVIM_LOG_FILE = ($env.USERPROFILE | path join ".cache/nvim/log")
+$env.XDG_CONFIG_HOME = ($home | path join ".config")
+$env.XDG_DATA_HOME = ($home | path join ".local/share")
+$env.XDG_STATE_HOME = ($home | path join ".local/state")
+$env.NVIM_LOG_FILE = ($home | path join ".cache/nvim/log")
 $env.EDITOR = nvim
 $env.LEDGER_FILE = "D:/ledger/2024.journal"
