@@ -61,7 +61,7 @@ return {
 	},
 	config = function(_, opts)
 		require("nvim-treesitter.configs").setup(opts)
-		require("treesitter-context").setup({ separator = "─" })
+		require("treesitter-context").setup({ separator = "─", max_lines = 5 })
 		require("tree-sitter-just").setup({})
 
 		local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")

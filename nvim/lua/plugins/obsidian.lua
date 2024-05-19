@@ -1,6 +1,6 @@
 return {
-	-- "epwalsh/obsidian.nvim",
-	dir = "D:/nvim_projects/obsidian.nvim",
+	"epwalsh/obsidian.nvim",
+	-- dir = "D:/nvim_projects/obsidian.nvim",
 	ft = "markdown",
 	cmd = {
 		"ObsidianQuickSwitch",
