@@ -687,11 +687,11 @@ source ~/.config/nushell/completions/just-completions.nu
 source ~/.config/nushell/completions/rg-completions.nu
 
 source ~/.config/nushell/zoxide/zoxide.nu
-use ~/.config/nushell/starship/mod.nu
+use ~/.config/nushell/starship
 
+# send pwd to windows terminal
 if "WT_SESSION" in $env {
     $env.PROMPT_COMMAND = {||
-        $"\u{1B}]9;9;($env.PWD)\u{1B}\\"
-        starship gen_left_prompt
+        [$"\u{1B}]9;9;($env.PWD)\u{1B}\\", (starship gen_left_prompt)] | str join
     }
 }

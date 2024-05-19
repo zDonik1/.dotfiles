@@ -10,7 +10,6 @@ export-env { load-env {
     PROMPT_INDICATOR: ""
 
     PROMPT_COMMAND: { gen_left_prompt }
-    Hello: "lol"
 
     config: ($env.config? | default {} | merge {
         render_right_prompt_on_last_line: true
