@@ -35,17 +35,21 @@ if $is_windows {
     $env.Path = ($env.Path | prepend 'C:/Program Files/Git/bin')
     $env.Path = ($env.Path | prepend 'C:/Users/tokhi/AppData/Local/distant/bin')
     $env.Path = ($env.Path | prepend 'C:/Users/tokhi/scoop/shims')
+    $env.Path = ($env.Path | prepend 'C:/Program Files/Wireshark')
 } else {
     $env.PATH = ($env.PATH | prepend '/home/linuxbrew/.linuxbrew/bin')
     $env.PATH = ($env.PATH | prepend '/opt/nvim-linux64/bin')
 }
 
-let home = if $is_windows { $env.USERPROFILE } else { $env.HOME }
+if $is_windows {
+    $env.HOME = $env.USERPROFILE
+}
 
-$env.XDG_CONFIG_HOME = ($home | path join ".config")
-$env.XDG_DATA_HOME = ($home | path join ".local/share")
-$env.XDG_STATE_HOME = ($home | path join ".local/state")
-$env.NVIM_LOG_FILE = ($home | path join ".cache/nvim/log")
+$env.XDG_CONFIG_HOME = ($env.HOME | path join ".config")
+$env.XDG_DATA_HOME = ($env.HOME | path join ".local/share")
+$env.XDG_STATE_HOME = ($env.HOME | path join ".local/state")
+$env.NVIM_LOG_FILE = ($env.HOME | path join ".cache/nvim/log")
 $env.EDITOR = nvim
+$env.SHELL = nu
 $env.LS_COLORS = (source ~/.config/nushell/themes/ls-themes/catppuccin-mocha.nu)
 $env.LEDGER_FILE = "D:/ledger/2024.journal"
