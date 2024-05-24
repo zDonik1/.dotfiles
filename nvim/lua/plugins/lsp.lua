@@ -37,7 +37,9 @@ end
 local lua_ls_opts = {
 	on_init = function(client)
 		local path = client.workspace_folders[1].name
-		if vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc") then
+		if
+			vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc")
+		then
 			return
 		end
 
@@ -77,6 +79,7 @@ return {
 	},
 	branch = "v3.x",
 	config = function()
+		local lspconfig = require("lspconfig")
 		local lsp_zero = require("lsp-zero")
 		lsp_zero.on_attach(function(_, bufnr)
 			set_lsp_maps({ buffer = bufnr, remap = false })
@@ -94,18 +97,19 @@ return {
 				-- "gopls",
 				-- "golangci_lint_ls",
 				-- "pylsp",
-				--                "csharp_ls",
+				-- "csharp_ls",
 			},
 			handlers = {
 				lsp_zero.default_setup,
 				lua_ls = function()
-					require("lspconfig").lua_ls.setup(lua_ls_opts)
+					lspconfig.lua_ls.setup(lua_ls_opts)
 				end,
 			},
 		})
 
 		-- mason unsupported lsps
-		require("lspconfig").nushell.setup({})
+		lspconfig.nushell.setup({})
+		lspconfig.gdscript.setup({})
 
 		require("fidget").setup({
 			notification = {
