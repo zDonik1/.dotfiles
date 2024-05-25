@@ -14,14 +14,17 @@ vim.opt.scrolloff = 8
 vim.opt.smartindent = true
 vim.opt.showmode = false
 
--- vim.opt.shell = "cmd.exe"
-vim.opt.shell = "nu"
-vim.opt.shellcmdflag = '"--config ($env.XDG_CONFIG_HOME | path join nushell/nvim.nu)" -c'
-vim.opt.shellredir = "o+e> %s"
-vim.opt.shellpipe = "o+e>| tee { save %s }"
-vim.opt.shellslash = true
-vim.opt.shellquote = "'"
-vim.opt.shellxquote = ""
+if vim.fn.has("win32") then
+	vim.opt.shell = "cmd.exe"
+else
+	vim.opt.shell = "nu"
+	vim.opt.shellcmdflag = '"--config ($env.XDG_CONFIG_HOME | path join nushell/nvim.nu)" --stdin -c'
+	vim.opt.shellredir = "o+e> %s"
+	vim.opt.shellpipe = "o+e>| tee { save %s }"
+	vim.opt.shellslash = true
+	vim.opt.shellquote = "'"
+	vim.opt.shellxquote = ""
+end
 
 if os.getenv("XDG_DATA_HOME") then
 	vim.opt.directory = os.getenv("XDG_DATA_HOME") .. "/nvim-data/swap"
