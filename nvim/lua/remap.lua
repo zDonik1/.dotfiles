@@ -68,3 +68,5 @@ vim.keymap.set("n", "[o", vim.cmd.ObsidianPrevDay)
 vim.keymap.set("n", "]o", vim.cmd.ObsidianNextDay)
 vim.keymap.set("n", "<leader>om", vim.cmd.ObsidianTemplate)
 vim.keymap.set("n", "<leader>ot", vim.cmd.ObsidianTags)
+
+vim.keymap.set("n", "-", "<cmd>Oil --float<cr>", { desc = "Open parent directory" })

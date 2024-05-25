@@ -235,4 +235,19 @@ return {
 			require("colorizer").setup()
 		end,
 	},
+
+	{
+		"stevearc/oil.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		cmd = "Oil",
+		config = function()
+			require("oil").setup({
+				float = {
+					padding = 4,
+					max_width = 100,
+					max_height = 80,
+				},
+			})
+		end,
+	},
 }
