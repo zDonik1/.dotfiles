@@ -179,6 +179,11 @@ return {
 					rust = { require("formatter.filetypes.rust").rustfmt },
 					cs = { require("formatter.filetypes.cs").csharpier },
 					python = { require("formatter.filetypes.python").autopep8 },
+					gdscript = {
+						function()
+							return { exe = "gdformat" }
+						end,
+					},
 				},
 			})
 		end,

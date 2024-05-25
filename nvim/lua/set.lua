@@ -18,7 +18,8 @@ if vim.fn.has("win32") then
 	vim.opt.shell = "cmd.exe"
 else
 	vim.opt.shell = "nu"
-	vim.opt.shellcmdflag = '"--config ($env.XDG_CONFIG_HOME | path join nushell/nvim.nu)" --stdin -c'
+	vim.opt.shellcmdflag =
+		'"--config ($env.XDG_CONFIG_HOME | path join nushell/nvim.nu)" --stdin -c'
 	vim.opt.shellredir = "o+e> %s"
 	vim.opt.shellpipe = "o+e>| tee { save %s }"
 	vim.opt.shellslash = true
