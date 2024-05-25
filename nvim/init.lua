@@ -2,10 +2,6 @@ require("remap")
 require("set")
 require("lazy_init")
 
-function LOG(obj)
-	print(vim.inspect(obj))
-end
-
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 

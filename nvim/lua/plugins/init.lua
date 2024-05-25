@@ -175,7 +175,8 @@ return {
 	},
 
 	{
-		"mhartington/formatter.nvim",
+		-- fork of "mhartington/formatter.nvim"
+		"zDonik1/formatter.nvim",
 		cmd = "FormatWrite",
 		config = function()
 			require("formatter").setup({
