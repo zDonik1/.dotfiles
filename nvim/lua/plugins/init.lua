@@ -82,13 +82,6 @@ return {
 	},
 
 	{
-		"rbong/vim-flog",
-		lazy = true,
-		cmd = { "Flog", "Flogsplit", "Floggit" },
-		dependencies = { "tpope/vim-fugitive" },
-	},
-
-	{
 		"hrsh7th/nvim-cmp",
 		event = { "InsertEnter", "CmdlineEnter" },
 		dependencies = {
@@ -199,17 +192,6 @@ return {
 		},
 		config = function(_, opts)
 			require("ibl").setup(opts)
-		end,
-	},
-
-	{
-		"lewis6991/gitsigns.nvim",
-		event = "VeryLazy",
-		opts = {
-			current_line_blame = true,
-		},
-		config = function(_, opts)
-			require("gitsigns").setup(opts)
 		end,
 	},
 
