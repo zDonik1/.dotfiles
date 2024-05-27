@@ -16,8 +16,8 @@ vim.keymap.set("n", "<leader>sv", vim.cmd.vsplit)
 vim.keymap.set("n", "<leader>qq", vim.cmd.cclose)
 
 -- navigation
-vim.keymap.set("n", "<C-s>", "<C-u>zz")
-vim.keymap.set("n", "<C-t>", "<C-d>zz")
+vim.keymap.set({ "n", "v" }, "<C-s>", "<C-u>zz")
+vim.keymap.set({ "n", "v" }, "<C-t>", "<C-d>zz")
 
 -- window navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h")
