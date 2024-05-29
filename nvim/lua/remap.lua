@@ -51,14 +51,6 @@ vim.keymap.set("n", "<leader>l", vim.cmd.Lazy)
 
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
-vim.keymap.set("n", "<leader>gs", vim.cmd.G)
--- vim.keymap.set("n", "<leader>gl", vim.cmd.Flog)
-vim.keymap.set("n", "<leader>gp", "<cmd>G push<cr>")
-vim.keymap.set("n", "<leader>gP", "<cmd>G pull --rebase<cr>")
-vim.keymap.set("n", "<leader>gi", function()
-	vim.fn.feedkeys(":G ")
-end)
-
 vim.keymap.set("n", "<leader>oo", vim.cmd.ObsidianOpen)
 vim.keymap.set("n", "<leader>on", vim.cmd.ObsidianNew)
 vim.keymap.set("n", "<leader>oq", vim.cmd.ObsidianQuickSwitch)

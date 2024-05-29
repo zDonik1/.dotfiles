@@ -1,6 +1,14 @@
-nvim-data
 scoop
 dlv
 mc
 systemd
 nushell/history.txt
+environment.d
+fontconfig
+
+# autoconfig by nix
+/git
+/gitui
+/gh
+/gh-dash
+/zellij

@@ -69,47 +69,37 @@ local lua_ls_opts = {
 	},
 }
 
+local setup_lspconfigs = function()
+	local lspconfig = require("lspconfig")
+	local lsps = {
+		"csharp_ls",
+		"nushell",
+		"gdscript",
+		"nil_ls",
+		"nixd",
+	}
+	for _, lsp in ipairs(lsps) do
+		lspconfig[lsp].setup({})
+	end
+
+	-- lsp setup with opts
+	lspconfig.lua_ls.setup(lua_ls_opts)
+end
+
 return {
 	"VonHeikemen/lsp-zero.nvim",
 	dependencies = {
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
 		"j-hui/fidget.nvim",
 	},
 	branch = "v3.x",
 	config = function()
-		local lspconfig = require("lspconfig")
 		local lsp_zero = require("lsp-zero")
 		lsp_zero.on_attach(function(_, bufnr)
 			set_lsp_maps({ buffer = bufnr, remap = false })
 		end)
-
 		lsp_zero.extend_lspconfig()
-		require("mason").setup({})
-		require("mason-lspconfig").setup({
-			ensure_installed = {
-				"lua_ls",
-				-- "tsserver",
-				"rust_analyzer",
-				-- "clangd",
-				-- "denols",
-				-- "gopls",
-				-- "golangci_lint_ls",
-				-- "pylsp",
-				-- "csharp_ls",
-			},
-			handlers = {
-				lsp_zero.default_setup,
-				lua_ls = function()
-					lspconfig.lua_ls.setup(lua_ls_opts)
-				end,
-			},
-		})
-
-		-- mason unsupported lsps
-		lspconfig.nushell.setup({})
-		lspconfig.gdscript.setup({})
+		setup_lspconfigs()
 
 		require("fidget").setup({
 			notification = {

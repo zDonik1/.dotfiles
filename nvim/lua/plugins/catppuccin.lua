@@ -18,6 +18,11 @@ return {
 		end,
 	},
 	config = function(_, opts)
+		-- make background transparent
+		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+		vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+
 		require("catppuccin").setup(opts)
 		vim.cmd.colorscheme("catppuccin")
 	end,

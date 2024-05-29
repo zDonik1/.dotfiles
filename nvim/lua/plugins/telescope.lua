@@ -4,7 +4,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
-			build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release; cmake --build build --config Release; cmake --install build --prefix build",
+			build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release; cmake --build build --config Release",
 		},
 	},
 	config = function()
@@ -34,6 +34,7 @@ return {
 		end)
 		vim.keymap.set("n", "<leader>ko", builtin.oldfiles, {})
 		vim.keymap.set("n", "<leader>kg", builtin.git_files, {})
+		vim.keymap.set("n", "<leader>kr", builtin.git_branches, {})
 		vim.keymap.set("n", "<leader>kw", builtin.live_grep, {})
 		vim.keymap.set("n", "<leader>kb", builtin.buffers, {})
 		vim.keymap.set("n", "<leader>kh", builtin.help_tags, {})

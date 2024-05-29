@@ -168,28 +168,6 @@ return {
 	},
 
 	{
-		-- fork of "mhartington/formatter.nvim"
-		"zDonik1/formatter.nvim",
-		cmd = "FormatWrite",
-		config = function()
-			require("formatter").setup({
-				filetype = {
-					lua = { require("formatter.filetypes.lua").stylua },
-					cpp = { require("formatter.filetypes.cpp").clangformat },
-					rust = { require("formatter.filetypes.rust").rustfmt },
-					cs = { require("formatter.filetypes.cs").csharpier },
-					python = { require("formatter.filetypes.python").autopep8 },
-					gdscript = {
-						function()
-							return { exe = "gdformat" }
-						end,
-					},
-				},
-			})
-		end,
-	},
-
-	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufReadPre",
 		opts = {
