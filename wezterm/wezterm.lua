@@ -145,6 +145,7 @@ config.colors = {
 config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Medium" })
 config.font_size = 11
 
+config.enable_tab_bar = false
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 config.tab_max_width = 40
