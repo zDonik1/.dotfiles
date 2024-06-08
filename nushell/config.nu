@@ -673,11 +673,22 @@ $env.config = {
 
 
 # aliases
-alias la = ls -la
-def lg [] { ls | sort-by type name -i | grid -c | str trim }
+alias lsn = ls
 alias j = just
 alias led = hledger
 alias n = nvim
+
+alias bs = broot --no-tree --sort-by-type
+alias ba = broot --no-tree --sort-by-type -sdp
+alias bt = broot --sort-by-type
+alias bw = broot -w
+alias bm = broot --sort-by-date -d
+
+alias ls = bs -c " pt"
+alias la = ba -c " pt"
+alias lt = bt -c " pt"
+alias lw = bdu -c " pt"
+alias lm = bm -c " pt"
 
 # completions
 source ~/.config/nushell/completions/cargo-completions.nu
@@ -688,6 +699,7 @@ source ~/.config/nushell/completions/rg-completions.nu
 
 source ~/.config/nushell/zoxide/zoxide.nu
 use ~/.config/nushell/starship
+use ~/.config/broot/launcher/nushell/br *
 
 # send pwd to windows terminal
 if "WT_SESSION" in $env {
