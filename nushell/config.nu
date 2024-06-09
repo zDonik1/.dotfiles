@@ -678,16 +678,16 @@ alias j = just
 alias led = hledger
 alias n = nvim
 
-alias bs = broot --no-tree --sort-by-type
-alias ba = broot --no-tree --sort-by-type -sdp
-alias bt = broot --sort-by-type
-alias bw = broot -w
-alias bm = broot --sort-by-date -d
+alias bs = broot --no-tree --sort-by-type -ih
+alias ba = broot --no-tree --sort-by-type -sdpigh
+alias bt = broot --sort-by-type -ih
+alias bw = broot -iwh
+alias bm = broot --sort-by-date -idh
 
 alias ls = bs -c " pt"
 alias la = ba -c " pt"
 alias lt = bt -c " pt"
-alias lw = bdu -c " pt"
+alias lw = bw -c " pt"
 alias lm = bm -c " pt"
 
 # completions

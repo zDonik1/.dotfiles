@@ -13,6 +13,12 @@ cd .config
 sudo nixos-rebuild switch --flake ./nixos#wsl
 ```
 
+If you want clipboard to work in Neovim in WSL, install scoop and run:
+
+```sh
+scoop install win32yank
+```
+
 ## Windows
 
 The only reason you might want the config in Windows is that WSL is not supported for some reason. The config was mainly written to be crossplatform before adding NixOS, but now it's supported on best effort basis.
