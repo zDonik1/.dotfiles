@@ -699,7 +699,7 @@ source ~/.config/nushell/completions/rg-completions.nu
 
 source ~/.config/nushell/zoxide/zoxide.nu
 use ~/.config/nushell/starship
-use ~/.config/broot/launcher/nushell/br *
+use ~/.config/broot/launcher/nushell/br_mod.nu *
 
 # send pwd to windows terminal
 if "WT_SESSION" in $env {
