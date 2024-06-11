@@ -20,6 +20,7 @@ vim.opt.shellredir = "o+e> %s"
 vim.opt.shellpipe = "o+e>| tee { save %s }"
 vim.opt.shellquote = "'"
 vim.opt.shellxquote = ""
+vim.opt.shellslash = true
 
 if os.getenv("XDG_DATA_HOME") then
 	vim.opt.directory = os.getenv("XDG_DATA_HOME") .. "/nvim-data/swap"
