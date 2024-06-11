@@ -1,0 +1,6 @@
+[submodule "wezterm/wezterm-session-manager"]
+	path = wezterm/wezterm-session-manager
+	url = https://github.com/danielcopper/wezterm-session-manager.git
+[submodule "wezterm/wez-status-generator"]
+	path = wezterm/wez-status-generator
+	url = https://github.com/sei40kr/wez-status-generator
