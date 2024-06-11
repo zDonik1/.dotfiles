@@ -1,18 +1,22 @@
 @echo off
 
-scoop install^
+CALL scoop install^
  git^
  fd^
  fzf^
  zoxide
 
+REM font
+CALL scoop bucket add nerd-fonts
+CALL scoop install nerd-fonts/JetBrainsMono-NF
+
 REM nushell
-scoop install^
+CALL scoop install^
  nu^
  starship
 
 REM neovim
-scoop install^
+CALL scoop install^
  neovim^
  ripgrep^
  cmake^
@@ -20,9 +24,8 @@ scoop install^
  stylua
 
 REM git
-scoop install^
+CALL scoop install^
  git^
  gitui^
- gh^
- gh-dash
+ gh
 gh extension install dlvhdr/gh-dash
