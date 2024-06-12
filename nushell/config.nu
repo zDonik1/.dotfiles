@@ -678,18 +678,6 @@ alias j = just
 alias led = hledger
 alias n = nvim
 
-alias bs = broot --no-tree --sort-by-type -ih
-alias ba = broot --no-tree --sort-by-type -sdpigh
-alias bt = broot --sort-by-type -ih
-alias bw = broot -iwh
-alias bm = broot --sort-by-date -idh
-
-alias ls = bs -c " pt"
-alias la = ba -c " pt"
-alias lt = bt -c " pt"
-alias lw = bw -c " pt"
-alias lm = bm -c " pt"
-
 # completions
 source ~/.config/nushell/completions/cargo-completions.nu
 source ~/.config/nushell/completions/git-completions.nu
@@ -699,7 +687,22 @@ source ~/.config/nushell/completions/rg-completions.nu
 
 source ~/.config/nushell/zoxide/zoxide.nu
 use ~/.config/nushell/starship
+
+# broot
 use ~/.config/broot/launcher/nushell/br_mod.nu *
+
+alias bs = br --no-tree --sort-by-type -ih
+alias ba = br --no-tree --sort-by-type -sdpigh
+alias bt = br --sort-by-type -ih
+alias bw = br -iwh
+alias bm = br --sort-by-date -idh
+
+alias ls = bs -c " pt"
+alias la = ba -c " pt"
+alias lt = bt -c " pt"
+alias lw = bw -c " pt"
+alias lm = bm -c " pt"
+
 
 # send pwd to windows terminal
 if "WT_SESSION" in $env {

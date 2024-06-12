@@ -1,4 +1,3 @@
-
 # Launch broot
 #
 # Examples:
@@ -42,6 +41,7 @@ export def --env br [
     --sort-by-type-dirs-last        # Sort by type, directories last (only show one level of the tree)
     --trim-root(-t)                 # Trim the root too and don't show a scrollbar
     --no-trim-root(-T)              # Don't trim the root level, show a scrollbar
+    --no-tree                       # Don't show the tree
     --version(-V)                   # Print version information
     --whale-spotting(-w)            # Sort by size, show ignored and hidden files
     --write-default-conf: path      # Write default conf files in given directory
@@ -50,7 +50,11 @@ export def --env br [
     mut args = []
     if $cmd != null { $args = ($args | append $'--cmd=($cmd)') }
     if $color != null { $args = ($args | append $'--color=($color)') }
-    if $conf != null { $args = ($args | append $'--conf=($conf)') }
+    if $conf != null {
+        $args = ($args | append $'--conf=($conf)')
+    } else {
+        $args = ($args | append $'--conf=($env.XDG_CONFIG_HOME | path join "broot/conf.toml")')
+    }
     if $dates { $args = ($args | append $'--dates') }
     if $no_dates { $args = ($args | append $'--no-dates') }
     if $only_folders { $args = ($args | append $'--only-folders') }
@@ -81,6 +85,7 @@ export def --env br [
     if $sort_by_type_dirs_last { $args = ($args | append $'--sort-by-type-dirs-last') }
     if $trim_root { $args = ($args | append $'--trim-root') }
     if $no_trim_root { $args = ($args | append $'--no-trim-root') }
+    if $no_tree { $args = ($args | append $'--no-tree') }
     if $version { $args = ($args | append $'--version') }
     if $whale_spotting { $args = ($args | append $'--whale-spotting') }
     if $write_default_conf != null { $args = ($args | append $'--write-default-conf=($write_default_conf)') }
@@ -99,45 +104,3 @@ export def --env br [
         cd ($cmd | parse -r `^cd\s+(?<quote>"|'|)(?<path>.+)\k<quote>[\s\r\n]*$` | get path | to text)
     }
 }
-
-export extern broot [
-    --cmd(-c): string               # Semicolon separated commands to execute
-    --color: string = "auto"        # Whether to have styles and colors (auto is default and usually OK) [possible values: auto, yes, no]
-    --conf: string                  # Semicolon separated paths to specific config files"),
-    --dates(-d)                     # Show the last modified date of files and directories"
-    --no-dates(-D)                  # Don't show the last modified date"
-    --only-folders(-f)              # Only show folders
-    --no-only-folders(-F)           # Show folders and files alike
-    --show-git-info(-g)             # Show git statuses on files and stats on repo
-    --no-show-git-info(-G)          # Don't show git statuses on files and stats on repo
-    --git-status                    # Only show files having an interesting git status, including hidden ones
-    --hidden(-h)                    # Show hidden files
-    --no-hidden(-H)                 # Don't show hidden files
-    --height: int                   # Height (if you don't want to fill the screen or for file export)
-    --help                          # Print help information
-    --git-ignored(-i)               # Show git ignored files
-    --no-git-ignored(-I)            # Don't show git ignored files
-    --install                       # Install or reinstall the br shell function
-    --no-sort                       # Don't sort
-    --outcmd: path                  # Write cd command in given path
-    --permissions(-p)               # Show permissions
-    --no-permissions(-P)            # Don't show permissions
-    --print-shell-function: string  # Print to stdout the br function for a given shell
-    --sizes(-s)                     # Show the size of files and directories
-    --no-sizes(-S)                  # Don't show sizes
-    --set-install-state: path       # Where to write the produced cmd (if any) [possible values: undefined, refused, installed]
-    --show-root-fs                  # Show filesystem info on top
-    --sort-by-count                 # Sort by count (only show one level of the tree)
-    --sort-by-date                  # Sort by date (only show one level of the tree)
-    --sort-by-size                  # Sort by size (only show one level of the tree)
-    --sort-by-type                  # Same as sort-by-type-dirs-first
-    --sort-by-type-dirs-first       # Sort by type, directories first (only show one level of the tree)
-    --sort-by-type-dirs-last        # Sort by type, directories last (only show one level of the tree)
-    --trim-root(-t)                 # Trim the root too and don't show a scrollbar
-    --no-trim-root(-T)              # Don't trim the root level, show a scrollbar
-    --version(-V)                   # Print version information
-    --whale-spotting(-w)            # Sort by size, show ignored and hidden files
-    --write-default-conf: path      # Write default conf files in given directory
-    file?: path                     # Root Directory
-]
-
