@@ -18,6 +18,8 @@
     csharp-ls
     nil # nix
     nixd
+    pylyzer # python
+    ruff
 
     # formatters
     stylua

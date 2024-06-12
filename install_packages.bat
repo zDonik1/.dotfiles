@@ -29,3 +29,9 @@ CALL scoop install^
  gitui^
  gh
 gh extension install dlvhdr/gh-dash
+
+REM python
+CALL scoop install python
+pip install^
+ pylyzer^
+ ruff
