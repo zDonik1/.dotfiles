@@ -36,7 +36,6 @@ in
     ./nushell
     ./git
     ./zellij
-    ./broot
   ];
 
   # The home.packages option allows you to install Nix packages into your
@@ -46,6 +45,9 @@ in
     fd
     fzf
     zoxide
+    just
+    python3
+    broot
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
