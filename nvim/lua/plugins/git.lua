@@ -46,7 +46,10 @@ return {
 		init = function()
 			vim.keymap.set("n", "<leader>gs", vim.cmd.Neogit)
 		end,
-		config = true,
+		opts = {
+			disable_hint = true,
+			graph_style = "unicode",
+		},
 	},
 
 	-- {
