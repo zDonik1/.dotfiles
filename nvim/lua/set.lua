@@ -21,7 +21,7 @@ vim.opt.shellpipe = "o+e>| tee { save %s }"
 vim.opt.shellquote = "'"
 vim.opt.shellxquote = ""
 if string.find(vim.uv.os_uname().sysname, "Windows") then
-vim.opt.shellslash = true
+	vim.opt.shellslash = true
 end
 
 if os.getenv("XDG_DATA_HOME") then

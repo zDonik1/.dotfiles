@@ -18,7 +18,7 @@
     csharp-ls
     nil # nix
     nixd
-    pylyzer # python
+    python312Packages.python-lsp-server # python
     ruff
 
     # formatters

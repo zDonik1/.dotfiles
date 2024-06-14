@@ -77,7 +77,7 @@ local setup_lspconfigs = function()
 		"gdscript",
 		"nil_ls",
 		"nixd",
-		"pylyzer",
+		"pylsp",
 		"ruff",
 	}
 	for _, lsp in ipairs(lsps) do

@@ -33,5 +33,5 @@ gh extension install dlvhdr/gh-dash
 REM python
 CALL scoop install python
 pip install^
- pylyzer^
+ python-lsp-server^
  ruff
