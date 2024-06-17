@@ -28,7 +28,7 @@ $env.NU_PLUGIN_DIRS = [
     ($nu.default-config-dir | path join 'plugins') # add <nushell-config-dir>/plugins
 ]
 
-let is_windows = (sys | get host.name | str contains Windows)
+let is_windows = (sys host | get name | str contains Windows)
 
 # PATH entries
 if $is_windows {

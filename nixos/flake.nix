@@ -16,13 +16,16 @@
   };
 
   outputs =
-    { self, ... }@inputs:
-    with inputs;
+    {
+      nixpkgs,
+      nixos-wsl,
+      home-manager,
+      ...
+    }@inputs:
     {
       nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          { nix.registry.nixpkgs.flake = nixpkgs; }
           ./configuration.nix
           nixos-wsl.nixosModules.wsl
           home-manager.nixosModules.default
