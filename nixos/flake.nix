@@ -13,6 +13,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    zjstatus = {
+      url = "github:dj95/zjstatus";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "nixos-wsl/flake-utils";
+      };
+    };
   };
 
   outputs =
@@ -33,6 +41,12 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.zdonik = import ./home.nix;
+          }
+
+          {
+            nixpkgs.overlays = [
+              (final: prev: { zjstatus = inputs.zjstatus.packages.${prev.system}.default; })
+            ];
           }
         ];
       };
