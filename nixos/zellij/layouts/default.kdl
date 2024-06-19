@@ -21,6 +21,7 @@ layout {
                 mode_rename_pane  "#[bg=#f9e2af,fg=#11111b,bold] RENAME#[fg=#f9e2af]"
                 mode_scroll       "#[bg=#eba0ac,fg=#11111b,bold] SCROLL#[fg=#eba0ac]"
                 mode_enter_search "#[bg=#eba0ac,fg=#11111b,bold] SEARCH#[fg=#eba0ac]"
+                mode_resize       "#[bg=#cba6f7,fg=#11111b,bold] RESIZE#[fg=#cba6f7]"
 
                 //tab_active "#[fg=#f5c2e7]{floating_indicator}{fullscreen_indicator}{sync_indicator} #[fg=#313244]#[fg=#cdd6f4,bg=#313244,bold] {name} #[fg=#313244,bg=#fab387]#[fg=#11111b,bg=#fab387,bold] {index} #[fg=#fab387] "
                 //tab_normal "#[fg=#313244]#[fg=#cdd6f4,bg=#313244] {name} #[fg=#313244,bg=#b4befe]#[fg=#11111b,bg=#b4befe] {index} #[fg=#b4befe] "
@@ -50,7 +51,7 @@ layout {
                 command_user_rendermode "static"
 
                 datetime          "#[fg=#cdd6f4,bg=#313244] {format}"
-                datetime_format   "%a, %Y.%m.%d  󰅐 %H:%M"
+                datetime_format   "%a, %Y-%m-%d  󰅐 %H:%M"
                 datetime_timezone "Asia/Tashkent"
             }
         }
