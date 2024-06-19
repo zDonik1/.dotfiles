@@ -34,4 +34,5 @@ REM python
 CALL scoop install python
 pip install^
  python-lsp-server^
- ruff
+ ruff^
+ debugpy

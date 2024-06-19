@@ -46,7 +46,6 @@ in
     fzf
     zoxide
     just
-    python3
     broot
 
     # # It is sometimes useful to fine-tune packages, for example, by applying

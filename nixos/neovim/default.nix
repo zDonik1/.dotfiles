@@ -18,11 +18,18 @@
     csharp-ls
     nil # nix
     nixd
-    python312Packages.python-lsp-server # python
     ruff
 
     # formatters
     stylua
     nixfmt-rfc-style
+
+    # python
+    (python3.withPackages (
+      python-pkgs: with python-pkgs; [
+        python-lsp-server
+        debugpy
+      ]
+    ))
   ];
 }
