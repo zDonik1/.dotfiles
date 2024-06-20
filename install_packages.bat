@@ -1,10 +1,10 @@
 @echo off
 
 CALL scoop install^
- git^
  fd^
  fzf^
- zoxide
+ zoxide^
+ broot
 
 REM font
 CALL scoop bucket add nerd-fonts
