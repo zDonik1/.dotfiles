@@ -687,6 +687,17 @@ source ~/.config/nushell/completions/rg-completions.nu
 source ~/.config/nushell/zoxide/zoxide.nu
 use ~/.config/nushell/starship
 
+
+# git
+alias g   = git
+alias gs  = git status
+alias gla = git log --all --decorate --oneline --graph
+alias gl  = git log
+alias gph = git push
+alias gp  = git pull
+alias gf  = git fetch
+
+
 # broot
 use ~/.config/broot/launcher/nushell/br_mod.nu *
 
