@@ -49,6 +49,14 @@ return {
 		opts = {
 			disable_hint = true,
 			graph_style = "unicode",
+			mappings = {
+				status = {
+					["<c-t>"] = false,
+					["<c-s>"] = false,
+					["<c-a>"] = "StageAll",
+					["<c-d>"] = "TabOpen",
+				},
+			},
 		},
 	},
 
