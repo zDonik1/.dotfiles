@@ -8,11 +8,11 @@ themes {
         bg "#585b70" // Surface2
         fg "#cdd6f4"
         red "#f38ba8"
-        green "#89dceb"
+        green "#89b4fa"
         blue "#89b4fa"
         yellow "#f9e2af"
         magenta "#f5c2e7" // Pink
-        orange "#89dceb" // Peach
+        orange "#89b4fa"
         cyan "#89dceb" // Sky
         black "#181825" // Mantle
         white "#cdd6f4"
