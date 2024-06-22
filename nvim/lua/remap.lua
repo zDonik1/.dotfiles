@@ -4,7 +4,7 @@ vim.keymap.set("n", "<esc>", vim.cmd.noh) -- no highlight
 vim.keymap.set("t", "<esc>", "<C-\\><C-n>")
 vim.keymap.set("c", "<C-n>", "<Nop>")
 vim.keymap.set("c", "<C-p>", "<Nop>")
-vim.keymap.set("n", "<C-e>", "<C-r>")
+vim.keymap.set("n", "<C-y>", "<C-r>")
 vim.keymap.set("n", "<leader>so", ":luafile $MYVIMRC<CR>")
 
 -- common commands

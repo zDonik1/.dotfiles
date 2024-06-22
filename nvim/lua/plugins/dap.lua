@@ -4,9 +4,9 @@ local function setup_keymaps()
 
 	vim.keymap.set("n", "<leader>ts", dap.continue, { desc = "Debug: Start/Continue" })
 	vim.keymap.set("n", "<leader>tp", dap.terminate, { desc = "Debug: Stop" })
-	vim.keymap.set("n", "<F1>", dap.step_into, { desc = "Debug: Step Into" })
-	vim.keymap.set("n", "<F2>", dap.step_over, { desc = "Debug: Step Over" })
-	vim.keymap.set("n", "<F3>", dap.step_out, { desc = "Debug: Step Out" })
+	vim.keymap.set("n", "<C-i>", dap.step_into, { desc = "Debug: Step Into" })
+	vim.keymap.set("n", "<C-e>", dap.step_over, { desc = "Debug: Step Over" })
+	vim.keymap.set("n", "<C-a>", dap.step_out, { desc = "Debug: Step Out" })
 	vim.keymap.set("n", "<leader>tb", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
 	vim.keymap.set("n", "<leader>tB", function()
 		dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
@@ -16,9 +16,17 @@ local function setup_keymaps()
 	vim.keymap.set("n", "<leader>tu", dapui.toggle, { desc = "Debug: See last session result." })
 end
 
+local function setup_dap_python()
+	local dap_python = require("dap-python")
+	dap_python.setup("python")
+	vim.keymap.set("n", "<leader>tf", dap_python.test_method)
+	vim.keymap.set("n", "<leader>tc", dap_python.test_class)
+	vim.keymap.set("v", "<leader>tv<esc>", dap_python.debug_selection)
+end
+
 return {
 	"mfussenegger/nvim-dap",
-	keys = { "<leader>ts", "<leader>b" },
+	keys = { "<leader>ts", "<leader>tb" },
 	dependencies = {
 		"rcarriga/nvim-dap-ui",
 		"nvim-neotest/nvim-nio", -- Required dependency for nvim-dap-ui
@@ -35,6 +43,6 @@ return {
 		dap.listeners.before.event_exited["dapui_config"] = dapui.close
 
 		dapui.setup()
-		require("dap-python").setup("python")
+		setup_dap_python()
 	end,
 }
