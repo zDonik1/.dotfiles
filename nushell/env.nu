@@ -54,4 +54,4 @@ $env.PAGER = less
 $env.BROWSER = firefox
 $env.SHELL = nu
 $env.LS_COLORS = (source ~/.config/nushell/themes/ls-themes/catppuccin-mocha.nu)
-$env.LEDGER_FILE = if $is_windows { "D:/ledger/2024.journal" } else { "~/ledger/2024.journal" }
+$env.LEDGER_FILE = if $is_windows { "D:/ledger/2024.journal" } else { $env.HOME | path join "ledger/2024.journal" }
