@@ -50,6 +50,7 @@ return {
 	},
 	config = function()
 		local cmp = require("cmp")
+		local mappings = make_mappings()
 
 		cmp.setup({
 			sources = {
