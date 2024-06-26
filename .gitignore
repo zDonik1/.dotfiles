@@ -8,7 +8,5 @@ fontconfig
 
 # autoconfig by nix
 /git
-/gitui
 /gh
-/gh-dash
 /zellij
