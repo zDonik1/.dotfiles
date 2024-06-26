@@ -5,7 +5,8 @@ CALL scoop install^
  fzf^
  zoxide^
  broot^
- just
+ just^
+ eza
 
 REM font
 CALL scoop bucket add nerd-fonts

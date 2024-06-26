@@ -707,11 +707,12 @@ alias bt = br --sort-by-type -ih
 alias bw = br -iwh
 alias bm = br --sort-by-date -idh
 
-alias ls = bs -c " pt"
-alias la = ba -c " pt"
-alias lt = bt -c " pt"
-alias lw = bw -c " pt"
-alias lm = bm -c " pt"
+
+# eza 
+alias ls = eza -1 --group-directories-first --icons
+alias la = ls -la
+alias lt = ls -T
+alias lm = la -s date -r
 
 
 # send pwd to windows terminal
