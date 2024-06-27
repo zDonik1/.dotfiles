@@ -36,6 +36,7 @@ local function setup_keymaps()
 	end
 
 	vim.keymap.set("n", "<leader>ts", dap.continue, { desc = "Debug: Start/Continue" })
+	vim.keymap.set("n", "<leader>tr", dap.run_last, { desc = "Debug: Run last" })
 	vim.keymap.set("n", "<leader>tx", dap.terminate, { desc = "Debug: Stop" })
 	vim.keymap.set("n", "<C-i>", dap.step_into, { desc = "Debug: Step Into" })
 	vim.keymap.set("n", "<C-e>", dap.step_over, { desc = "Debug: Step Over" })
@@ -45,10 +46,10 @@ local function setup_keymaps()
 		dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
 	end, { desc = "Debug: Set Breakpoint" })
 
-	vim.keymap.set("n", "<leader>tu", dapui.toggle, { desc = "Debug: Toggle debug session." })
+	vim.keymap.set("n", "<leader>tu", dapui.toggle, { desc = "Debug: Toggle debug session" })
 	vim.keymap.set("n", "<leader>to", function()
 		dapui.toggle({ reset = true })
-	end, { desc = "Debug: Toggle debug session with default layout." })
+	end, { desc = "Debug: Toggle debug session with default layout" })
 
 	make_focus_map("<leader>tc", "watches")
 	make_focus_map("<leader>ti", "stacks")
@@ -59,15 +60,15 @@ local function setup_keymaps()
 
 	vim.keymap.set("n", "<leader>tg", function()
 		vim.api.nvim_set_current_win(last_win)
-	end, { desc = "Debug: Focus last edit window." })
+	end, { desc = "Debug: Focus last edit window" })
 end
 
 local function setup_dap_python()
 	local dap_python = require("dap-python")
 	dap_python.setup("python")
-	vim.keymap.set("n", "<leader>tf", dap_python.test_method)
-	vim.keymap.set("n", "<leader>tp", dap_python.test_class)
-	vim.keymap.set("v", "<leader>tv<esc>", dap_python.debug_selection)
+	vim.keymap.set("n", "<leader>tf", dap_python.test_method, { desc = "Debug: Debug current method"})
+	vim.keymap.set("n", "<leader>tp", dap_python.test_class, { desc = "Debug: Debug current class"})
+	vim.keymap.set("v", "<leader>tv<esc>", dap_python.debug_selection, { desc = "Debug: Debug selection"})
 end
 
 local dapui_opts = {
@@ -126,8 +127,8 @@ return {
 		local dapui = require("dapui")
 
 		dap.listeners.after.event_initialized["dapui_config"] = dapui.open
-		dap.listeners.before.event_terminated["dapui_config"] = dapui.close
-		dap.listeners.before.event_exited["dapui_config"] = dapui.close
+		-- dap.listeners.before.event_terminated["dapui_config"] = dapui.close
+		-- dap.listeners.before.event_exited["dapui_config"] = dapui.close
 
 		dapui.setup(dapui_opts)
 		setup_dap_python()
