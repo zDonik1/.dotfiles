@@ -70,6 +70,47 @@ local function setup_dap_python()
 	vim.keymap.set("v", "<leader>tv<esc>", dap_python.debug_selection)
 end
 
+local dapui_opts = {
+	layouts = {
+		{
+			elements = {
+				{
+					id = "scopes",
+					size = 0.25,
+				},
+				{
+					id = "breakpoints",
+					size = 0.25,
+				},
+				{
+					id = "stacks",
+					size = 0.25,
+				},
+				{
+					id = "watches",
+					size = 0.25,
+				},
+			},
+			position = "left",
+			size = 40,
+		},
+		{
+			elements = {
+				{
+					id = "repl",
+					size = 0.25,
+				},
+				{
+					id = "console",
+					size = 0.75,
+				},
+			},
+			position = "bottom",
+			size = 15,
+		},
+	},
+}
+
 return {
 	"mfussenegger/nvim-dap",
 	keys = { "<leader>ts", "<leader>tb", "<leader>tu", "<leader>to" },
@@ -88,7 +129,7 @@ return {
 		dap.listeners.before.event_terminated["dapui_config"] = dapui.close
 		dap.listeners.before.event_exited["dapui_config"] = dapui.close
 
-		dapui.setup()
+		dapui.setup(dapui_opts)
 		setup_dap_python()
 	end,
 }
