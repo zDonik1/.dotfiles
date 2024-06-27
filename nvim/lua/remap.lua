@@ -46,6 +46,8 @@ vim.keymap.set("n", "<leader>f", function()
 	print("Formatter disabled till end of session")
 end)
 
+vim.keymap.set("n", "<leader>sc", require("util").scratch, { desc = "Command to scratch buffer" })
+
 -- plugin keymaps
 vim.keymap.set("n", "<leader>l", vim.cmd.Lazy)
 

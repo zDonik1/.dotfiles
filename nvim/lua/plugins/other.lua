@@ -52,4 +52,14 @@ return {
 			})
 		end,
 	},
+
+	{
+		"stevearc/dressing.nvim",
+		event = "VeryLazy",
+		opts = {
+			input = {
+				relative = "win",
+			},
+		},
+	},
 }
