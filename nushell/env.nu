@@ -54,4 +54,17 @@ $env.PAGER = less
 $env.BROWSER = firefox
 $env.SHELL = nu
 $env.LS_COLORS = (source ~/.config/nushell/themes/ls-themes/catppuccin-mocha.nu)
+
 $env.LEDGER_FILE = if $is_windows { "D:/ledger/2024.journal" } else { $env.HOME | path join "ledger/2024.journal" }
+
+$env.FZF_DEFAULT_COMMAND = "fd --hidden --strip-cwd-prefix --exclude .git"
+$env.FZF_DEFAULT_OPTS = (
+    [
+        "--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8"
+        "--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc"
+        "--color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
+        "--preview 'bat -n --color=always {}'"
+        "--height=~50%"
+    ]
+    | str join " "
+)

@@ -677,6 +677,7 @@ alias j = just
 alias led = hledger
 alias n = nvim
 alias cat = bat
+alias f = fzf
 
 # completions
 source ~/.config/nushell/completions/cargo-completions.nu
