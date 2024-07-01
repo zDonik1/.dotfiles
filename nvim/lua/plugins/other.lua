@@ -62,4 +62,20 @@ return {
 			},
 		},
 	},
+
+	{
+		"folke/twilight.nvim",
+		cmd = { "Twilight", "TwilightEnable", "TwilightDisable" },
+		opts = {
+			expand = {
+				"function_declaration",
+				"function_definition",
+                "function",
+                "method",
+				"table_constructor",
+				"table",
+				"if_statement",
+			},
+		},
+	},
 }
