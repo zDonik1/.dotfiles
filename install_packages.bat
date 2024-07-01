@@ -6,7 +6,8 @@ CALL scoop install^
  zoxide^
  broot^
  just^
- eza
+ eza^
+ bat
 
 REM font
 CALL scoop bucket add nerd-fonts
