@@ -56,7 +56,6 @@ $env.SHELL = nu
 $env.LS_COLORS = (source ~/.config/nushell/themes/ls-themes/catppuccin-mocha.nu)
 
 $env.LEDGER_FILE = if $is_windows { "D:/ledger/2024.journal" } else { $env.HOME | path join "ledger/2024.journal" }
-
 $env.FZF_DEFAULT_COMMAND = "fd --hidden --strip-cwd-prefix --exclude .git"
 $env.FZF_DEFAULT_OPTS = (
     [
@@ -68,3 +67,4 @@ $env.FZF_DEFAULT_OPTS = (
     ]
     | str join " "
 )
+$env.VIRTUAL_ENV_DISABLE_PROMPT = 1
