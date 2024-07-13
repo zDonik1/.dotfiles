@@ -1,7 +1,9 @@
 return {
 	"epwalsh/obsidian.nvim",
-	-- dir = "D:/nvim_projects/obsidian.nvim",
-	ft = "markdown",
+	event = {
+		"BufReadPre " .. vim.fn.expand("~") .. "/SecondBrain/**.md",
+		"BufNewFile " .. vim.fn.expand("~") .. "/SecondBrain/**.md",
+	},
 	cmd = {
 		"ObsidianQuickSwitch",
 		"ObsidianDailies",
@@ -22,10 +24,7 @@ return {
 			sort_by = "accessed",
 			disable_frontmatter = true,
 			workspaces = {
-				{
-					name = "personal",
-					path = "~/iCloudDrive/iCloud~md~obsidian/SecondBrain",
-				},
+				{ name = "personal", path = "~/SecondBrain" },
 			},
 			daily_notes = {
 				folder = "periodic_notes",
