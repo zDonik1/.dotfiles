@@ -31,5 +31,8 @@
         debugpy
       ]
     ))
+
+    # cpp lsp and formatter
+    clang-tools_18
   ];
 }

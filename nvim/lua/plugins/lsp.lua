@@ -79,6 +79,7 @@ local setup_lspconfigs = function()
 		"nixd",
 		"pylsp",
 		"ruff",
+		"clangd",
 	}
 	for _, lsp in ipairs(lsps) do
 		lspconfig[lsp].setup({})

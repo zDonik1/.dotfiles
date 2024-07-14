@@ -9,10 +9,10 @@ return {
 		})
 	end,
 	config = function()
+		local util = require("formatter.util")
 		require("formatter").setup({
 			filetype = {
 				lua = { require("formatter.filetypes.lua").stylua },
-				cpp = { require("formatter.filetypes.cpp").clangformat },
 				rust = { require("formatter.filetypes.rust").rustfmt },
 				cs = { require("formatter.filetypes.cs").csharpier },
 				python = { require("formatter.filetypes.python").ruff },
@@ -20,6 +20,20 @@ return {
 				gdscript = {
 					function()
 						return { exe = "gdformat" }
+					end,
+				},
+				cpp = {
+					function()
+						return {
+							exe = "clang-format",
+							args = {
+								"-fallback-style=WebKit", -- WebKit style based on Qt style
+								"-assume-filename",
+								util.escape_path(util.get_current_buffer_file_name()),
+							},
+							stdin = true,
+							try_node_modules = true,
+						}
 					end,
 				},
 			},
