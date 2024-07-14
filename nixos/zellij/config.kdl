@@ -72,7 +72,7 @@ keybinds clear-defaults=true {
         // sessions
         bind "d" { Detach; }
         bind "q" { Quit; }
-        bind "s" {
+        bind "f" {
             LaunchOrFocusPlugin "session-manager" {
                 floating true
                 move_to_focused_tab true
@@ -81,7 +81,7 @@ keybinds clear-defaults=true {
         }
 
         // search/scroll
-        bind "f" { SwitchToMode "scroll"; }
+        bind "s" { SwitchToMode "scroll"; }
     }
     tab {
         bind "p" { SwitchToMode "renamepane"; }
