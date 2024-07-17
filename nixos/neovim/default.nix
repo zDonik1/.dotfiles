@@ -35,4 +35,11 @@
     # cpp lsp and formatter
     clang-tools_18
   ];
+
+  home.file = {
+    ".config/clangd/config.yaml".text = ''
+      CompileFlags:
+        Add: [-std=c++20]
+    '';
+  };
 }
