@@ -35,7 +35,12 @@ local function setup_keymaps()
 		end, { desc = "Debug: Focus " .. elem .. " window." })
 	end
 
-	vim.keymap.set("n", "<leader>ts", dap.continue, { desc = "Debug: Start/Continue" })
+	vim.keymap.set("n", "<leader>ts", function()
+		if vim.fn.filereadable(".vscode/launch.json") then
+			require("dap.ext.vscode").load_launchjs(nil, { ["lldb"] = { "c", "cpp" } })
+		end
+		require("dap").continue()
+	end, { desc = "Debug: Start/Continue" })
 	vim.keymap.set("n", "<leader>tr", dap.run_last, { desc = "Debug: Run last" })
 	vim.keymap.set("n", "<leader>tx", dap.terminate, { desc = "Debug: Stop" })
 	vim.keymap.set("n", "<C-i>", dap.step_into, { desc = "Debug: Step Into" })
@@ -66,9 +71,35 @@ end
 local function setup_dap_python()
 	local dap_python = require("dap-python")
 	dap_python.setup("python")
-	vim.keymap.set("n", "<leader>tf", dap_python.test_method, { desc = "Debug: Debug current method"})
-	vim.keymap.set("n", "<leader>tp", dap_python.test_class, { desc = "Debug: Debug current class"})
-	vim.keymap.set("v", "<leader>tv<esc>", dap_python.debug_selection, { desc = "Debug: Debug selection"})
+	vim.keymap.set(
+		"n",
+		"<leader>tf",
+		dap_python.test_method,
+		{ desc = "Debug: Debug current method" }
+	)
+	vim.keymap.set(
+		"n",
+		"<leader>tp",
+		dap_python.test_class,
+		{ desc = "Debug: Debug current class" }
+	)
+	vim.keymap.set(
+		"v",
+		"<leader>tv<esc>",
+		dap_python.debug_selection,
+		{ desc = "Debug: Debug selection" }
+	)
+end
+
+local function setup_dap_cpp()
+	require("dap").adapters.lldb = {
+		type = "server",
+		port = "${port}",
+		executable = {
+			command = "lldb-dap",
+			args = { "--port", "${port}" },
+		},
+	}
 end
 
 local dapui_opts = {
@@ -119,6 +150,7 @@ return {
 		"rcarriga/nvim-dap-ui",
 		"nvim-neotest/nvim-nio", -- Required dependency for nvim-dap-ui
 		"mfussenegger/nvim-dap-python",
+		{ "stevearc/overseer.nvim", config = true },
 	},
 	config = function()
 		setup_keymaps()
@@ -132,5 +164,6 @@ return {
 
 		dapui.setup(dapui_opts)
 		setup_dap_python()
+		setup_dap_cpp()
 	end,
 }

@@ -32,8 +32,9 @@
       ]
     ))
 
-    # cpp lsp and formatter
+    # cpp
     clang-tools_18
+    lldb_18
   ];
 
   home.file = {
