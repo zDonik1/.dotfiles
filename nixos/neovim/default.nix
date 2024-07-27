@@ -39,6 +39,10 @@
     lldb_18
     cmake-language-server
     cmake-format
+
+    # yaml
+    yaml-language-server
+    prettierd
   ];
 
   home.file = {

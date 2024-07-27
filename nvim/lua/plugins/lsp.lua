@@ -81,6 +81,7 @@ local setup_lspconfigs = function()
 		"ruff",
 		"clangd",
 		"cmake",
+		"yamlls",
 	}
 	for _, lsp in ipairs(lsps) do
 		lspconfig[lsp].setup({})

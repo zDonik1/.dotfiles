@@ -18,6 +18,7 @@ return {
 				python = { require("formatter.filetypes.python").ruff },
 				nix = { require("formatter.filetypes.nix").nixfmt },
 				cmake = { require("formatter.filetypes.cmake").cmakeformat },
+				yaml = { require("formatter.filetypes.yaml").prettierd },
 				gdscript = {
 					function()
 						return { exe = "gdformat" }
