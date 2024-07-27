@@ -17,6 +17,62 @@ return {
 		"nvim-telescope/telescope.nvim",
 		"nvim-treesitter/nvim-treesitter",
 	},
+	init = function()
+		vim.keymap.set(
+			"n",
+			"<leader>oo",
+			vim.cmd.ObsidianOpen,
+			{ desc = "Obsidian: Open current note in Obsidian" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>on",
+			vim.cmd.ObsidianNew,
+			{ desc = "Obsidian: Create new note" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>oq",
+			vim.cmd.ObsidianQuickSwitch,
+			{ desc = "Obsidian: Open quick switch dialog" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>od",
+			vim.cmd.ObsidianDailies,
+			{ desc = "Obsidian: Open dailies dialog" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>oy",
+			vim.cmd.ObsidianToday,
+			{ desc = "Obsidian: Open today's note" }
+		)
+		vim.keymap.set(
+			"n",
+			"[o",
+			vim.cmd.ObsidianPrevDay,
+			{ desc = "Obsidian: Open previous day relative to current note" }
+		)
+		vim.keymap.set(
+			"n",
+			"]o",
+			vim.cmd.ObsidianNextDay,
+			{ desc = "Obsidian: Open next day relative to current note" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>om",
+			vim.cmd.ObsidianTemplate,
+			{ desc = "Obsidian: Insert templates with dialog" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>ot",
+			vim.cmd.ObsidianTags,
+			{ desc = "Obsidian: Open dialog for tags" }
+		)
+	end,
 	config = function()
 		local mocha = require("catppuccin.palettes").get_palette("mocha")
 

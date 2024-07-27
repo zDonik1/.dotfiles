@@ -55,14 +55,4 @@ vim.keymap.set("n", "<leader>l", vim.cmd.Lazy)
 
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
-vim.keymap.set("n", "<leader>oo", vim.cmd.ObsidianOpen)
-vim.keymap.set("n", "<leader>on", vim.cmd.ObsidianNew)
-vim.keymap.set("n", "<leader>oq", vim.cmd.ObsidianQuickSwitch)
-vim.keymap.set("n", "<leader>od", vim.cmd.ObsidianDailies)
-vim.keymap.set("n", "<leader>oy", vim.cmd.ObsidianToday)
-vim.keymap.set("n", "[o", vim.cmd.ObsidianPrevDay)
-vim.keymap.set("n", "]o", vim.cmd.ObsidianNextDay)
-vim.keymap.set("n", "<leader>om", vim.cmd.ObsidianTemplate)
-vim.keymap.set("n", "<leader>ot", vim.cmd.ObsidianTags)
-
 vim.keymap.set("n", "-", "<cmd>Oil --float<cr>", { desc = "Open parent directory" })
