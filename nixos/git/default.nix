@@ -9,7 +9,7 @@
 
   programs.git = {
     enable = true;
-    userEmail = "tokhirovdoniyor@gmail.com";
+    userEmail = "doniyor@tokhirov.uz";
     userName = "Doniyor Tokhirov";
 
     aliases = {
