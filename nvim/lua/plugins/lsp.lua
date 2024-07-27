@@ -80,6 +80,7 @@ local setup_lspconfigs = function()
 		"pylsp",
 		"ruff",
 		"clangd",
+		"cmake",
 	}
 	for _, lsp in ipairs(lsps) do
 		lspconfig[lsp].setup({})

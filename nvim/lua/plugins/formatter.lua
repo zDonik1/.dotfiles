@@ -17,6 +17,7 @@ return {
 				cs = { require("formatter.filetypes.cs").csharpier },
 				python = { require("formatter.filetypes.python").ruff },
 				nix = { require("formatter.filetypes.nix").nixfmt },
+				cmake = { require("formatter.filetypes.cmake").cmakeformat },
 				gdscript = {
 					function()
 						return { exe = "gdformat" }
