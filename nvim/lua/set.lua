@@ -13,6 +13,7 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 vim.opt.smartindent = true
 vim.opt.showmode = false
+vim.opt.fillchars:append({ diff = "/" })
 
 vim.opt.shell = "nu"
 vim.opt.shellcmdflag = "--stdin -c"
