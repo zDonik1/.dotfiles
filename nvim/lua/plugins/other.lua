@@ -70,8 +70,8 @@ return {
 			expand = {
 				"function_declaration",
 				"function_definition",
-                "function",
-                "method",
+				"function",
+				"method",
 				"table_constructor",
 				"table",
 				"if_statement",
