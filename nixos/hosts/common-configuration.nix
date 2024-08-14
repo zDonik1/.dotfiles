@@ -1,12 +1,6 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
-
-  wsl.enable = true;
-  wsl.defaultUser = "zdonik";
-  wsl.nativeSystemd = true;
-
   users = {
     users.zdonik = {
       isNormalUser = true;
@@ -30,8 +24,6 @@
     ];
     shells = [ pkgs.nushell ];
   };
-
-  networking.hostName = "DESKTOP-HHN7EQQ";
 
   nix.settings.experimental-features = [
     "nix-command"

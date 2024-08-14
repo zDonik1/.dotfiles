@@ -30,24 +30,36 @@
       home-manager,
       ...
     }@inputs:
+    let
+      defaultModules = [
+        home-manager.nixosModules.default
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.zdonik = import ./home.nix;
+        }
+
+        {
+          nixpkgs.overlays = [
+            (final: prev: { zjstatus = inputs.zjstatus.packages.${prev.system}.default; })
+          ];
+        }
+      ];
+    in
     {
       nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [
-          ./configuration.nix
+        modules = defaultModules ++ [
+          ./hosts/wsl/configuration.nix
           nixos-wsl.nixosModules.wsl
-          home-manager.nixosModules.default
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.zdonik = import ./home.nix;
-          }
+        ];
+      };
 
-          {
-            nixpkgs.overlays = [
-              (final: prev: { zjstatus = inputs.zjstatus.packages.${prev.system}.default; })
-            ];
-          }
+      nixosConfigurations.work-wsl = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = defaultModules ++ [
+          ./hosts/work-wsl/configuration.nix
+          nixos-wsl.nixosModules.wsl
         ];
       };
     };
