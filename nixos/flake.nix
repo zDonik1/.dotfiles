@@ -21,6 +21,14 @@
         flake-utils.follows = "nixos-wsl/flake-utils";
       };
     };
+
+    distant = {
+      url = "./flakes/distant";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "nixos-wsl/flake-utils";
+      };
+    };
   };
 
   outputs =
@@ -42,6 +50,7 @@
         {
           nixpkgs.overlays = [
             (final: prev: { zjstatus = inputs.zjstatus.packages.${prev.system}.default; })
+            (final: prev: { distant = inputs.distant.packages.${prev.system}.default; })
           ];
         }
       ];

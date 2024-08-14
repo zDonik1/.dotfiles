@@ -21,6 +21,44 @@
         "type": "github"
       }
     },
+    "distant": {
+      "inputs": {
+        "distant-src": "distant-src",
+        "flake-utils": [
+          "nixos-wsl",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-PsqLB+hzSiGcbCZFu0Z0dte4GQ5e+hozWfEwY5qo8Ow=",
+        "path": "/nix/store/nqh1zibavysanbmkqhvxblr6j6b5w3jh-source/nixos/flakes/distant",
+        "type": "path"
+      },
+      "original": {
+        "path": "/nix/store/nqh1zibavysanbmkqhvxblr6j6b5w3jh-source/nixos/flakes/distant",
+        "type": "path"
+      }
+    },
+    "distant-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1694885275,
+        "narHash": "sha256-FDDpiK9K7q+8M/1ue+GIbTjBP36gpJ6llb6fZICC3hg=",
+        "owner": "chipsenkbeil",
+        "repo": "distant",
+        "rev": "3fe1fba339403f6162730ad082aafe424a6795ad",
+        "type": "github"
+      },
+      "original": {
+        "owner": "chipsenkbeil",
+        "repo": "distant",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -115,6 +153,7 @@
     },
     "root": {
       "inputs": {
+        "distant": "distant",
         "home-manager": "home-manager",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
