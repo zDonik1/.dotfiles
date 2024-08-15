@@ -4,7 +4,7 @@
   users = {
     users.zdonik = {
       isNormalUser = true;
-      extraGroups = [ "wheel" ];
+      extraGroups = [ "wheel" "docker" ];
       initialHashedPassword = "a441b15fe9a3cf56661190a0b93b9dec7d04127288cc87250967cf3b52894d11";
     };
     defaultUserShell = pkgs.nushell;
@@ -29,6 +29,8 @@
     "nix-command"
     "flakes"
   ];
+
+  virtualisation.docker.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
