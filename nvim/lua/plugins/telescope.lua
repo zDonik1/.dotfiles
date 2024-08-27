@@ -38,5 +38,6 @@ return {
 		vim.keymap.set("n", "<leader>kw", builtin.live_grep, {})
 		vim.keymap.set("n", "<leader>kb", builtin.buffers, {})
 		vim.keymap.set("n", "<leader>kh", builtin.help_tags, {})
+		vim.keymap.set("n", "<leader>km", builtin.keymaps, {})
 	end,
 }
