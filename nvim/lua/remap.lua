@@ -11,9 +11,10 @@ vim.keymap.set("n", "<leader>so", ":luafile $MYVIMRC<CR>")
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>w", vim.cmd.write)
 vim.keymap.set("n", "<leader>x", vim.cmd.quit)
+vim.keymap.set("n", "<leader>qq", vim.cmd.quitall)
 vim.keymap.set("n", "<leader>ss", vim.cmd.split)
 vim.keymap.set("n", "<leader>sv", vim.cmd.vsplit)
-vim.keymap.set("n", "<leader>qq", vim.cmd.cclose)
+vim.keymap.set("n", "<leader>ql", vim.cmd.cclose)
 
 -- navigation
 vim.keymap.set({ "n", "v" }, "<C-s>", "<C-u>zz")
