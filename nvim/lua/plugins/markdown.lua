@@ -10,7 +10,7 @@ return {
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 			"echasnovski/mini.icons",
-			"catppuccin/nvim",
+			{ "catppuccin/nvim", name = "catppuccin.nvim" },
 		},
 		opts = {
 			preset = "obsidian",
