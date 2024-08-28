@@ -4,7 +4,7 @@
     "actions": 
     [
         { "command": "find", "keys": "ctrl+shift+f" },
-        { "command": "selectAll", "keys": "ctrl+a" },
+        { "command": "selectAll", "keys": "ctrl+shift+a" },
         {
             "command": { "action": "copy", "singleLine": false },
             "keys": "ctrl+shift+c"

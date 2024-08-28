@@ -718,11 +718,11 @@ alias lm = la -s date -r
 
 
 # send pwd to windows terminal
-if "WT_SESSION" in $env {
-    $env.PROMPT_COMMAND = {||
-        [$"\u{1B}]9;9;($env.PWD)\u{1B}\\", (starship gen_left_prompt)] | str join
-    }
-}
+# if "WT_SESSION" in $env {
+#     $env.PROMPT_COMMAND = {||
+#         [$"\u{1B}]9;9;($env.PWD)\u{1B}\\", (starship gen_left_prompt)] | str join
+#     }
+# }
 
 def create-redir [service] {
     ssh mail docker exec poste poste redirect:create $"d_($service)@tokhirov.uz" $"'Doniyor ($service)'" doniyor@tokhirov.uz
