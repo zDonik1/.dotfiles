@@ -15,6 +15,9 @@ vim.keymap.set("n", "<leader>qq", vim.cmd.quitall)
 vim.keymap.set("n", "<leader>ss", vim.cmd.split)
 vim.keymap.set("n", "<leader>sv", vim.cmd.vsplit)
 vim.keymap.set("n", "<leader>ql", vim.cmd.cclose)
+vim.keymap.set("n", "<leader>c", function()
+	vim.fn.feedkeys("gc")
+end)
 
 -- navigation
 vim.keymap.set({ "n", "v" }, "<C-s>", "<C-u>zz")
