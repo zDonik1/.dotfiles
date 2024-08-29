@@ -25,6 +25,7 @@ return {
 					RenderMarkdownH6Bg = { bg = "#36394d" },
 					RenderMarkdownCode = { bg = colors.mantle },
 					RenderMarkdownCodeInline = { bg = colors.mantle },
+					RenderMarkdownBullet = { link = "@markup.list" },
 				}
 			end,
 		},
