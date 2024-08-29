@@ -24,6 +24,7 @@
     nil
     nixd
     nixfmt-rfc-style
+    biome
 
     # python
     ruff

@@ -24,7 +24,8 @@ CALL scoop install^
  ripgrep^
  cmake^
  lua-language-server^
- stylua
+ stylua^
+ biome
 
 REM git
 CALL scoop install^

@@ -19,6 +19,7 @@ return {
 				nix = { require("formatter.filetypes.nix").nixfmt },
 				cmake = { require("formatter.filetypes.cmake").cmakeformat },
 				yaml = { require("formatter.filetypes.yaml").prettierd },
+                json = { require("formatter.filetypes.json").biome },
 				gdscript = {
 					function()
 						return { exe = "gdformat" }
