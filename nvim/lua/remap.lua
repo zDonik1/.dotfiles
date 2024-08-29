@@ -48,9 +48,12 @@ vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>Y", '"+Y')
 vim.keymap.set({ "n", "v" }, "<leader>d", '"_d')
 
-vim.keymap.set("n", "<leader>f", function()
+vim.keymap.set("n", "<leader>jf", function()
 	vim.api.nvim_del_augroup_by_name("__formatter__")
 	print("Formatter disabled till end of session")
+end)
+vim.keymap.set("n", "<leader>jl", function()
+	vim.cmd.LspStop()
 end)
 
 vim.keymap.set("n", "<leader>sc", require("util").scratch, { desc = "Command to scratch buffer" })
