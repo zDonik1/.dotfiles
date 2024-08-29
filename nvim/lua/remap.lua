@@ -18,6 +18,7 @@ vim.keymap.set("n", "<leader>ql", vim.cmd.cclose)
 vim.keymap.set("n", "<leader>c", function()
 	vim.fn.feedkeys("gc")
 end)
+vim.keymap.set("n", "<leader>.", "@@", { desc = "Repeat last macro" })
 
 -- navigation
 vim.keymap.set({ "n", "v" }, "<C-s>", "<C-u>zz")
