@@ -44,6 +44,9 @@
     # yaml
     yaml-language-server
     prettierd
+
+    # toml
+    taplo
   ];
 
   home.file = {

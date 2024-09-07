@@ -82,6 +82,7 @@ local setup_lspconfigs = function()
 		"clangd",
 		"cmake",
 		"yamlls",
+		"taplo",
 	}
 	for _, lsp in ipairs(lsps) do
 		lspconfig[lsp].setup({})
