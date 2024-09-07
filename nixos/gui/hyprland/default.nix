@@ -204,11 +204,18 @@ in
         "$mainMod, mouse_up, workspace, e-1"
 
         "$mainMod, F1, pass, ^(com\.obsproject\.Studio)$"
+
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
       ];
 
       bindm = [
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
+      ];
+
+      binde = [
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-"
       ];
 
       windowrulev2 = [
