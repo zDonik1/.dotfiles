@@ -671,15 +671,10 @@ $env.config = {
 }
 
 
-# aliases
-alias lsn = ls
-alias j = just
-alias led = hledger
-alias n = nvim
-alias cat = bat
-alias f = fzf
+# =======================================
+# COMPLETIONS
+# =======================================
 
-# completions
 source ~/.config/nushell/completions/cargo-completions.nu
 source ~/.config/nushell/completions/git-completions.nu
 source ~/.config/nushell/completions/gh-completions.nu
@@ -690,6 +685,20 @@ source ~/.config/nushell/zoxide/zoxide.nu
 use ~/.config/nushell/starship
 
 
+# =======================================
+# ALIASES
+# =======================================
+
+alias lsn = ls
+alias j = just
+alias led = hledger
+alias n = nvim
+alias cat = bat
+alias f = fzf
+
+alias suspend = ^systemctl suspend
+alias sus = suspend
+
 # git
 alias g   = git
 alias gs  = git status
@@ -699,7 +708,6 @@ alias gph = git push
 alias gp  = git pull
 alias gf  = git fetch
 
-
 # broot
 use ~/.config/broot/launcher/nushell/br_mod.nu *
 
@@ -708,7 +716,6 @@ alias ba = br --no-tree --sort-by-type -sdpigh
 alias bt = br --sort-by-type -ih
 alias bw = br -iwh
 alias bm = br --sort-by-date -idh
-
 
 # eza 
 alias ls = eza -1 --group-directories-first --icons
