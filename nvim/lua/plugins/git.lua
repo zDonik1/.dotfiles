@@ -29,6 +29,7 @@ return {
 		},
 		init = function()
 			vim.keymap.set("n", "<leader>gh", "<cmd>Gitsigns preview_hunk<cr>")
+			vim.keymap.set("n", "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>")
 		end,
 		config = function(_, opts)
 			require("gitsigns").setup(opts)
