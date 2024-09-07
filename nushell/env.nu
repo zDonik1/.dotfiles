@@ -50,10 +50,10 @@ $env.XDG_DATA_HOME = ($env.HOME | path join ".local/share")
 $env.XDG_STATE_HOME = ($env.HOME | path join ".local/state")
 $env.NVIM_LOG_FILE = ($env.HOME | path join ".cache/nvim/log")
 $env.CPM_SOURCE_CACHE = ($env.HOME | path join ".cache/CPM")
-$env.EDITOR = nvim
-$env.PAGER = less
-$env.BROWSER = firefox
-$env.SHELL = nu
+$env.EDITOR = "nvim"
+$env.PAGER = "less"
+$env.BROWSER = "firefox"
+$env.SHELL = "nu"
 $env.LS_COLORS = (source ~/.config/nushell/themes/ls-themes/catppuccin-mocha.nu)
 
 $env.LEDGER_FILE = if $is_windows { "D:/ledger/2024.journal" } else { $env.HOME | path join "ledger/2024.journal" }
