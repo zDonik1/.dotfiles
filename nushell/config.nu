@@ -731,6 +731,30 @@ alias lm = la -s date -r
 #     }
 # }
 
+
+# =======================================
+# CUSTOM COMMANDS
+# =======================================
+
 def create-redir [service] {
     ssh mail docker exec poste poste redirect:create $"d_($service)@tokhirov.uz" $"'Doniyor ($service)'" doniyor@tokhirov.uz
+}
+
+def disable-laptop-monitor [] {
+    hyprctl keyword monitor eDP-1, disable
+}
+
+# run when bat themes aren't updated
+def build-bat-cache [] {
+    ^bat cache --build
+}
+
+
+# =======================================
+# RUN ON START
+# =======================================
+
+if "WAYLAND_DISPLAY" not-in $env and $env.XDG_VTNR == "1" {
+    echo Trying to start hyprland...
+    ^hyprland
 }

@@ -32,11 +32,11 @@ in
   programs.home-manager.enable = true;
 
   imports = [
-    ./neovim
-    ./nushell
-    ./git
-    ./zellij
-    ./eza
+    ./headless/neovim
+    ./headless/nushell
+    ./headless/git
+    ./headless/zellij
+    ./headless/eza
   ];
 
   # The home.packages option allows you to install Nix packages into your
@@ -49,25 +49,6 @@ in
     just
     broot
     bat
-    distant
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
+    # distant
   ];
-
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # ".config/nvim".source = ../../../nvim;
-  };
 }
