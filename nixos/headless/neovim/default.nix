@@ -41,6 +41,10 @@
     cmake-language-server
     cmake-format
 
+    # rust
+    rustfmt
+    rust-analyzer
+
     # yaml
     yaml-language-server
     prettierd

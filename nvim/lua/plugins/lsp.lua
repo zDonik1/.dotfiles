@@ -73,6 +73,7 @@ local setup_lspconfigs = function()
 	local lspconfig = require("lspconfig")
 	local lsps = {
 		"csharp_ls",
+		"rust_analyzer",
 		"nushell",
 		"gdscript",
 		"nil_ls",
