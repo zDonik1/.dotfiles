@@ -132,6 +132,9 @@ in
 
       misc = {
         force_default_wallpaper = 0;
+        key_press_enables_dpms = true;
+        focus_on_activate = true;
+        animate_manual_resizes = true;
       };
 
       dwindle = {
