@@ -45,6 +45,9 @@
     rustfmt
     rust-analyzer
 
+    # gdscript
+    gdtoolkit_4
+
     # yaml
     yaml-language-server
     prettierd
