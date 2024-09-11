@@ -94,8 +94,8 @@ in
 
         "hyprctl dispatch workspace 1"
         "firefox"
-        "[workspace magic silent] telegram-desktop"
         "sleep 4; kitty zellij attach -c config"
+        "[workspace special:magic silent] telegram-desktop"
         # "nm-applet &"
         # "waybar & hyprpaper"
       ];
