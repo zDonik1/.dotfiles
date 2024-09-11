@@ -1,6 +1,9 @@
 # .dotfiles
 
-## NixOS
+
+## Installation
+
+### NixOS
 
 The config is mainly written for NixOS, even though it didn't start that way. I prefer always working in NixOS now, since I can even use it in Windows with WSL2.
 
@@ -19,7 +22,7 @@ If you want clipboard to work in Neovim in WSL, install scoop and run:
 scoop install win32yank
 ```
 
-## Windows
+### Windows
 
 The only reason you might want the config in Windows is that WSL is not supported for some reason. The config was mainly written to be crossplatform before adding NixOS, but now it's supported on best effort basis.
 
@@ -33,3 +36,17 @@ git clone .config https://github.com/zDonik1/.dotfiles.git
 cd .config
 install_packages.bat
 ```
+
+## Hyprland
+
+Hyprland hasn't been fully setup yet and there are a few issues to resolve.
+
+Bugs:
+- [ ] Windows become black after waking from suspend
+- [ ] Hyprctl doesn't work after waking from suspend
+- [ ] Resizing a pseudo tiled window using keybinds creates weird artifacts
+- [ ] Resizing a pseudo tiled window using edge of the window disables resizing using keybinds or the edge
+
+Features:
+- [ ] There are no keybinds for working with window groups
+- [ ] No widgets for controlling system functions (WiFi, Bluetooth, Volume, etc.)
