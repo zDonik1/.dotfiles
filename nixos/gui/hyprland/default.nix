@@ -82,7 +82,6 @@ in
 
       "cursor:no_hardware_cursors" = true;
 
-      "$terminal" = "kitty";
       "$fileManager" = "nautilus";
       "$menu" = "wofi --show drun";
 
@@ -91,13 +90,12 @@ in
         "hypridle"
         "hyprpaper"
         "hyprswitch init &"
-
         "syncthing --no-browser &"
 
         "hyprctl dispatch workspace 1"
         "firefox"
-        "sleep 2; $terminal"
         "[workspace magic silent] telegram-desktop"
+        "sleep 4; kitty zellij attach -c config"
         # "nm-applet &"
         # "waybar & hyprpaper"
       ];
@@ -157,7 +155,7 @@ in
         "$mainMod, U, exec, grimblast --freeze copysave area"
         "$mainMod SHIFT, U, exec, grimblast copysave output"
 
-        "$mainMod, T, exec, $terminal"
+        "$mainMod, T, exec, kitty"
         "$mainMod, E, exec, $fileManager"
         "$mainMod, R, exec, $menu"
         "$mainMod, L, exec, telegram-desktop"
