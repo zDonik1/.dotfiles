@@ -6,7 +6,7 @@
 
     borderRadius = 10;
     borderSize = 2;
-    padding = "8 12";
+    padding = "8, 12";
     defaultTimeout = 5000;
     font = "JetBrainsMono Nerd Font 11";
 
