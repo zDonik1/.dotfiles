@@ -71,6 +71,8 @@ in
       "$menu" = "wofi --show drun";
 
       exec-once = [
+        "zellij kill-all-sessions -y" # ensure old env vars arent saved in zellij
+
         "systemctl --user start plasma-polkit-agent"
         "hypridle"
         "hyprpaper"
