@@ -81,10 +81,10 @@ in
 
         "hyprctl dispatch workspace 1"
         "firefox"
-        "sleep 4; kitty zellij attach -c config"
+        "kitty zellij attach -c config"
+        "hyprctl dispatch focuswindow class:(kitty)"
+        "hyprctl dispatch movewindow r"
         "[workspace special:magic silent] telegram-desktop"
-        # "nm-applet &"
-        # "waybar & hyprpaper"
       ];
 
       general = {
