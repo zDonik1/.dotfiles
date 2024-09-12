@@ -211,6 +211,7 @@ in
 
         "float, class:(thunderbird), title:^$"
         "float, class:(org.gnome.Loupe)"
+        "float, class:(org.keepassxc.KeePassXC)"
 
         "float, class:(org.telegram.desktop)"
         "size 60% 70%, class:(org.telegram.desktop)"
