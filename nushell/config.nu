@@ -697,7 +697,7 @@ alias cat = bat
 alias f = fzf
 
 alias suspend = ^systemctl suspend
-alias sus = suspend
+alias sus = ^suspend
 
 # git
 alias g   = git

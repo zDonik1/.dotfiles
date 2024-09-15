@@ -1,6 +1,12 @@
 { pkgs, ... }:
 
 {
+  home.packages = [
+    (pkgs.writeShellScriptBin "rofi-calc" ''
+      rofi -show calc -modi calc -no-show-match -no-sort -no-bold -automatic-save-to-history -hint-result "  " -hint-welcome "  " -calc-command "echo -n '{result}'" | wl-copy
+    '')
+  ];
+
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
@@ -13,26 +19,28 @@
     extraConfig = {
       modes = [ "combi" ];
       combi-modes = [
-        "drun"
         "window"
+        "drun"
         "run"
       ];
+
+      disable-history = false;
+      hide-scrollbar = true;
+      drun-show-actions = true;
+
       icon-theme = "Oranchelo";
       show-icons = true;
       window-format = "{c} {w} {t}";
-      disable-history = false;
-      hide-scrollbar = true;
       display-drun = " ";
       display-run = " ";
       display-window = "󰕰 ";
       display-combi = " ";
+      display-calc = "󰪚 ";
       display-Network = "󰤨  Network";
+
+      kb-remove-word-back = "Control+w,Control+BackSpace";
+      kb-clear-line = "Control+l";
+      kb-mode-complete = "";
     };
   };
-
-  nixpkgs.overlays = [
-    (final: prev: {
-      rofi-calc = prev.rofi-calc.override { rofi-unwrapped = prev.rofi-wayland-unwrapped; };
-    })
-  ];
 }

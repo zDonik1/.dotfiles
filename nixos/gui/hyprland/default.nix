@@ -64,8 +64,6 @@ in
 
       "cursor:no_hardware_cursors" = true;
 
-      "$fileManager" = "nautilus";
-
       exec-once = [
         "zellij kill-all-sessions -y" # ensure old env vars arent saved in zellij
 
@@ -139,9 +137,9 @@ in
         "$mainMod SHIFT, U, exec, grimblast copysave output"
 
         "$mainMod, T, exec, kitty"
-        "$mainMod, E, exec, $fileManager"
         "$mainMod, L, exec, telegram-desktop"
         "CTRL, space, exec, rofi -show combi"
+        "$mainMod, E, exec, rofi-calc"
 
         "$mainMod, space, cyclenext,"
         "$mainMod SHIFT, space, cyclenext, prev"
