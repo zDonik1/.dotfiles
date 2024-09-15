@@ -55,6 +55,13 @@
     let
       system = "x86_64-linux";
 
+      pkgs-stable = import nixpkgs-stable {
+        inherit system;
+        config = {
+          allowUnfree = true;
+        };
+      };
+
       defaultModules =
         {
           with-gui ? false,
@@ -73,6 +80,11 @@
               (final: prev: { hyprswitch = hyprswitch.packages.${prev.system}.default; })
               (final: prev: { grimblast = hyprland-contrib.packages.${prev.system}.grimblast; })
               (final: prev: { zjstatus = zjstatus.packages.${prev.system}.default; })
+
+              (final: prev: {
+                rofi-calc = prev.rofi-calc.override { rofi-unwrapped = prev.rofi-wayland-unwrapped; };
+              })
+
               # (final: prev: { distant = distant.packages.${prev.system}.default; })
             ];
           }
@@ -99,12 +111,7 @@
         inherit system;
         modules = defaultModules { with-gui = true; } ++ [ ./hosts/tp-p53/configuration.nix ];
         specialArgs = {
-          pkgs-stable = import nixpkgs-stable {
-            inherit system;
-            config = {
-              allowUnfree = true;
-            };
-          };
+          inherit pkgs-stable;
         };
       };
     };

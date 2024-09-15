@@ -1,0 +1,77 @@
+* {
+    bg-col:  #1e1e2e;
+    bg-col-light: #1e1e2e;
+    border-col: #89b4fa;
+    selected-col: #1e1e2e;
+    blue: #89b4fa;
+    fg-col: #cdd6f4;
+    fg-col2: #a6e3a1;
+    grey: #45475a;
+
+    width: 600;
+    font: "JetBrainsMono Nerd Font 14";
+}
+
+element-text, element-icon , mode-switcher {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+window {
+    border: 2px;
+    border-color: @border-col;
+    border-radius: 10px;
+    background-color: @bg-col;
+}
+
+mainbox {
+    children: [inputbar, listview];
+    background-color: @bg-col;
+    padding: 20px;
+    spacing: 15px;
+}
+
+inputbar {
+    children: [prompt,entry];
+    spacing: 10px;
+    border: 0px 0px 2px 0px;
+    padding: 0px 0px 10px 0px;
+    border-color: @grey;
+    background-color: @bg-col;
+}
+
+prompt {
+    background-color: @bg-col;
+    text-color: @fg-col;
+}
+
+entry {
+    placeholder: "Search...";
+    blink: true;
+    placeholder-color: @grey;
+    text-color: @fg-col;
+    background-color: @bg-col;
+}
+
+listview {
+    columns: 1;
+    lines: 7;
+    background-color: @bg-col;
+    spacing: 10px;
+}
+
+element {
+    children: [element-text, element-icon];
+    background-color: @bg-col;
+    text-color: @fg-col;
+    spacing: 10px;
+}
+
+element-icon {
+    size: 25px;
+}
+
+element selected {
+    background-color: @selected-col;
+    text-color: @fg-col2;
+}

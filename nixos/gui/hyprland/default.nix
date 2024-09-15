@@ -8,6 +8,7 @@ in
     ../hypridle
     ../hyprpaper
     ../kitty
+    ../rofi
   ];
 
   home = {
@@ -23,10 +24,6 @@ in
   xdg.configFile = {
     "${hyprswitch-conf}".source = ./hyprswitch.conf;
     "${catppuccin-mocha-conf}".source = ./catppuccin-mocha.conf;
-  };
-
-  programs = {
-    wofi.enable = true;
   };
 
   services = {
@@ -68,7 +65,6 @@ in
       "cursor:no_hardware_cursors" = true;
 
       "$fileManager" = "nautilus";
-      "$menu" = "wofi --show drun";
 
       exec-once = [
         "zellij kill-all-sessions -y" # ensure old env vars arent saved in zellij
@@ -144,10 +140,11 @@ in
 
         "$mainMod, T, exec, kitty"
         "$mainMod, E, exec, $fileManager"
-        "$mainMod, R, exec, $menu"
         "$mainMod, L, exec, telegram-desktop"
+        "CTRL, space, exec, rofi -show combi"
 
         "$mainMod, space, cyclenext,"
+        "$mainMod SHIFT, space, cyclenext, prev"
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
         "$mainMod, up, movefocus, u"
