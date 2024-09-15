@@ -37,8 +37,7 @@ if $is_windows {
     $env.Path = ($env.Path | prepend 'C:/Users/tokhi/scoop/shims')
     $env.Path = ($env.Path | prepend 'C:/Program Files/Wireshark')
 } else {
-    $env.PATH = ($env.PATH | prepend '/home/linuxbrew/.linuxbrew/bin')
-    $env.PATH = ($env.PATH | prepend '/opt/nvim-linux64/bin')
+    $env.PATH = ($env.PATH | prepend '~/go/bin')
 }
 
 if $is_windows {
