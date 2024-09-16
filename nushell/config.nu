@@ -758,7 +758,7 @@ def build-bat-cache [] {
 # RUN ON START
 # =======================================
 
-if "WAYLAND_DISPLAY" not-in $env and $env.XDG_VTNR == "1" {
+if "WAYLAND_DISPLAY" not-in $env and $env.XDG_VTNR? == "1" {
     echo Trying to start hyprland...
     ^hyprland
 }
