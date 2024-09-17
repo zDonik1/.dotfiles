@@ -50,3 +50,7 @@ Bugs:
 Features:
 - [ ] There are no keybinds for working with window groups
 - [ ] No widgets for controlling system functions (WiFi, Bluetooth, Volume, etc.)
+
+### Cool features not added yet
+
+- Rofi calendar mode
