@@ -4,6 +4,7 @@
     ./home.nix
     ./gui/hyprland
     ./gui/mako
+    ./gui/keepmenu
   ];
 
   home.packages = with pkgs; [

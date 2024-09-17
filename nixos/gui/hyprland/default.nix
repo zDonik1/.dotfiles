@@ -9,6 +9,7 @@ in
     ../hyprpaper
     ../kitty
     ../rofi
+    ../keepmenu
   ];
 
   home = {
@@ -125,21 +126,24 @@ in
       bind = [
         "$mainMod, X, killactive,"
         "$mainMod, Q, exit"
-        "$mainMod, P, pin,"
-        "$mainMod, K, pseudo,"
+        "$mainMod, U, pseudo,"
         "$mainMod, J, togglesplit,"
         "$mainMod, V, togglefloating,"
         "$mainMod, F, fullscreen, 1"
-        "$mainMod, C, centerwindow, 1"
+        "$mainMod, W, centerwindow, 1"
         "$mainMod SHIFT, F, fullscreen, 0"
 
-        "$mainMod, U, exec, grimblast --freeze copysave area"
+        "$mainMod, A, exec, grimblast --freeze copysave area"
         "$mainMod SHIFT, U, exec, grimblast copysave output"
 
         "$mainMod, T, exec, kitty"
         "$mainMod, L, exec, telegram-desktop"
         "CTRL, space, exec, rofi -show combi"
+        "$mainMod, P, exec, rofi-power-menu"
+        "$mainMod, N, exec, rofi-connman"
+        "$mainMod, B, exec, rofi-bluetooth"
         "$mainMod, E, exec, rofi-calc"
+        "$mainMod, K, exec, keepmenu"
 
         "$mainMod, space, cyclenext,"
         "$mainMod SHIFT, space, cyclenext, prev"
