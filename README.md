@@ -42,8 +42,6 @@ install_packages.bat
 Hyprland hasn't been fully setup yet and there are a few issues to resolve.
 
 Bugs:
-- [ ] Windows become black after waking from suspend
-- [ ] Hyprctl doesn't work after waking from suspend
 - [ ] Resizing a pseudo tiled window using keybinds creates weird artifacts
 - [ ] Resizing a pseudo tiled window using edge of the window disables resizing using keybinds or the edge
 

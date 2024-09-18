@@ -12,6 +12,7 @@
 
   boot = {
     kernelPackages = pkgs-stable.linuxPackages;
+    kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
     supportedFilesystems = [ "ntfs" ];
 
     loader = {
@@ -58,6 +59,7 @@
       modesetting.enable = true;
       nvidiaSettings = true;
       open = false;
+      powerManagement.enable = true;
 
       prime = {
         nvidiaBusId = "PCI:1:0:0";
