@@ -13,6 +13,8 @@
     loupe
     nautilus
     vlc
+    libreoffice-qt6-fresh
+    vistafonts
   ];
 
   programs = {
@@ -27,6 +29,8 @@
   services = {
     syncthing.enable = true;
   };
+
+  fonts.fontconfig.enable = true;
 
   qt = {
     enable = true;

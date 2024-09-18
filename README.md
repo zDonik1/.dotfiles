@@ -49,7 +49,8 @@ Bugs:
 
 Features:
 - [ ] There are no keybinds for working with window groups
-- [ ] No widgets for controlling system functions (WiFi, Bluetooth, Volume, etc.)
+- [ ] No widgets for controlling system functions (Volume)
+- [ ] Focused window should be on top even when tiled
 
 ### Cool features not added yet
 
