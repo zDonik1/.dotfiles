@@ -218,6 +218,9 @@ in
 
         "float, class:(org.gnome.Nautilus)"
         "size 50% 60%, class:(org.gnome.Nautilus)"
+
+        "float, class:(Space Roguelite)"
+        "size 1600 900, class:(Space Roguelite)"
       ];
 
       animation = [
