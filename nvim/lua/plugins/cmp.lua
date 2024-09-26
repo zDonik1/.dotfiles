@@ -47,6 +47,7 @@ return {
 
 		"L3MON4D3/LuaSnip",
 		"VonHeikemen/lsp-zero.nvim",
+		"onsails/lspkind.nvim",
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -60,7 +61,30 @@ return {
 				{ name = "luasnip", keyword_length = 2 },
 				{ name = "buffer", keyword_length = 3 },
 			},
-			formatting = require("lsp-zero").cmp_format(),
+			window = {
+				documentation = cmp.config.window.bordered(),
+				completion = vim.tbl_deep_extend("force", cmp.config.window.bordered(), {
+					col_offset = -4,
+					side_padding = 0,
+				}),
+			},
+			formatting = {
+				fields = {
+					cmp.ItemField.Kind,
+					cmp.ItemField.Abbr,
+					cmp.ItemField.Menu,
+				},
+				format = function(entry, vim_item)
+					local kind = require("lspkind").cmp_format({
+						mode = "symbol_text",
+						maxwidth = 50,
+					})(entry, vim_item)
+					local strings = vim.split(kind.kind, "%s", { trimempty = true })
+					kind.kind = " " .. (strings[1] or "") .. " "
+					kind.menu = "    (" .. (strings[2] or "") .. ")"
+					return kind
+				end,
+			},
 			mapping = expand_mappings(mappings, { "i", "s" }),
 		})
 
