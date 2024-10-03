@@ -83,4 +83,22 @@ return {
 		"echasnovski/mini.operators",
 		config = true,
 	},
+
+	{
+		"jakemason/ouroboros.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		ft = { "cpp", "hpp", "h", "c" },
+		init = function()
+			vim.api.nvim_create_autocmd({ "BufReadPre" }, {
+				callback = function()
+					vim.keymap.set(
+						"n",
+						"<leader>a",
+						vim.cmd.Ouroboros,
+						{ desc = "Open alternate (header/source) file" }
+					)
+				end,
+			})
+		end,
+	},
 }
