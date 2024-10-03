@@ -740,14 +740,6 @@ def create-redir [service] {
     ssh mail docker exec poste poste redirect:create $"d_($service)@tokhirov.uz" $"'Doniyor ($service)'" doniyor@tokhirov.uz
 }
 
-def disable-laptop-monitor [] {
-    hyprctl keyword monitor eDP-1, disable
-}
-
-def enable-laptop-monitor [] {
-    hyprctl keyword monitor eDP-1, preferred, auto-left, 1.25
-}
-
 # run when bat themes aren't updated
 def build-bat-cache [] {
     ^bat cache --build

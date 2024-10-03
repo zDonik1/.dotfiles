@@ -19,6 +19,14 @@ in
       hyprswitch
       grimblast
       wl-clipboard
+
+      (writeShellScriptBin "disable-laptop-monitor" ''
+        hyprctl keyword monitor eDP-1, disable
+      '')
+
+      (writeShellScriptBin "enable-laptop-monitor" ''
+        hyprctl keyword monitor eDP-1, preferred, auto-left, 1.25
+      '')
     ];
   };
 
@@ -66,6 +74,7 @@ in
       "cursor:no_hardware_cursors" = true;
 
       exec-once = [
+        # "sleep 2; disable-laptop-monitor"
         "zellij kill-all-sessions -y" # ensure old env vars arent saved in zellij
 
         "systemctl --user start plasma-polkit-agent"
