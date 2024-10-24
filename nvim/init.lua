@@ -10,3 +10,4 @@ end
 prequire("remap")
 prequire("set")
 prequire("lazy_init")
+prequire("commands")
