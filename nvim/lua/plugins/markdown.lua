@@ -75,6 +75,18 @@ return {
 			code = { left_pad = 2 },
 			pipe_table = { preset = "round" },
 			sign = { enabled = false },
+
+			checkbox = {
+				unchecked = { icon = "󰄱 " },
+				checked = { icon = "󰄲 " },
+				custom = {
+					cancelled = {
+						raw = "[-]",
+						rendered = "󰍵 ",
+						highlight = "DiagnosticSignError",
+					},
+				},
+			},
 		},
 	},
 }
