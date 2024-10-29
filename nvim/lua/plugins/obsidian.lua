@@ -128,6 +128,13 @@ return {
 				end,
 			},
 			ui = {
+				checkboxes = {},
+				bullets = {},
+				external_link_icon = {},
+				reference_text = {},
+				highlight_text = {},
+				tags = { hl_group = "ObsidianTag" },
+				block_ids = {},
 				hl_groups = {
 					ObsidianTodo = { bold = true, fg = mocha.peach },
 					ObsidianDone = { bold = true, fg = mocha.sapphire },

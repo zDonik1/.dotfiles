@@ -1,5 +1,5 @@
 @help:
-    just -lu --list-heading=$'{{ file_name(justfile()) }} commands:\n'
+    just -l --list-heading=$'{{ file_name(justfile()) }} commands:\n'
 
 # build the nixos system for tp-p53
 bld:
