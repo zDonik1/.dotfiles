@@ -37,6 +37,7 @@ in
     ./headless/git
     ./headless/zellij
     ./headless/eza
+    ./headless/yazi
   ];
 
   # The home.packages option allows you to install Nix packages into your
