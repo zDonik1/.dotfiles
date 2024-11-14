@@ -5,6 +5,7 @@ systemd
 nushell/history.txt
 environment.d
 fontconfig
+/inkscape
 
 # autoconfig by nix
 /git

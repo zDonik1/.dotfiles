@@ -15,6 +15,9 @@
     vlc
     libreoffice-qt6-fresh
     vistafonts
+    obsidian
+    gimp
+    inkscape
   ];
 
   programs = {
