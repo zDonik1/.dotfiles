@@ -686,6 +686,23 @@ use ~/.config/nushell/starship
 
 
 # =======================================
+# SHELL FUNCTIONS
+# =======================================
+
+use ~/.config/broot/launcher/nushell/br_mod.nu *
+
+def --env y [...args] {
+	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
+	yazi ...$args --cwd-file $tmp
+	let cwd = (open $tmp)
+	if $cwd != "" and $cwd != $env.PWD {
+		cd $cwd
+	}
+	rm -fp $tmp
+}
+
+
+# =======================================
 # ALIASES
 # =======================================
 
@@ -709,8 +726,6 @@ alias gp  = git pull
 alias gf  = git fetch
 
 # broot
-use ~/.config/broot/launcher/nushell/br_mod.nu *
-
 alias bs = br --no-tree --sort-by-type -ih
 alias ba = br --no-tree --sort-by-type -sdpigh
 alias bt = br --sort-by-type -ih
