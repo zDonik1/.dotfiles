@@ -63,15 +63,13 @@
       };
 
       defaultModules =
-        {
-          with-gui ? false,
-        }:
+        { home }:
         [
           home-manager.nixosModules.default
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.zdonik = import (if with-gui then ./home-gui.nix else ./home.nix);
+            home-manager.users.zdonik = home;
           }
 
           {
@@ -93,7 +91,7 @@
     {
       nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = defaultModules { } ++ [
+        modules = defaultModules { home = ./home-wsl.nix; } ++ [
           ./hosts/wsl/configuration.nix
           nixos-wsl.nixosModules.wsl
         ];
@@ -101,7 +99,7 @@
 
       nixosConfigurations.work-wsl = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = defaultModules { } ++ [
+        modules = defaultModules { home = ./home-wsl.nix; } ++ [
           ./hosts/work-wsl/configuration.nix
           nixos-wsl.nixosModules.wsl
         ];
@@ -109,7 +107,7 @@
 
       nixosConfigurations.tp-p53 = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = defaultModules { with-gui = true; } ++ [ ./hosts/tp-p53/configuration.nix ];
+        modules = defaultModules { home = ./home-gui.nix; } ++ [ ./hosts/tp-p53/configuration.nix ];
         specialArgs = {
           inherit pkgs-stable;
         };
