@@ -134,7 +134,7 @@ in
       "$mainMod" = "SUPER";
       bind = [
         "$mainMod, X, killactive,"
-        "$mainMod, Q, exit"
+        "$mainMod SHIFT, Q, exit"
         "$mainMod, U, pseudo,"
         "$mainMod, J, togglesplit,"
         "$mainMod, V, togglefloating,"
