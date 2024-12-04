@@ -230,7 +230,7 @@ in
 
         "float, initialTitle:(Godot), class:(?!org.godotengine.Editor)"
         "tile, class:(org.godotengine.Editor)"
-        "fullscreen, class:(org.godotengine.Editor)"
+        "maximize, class:(org.godotengine.Editor)"
         "size 1600 900, class:(Space Roguelite)"
         "size 720 1280, class:(Project F)"
         "move 60% 5%, class:(Project F)"
