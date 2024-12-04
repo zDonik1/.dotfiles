@@ -6,6 +6,7 @@ nushell/history.txt
 environment.d
 fontconfig
 /inkscape
+/unity3d
 
 # autoconfig by nix
 /git
@@ -13,3 +14,4 @@ fontconfig
 /zellij
 /clangd
 /yazi
+/.android
