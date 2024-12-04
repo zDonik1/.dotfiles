@@ -85,9 +85,7 @@ in
 
         "hyprctl dispatch workspace 1"
         "firefox"
-        "kitty zellij attach -c config"
-        "hyprctl dispatch focuswindow class:(kitty)"
-        "hyprctl dispatch movewindow r"
+        "[workspace 2 silent] kitty zellij attach -c config"
         "[workspace special:magic silent] telegram-desktop"
       ];
 
