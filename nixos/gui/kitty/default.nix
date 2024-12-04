@@ -7,7 +7,7 @@
       name = "JetBrainsMono Nerd Font";
       size = 11;
     };
-    theme = "Catppuccin-Mocha";
+    themeFile = "Catppuccin-Mocha";
     settings = {
       # couldn't select bold styles automatically
       bold_font = "family=\"JetBrainsMono Nerd Font\" style=\"Bold\"";

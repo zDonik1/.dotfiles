@@ -72,8 +72,6 @@ $env.config = {
     }
 
     color_config: (catppuccin-mocha)
-    use_grid_icons: true
-    footer_mode: "25" # always, never, number_of_rows, auto
     float_precision: 2 # the precision for displaying floats in tables
     bracketed_paste: true # enable bracketed paste, currently useless on windows
     edit_mode: vi
@@ -767,5 +765,5 @@ def build-bat-cache [] {
 
 if "WAYLAND_DISPLAY" not-in $env and $env.XDG_VTNR? == "1" {
     echo Trying to start hyprland...
-    ^hyprland
+    ^Hyprland
 }

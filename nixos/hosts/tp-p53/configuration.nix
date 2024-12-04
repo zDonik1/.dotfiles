@@ -106,7 +106,7 @@
     systemPackages = with pkgs; [ kdePackages.polkit-kde-agent-1 ];
   };
 
-  fonts.packages = [ (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
+  fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
 
   nixpkgs.config.allowUnfree = true;
 

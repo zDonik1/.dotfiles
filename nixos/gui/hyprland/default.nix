@@ -112,10 +112,10 @@ in
         #   vibrancy = 0.2;
         # };
 
-        drop_shadow = true;
-        shadow_range = 4;
-        shadow_render_power = 3;
-        "col.shadow" = "$mantle";
+        shadow = {
+          enabled = true;
+          color = "$mantle";
+        };
       };
 
       misc = {
