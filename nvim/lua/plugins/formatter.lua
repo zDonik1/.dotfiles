@@ -14,6 +14,7 @@ return {
 			filetype = {
 				lua = { require("formatter.filetypes.lua").stylua },
 				rust = { require("formatter.filetypes.rust").rustfmt },
+				go = { require("formatter.filetypes.go").gofmt },
 				cs = { require("formatter.filetypes.cs").csharpier },
 				python = { require("formatter.filetypes.python").ruff },
 				nix = { require("formatter.filetypes.nix").nixfmt },

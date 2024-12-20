@@ -45,6 +45,9 @@
     rustfmt
     rust-analyzer
 
+    # go
+    gopls
+
     # gdscript
     gdtoolkit_4
 
