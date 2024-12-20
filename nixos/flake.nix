@@ -100,10 +100,10 @@
         ];
       };
 
-      nixosConfigurations.tp-p53 = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.think = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = defaultModules { home = ./home-hyprland.nix; } ++ [
-          ./hosts/tp-p53/configuration.nix
+          ./hosts/think/configuration.nix
           ./system/connman
           ./system/expressvpn
         ];

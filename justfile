@@ -1,9 +1,9 @@
 @help:
     just -l --list-heading=$'{{ file_name(justfile()) }} commands:\n'
 
-# build the nixos system for tp-p53
+# build the nixos system for think
 bld:
-    sudo nixos-rebuild switch --flake ./nixos#tp-p53
+    sudo nixos-rebuild switch --flake ./nixos#think
 
 # build the nixos system for wsl
 wsl-bld:
