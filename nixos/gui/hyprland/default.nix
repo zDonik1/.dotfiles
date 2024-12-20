@@ -1,6 +1,5 @@
 { config, pkgs, ... }:
 let
-  hyprswitch-conf = "hypr/hyprswitch.conf";
   catppuccin-mocha-conf = "hypr/catppuccin-mocha.conf";
 in
 {
@@ -16,7 +15,6 @@ in
     packages = with pkgs; [
       qt5.qtwayland
       qt6.qtwayland
-      hyprswitch
       grimblast
       wl-clipboard
 
@@ -31,7 +29,6 @@ in
   };
 
   xdg.configFile = {
-    "${hyprswitch-conf}".source = ./hyprswitch.conf;
     "${catppuccin-mocha-conf}".source = ./catppuccin-mocha.conf;
   };
 
@@ -44,7 +41,6 @@ in
 
     settings = {
       source = [
-        (config.xdg.configHome + "/" + hyprswitch-conf)
         (config.xdg.configHome + "/" + catppuccin-mocha-conf)
       ];
 
@@ -81,7 +77,6 @@ in
         "systemctl --user start plasma-polkit-agent"
         "hypridle"
         "hyprpaper"
-        "hyprswitch init &"
         "syncthing --no-browser &"
 
         "hyprctl dispatch workspace 1"

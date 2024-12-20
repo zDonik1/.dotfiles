@@ -17,11 +17,6 @@
 
     # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
-    hyprswitch = {
-      url = "github:h3rmt/hyprswitch/release";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -76,7 +71,6 @@
           {
             nixpkgs.overlays = with inputs; [
               # (final: prev: { hyprland = hyprland.packages.${prev.system}.default; })
-              (final: prev: { hyprswitch = hyprswitch.packages.${prev.system}.default; })
               (final: prev: { grimblast = hyprland-contrib.packages.${prev.system}.grimblast; })
               (final: prev: { zjstatus = zjstatus.packages.${prev.system}.default; })
 
