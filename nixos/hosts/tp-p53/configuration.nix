@@ -87,6 +87,7 @@
   environment = {
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
+      SHELL = "nu";
     };
 
     systemPackages = with pkgs; [ kdePackages.polkit-kde-agent-1 ];
