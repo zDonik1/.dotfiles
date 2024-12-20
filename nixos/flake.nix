@@ -105,6 +105,7 @@
         modules = defaultModules { home = ./home-gui.nix; } ++ [
           ./hosts/tp-p53/configuration.nix
           ./system/connman
+          ./system/expressvpn
         ];
         specialArgs = {
           inherit pkgs-stable;
