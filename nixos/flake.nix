@@ -110,6 +110,7 @@
         inherit system;
         modules = defaultModules { home = ./home-gui.nix; } ++ [
           ./hosts/tp-p53/configuration.nix
+          ./system/connman
         ];
         specialArgs = {
           inherit pkgs-stable;

@@ -6,10 +6,6 @@
     ../common-configuration.nix
   ];
 
-  users.users.zdonik = {
-    extraGroups = [ "networkmanager" ];
-  };
-
   boot = {
     kernelPackages = pkgs-stable.linuxPackages;
     kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
@@ -23,11 +19,6 @@
 
   networking = {
     hostName = "DTOKHIROV";
-    wireless.iwd.enable = true;
-
-    # Configure network proxy if necessary
-    # proxy.default = "http://user:password@proxy:port/";
-    # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   };
 
   # Select internationalisation properties.
@@ -74,11 +65,6 @@
     udisks2.enable = true;
     xserver.videoDrivers = [ "nvidia" ]; # loads nvidia drivers for Wayland as well
 
-    connman = {
-      enable = true;
-      wifi.backend = "iwd";
-    };
-
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -109,12 +95,6 @@
   fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
 
   nixpkgs.config.allowUnfree = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

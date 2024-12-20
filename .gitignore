@@ -7,6 +7,13 @@ environment.d
 fontconfig
 /inkscape
 /unity3d
+/audacity
+/go
+/htop
+/qcal
+/autostart
+/enchant
+/expressvpn
 
 # autoconfig by nix
 /git
