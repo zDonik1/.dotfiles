@@ -102,7 +102,7 @@
 
       nixosConfigurations.tp-p53 = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = defaultModules { home = ./home-gui.nix; } ++ [
+        modules = defaultModules { home = ./home-hyprland.nix; } ++ [
           ./hosts/tp-p53/configuration.nix
           ./system/connman
           ./system/expressvpn
