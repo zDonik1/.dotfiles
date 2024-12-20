@@ -66,6 +66,7 @@
         { home }:
         [
           home-manager.nixosModules.default
+
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -109,7 +110,6 @@
         inherit system;
         modules = defaultModules { home = ./home-gui.nix; } ++ [
           ./hosts/tp-p53/configuration.nix
-          ./system/game
         ];
         specialArgs = {
           inherit pkgs-stable;
