@@ -86,7 +86,7 @@ in
 
         "hyprctl dispatch workspace 1"
         "firefox"
-        "[workspace 2 silent] kitty zellij attach -c config"
+        "[workspace 4 silent] kitty zellij attach -c config"
         "[workspace special:magic silent] telegram-desktop"
       ];
 
@@ -219,6 +219,9 @@ in
         "float, class:(thunderbird), title:^$"
         "float, class:(org.gnome.Loupe)"
         "float, class:(org.keepassxc.KeePassXC)"
+
+        "pseudo, class:(kitty)"
+        "size 75% 90%, class:(kitty)"
 
         "float, class:(org.telegram.desktop)"
         "size 60% 70%, class:(org.telegram.desktop)"
