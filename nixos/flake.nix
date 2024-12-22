@@ -110,6 +110,7 @@
         inherit system;
         modules = defaultModules { home = ./home-hyprland.nix; } ++ [
           ./hosts/think/configuration.nix
+          ./system/greetd
           ./system/connman
           ./system/expressvpn
         ];
