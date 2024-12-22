@@ -10,12 +10,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
@@ -45,6 +48,7 @@
       nixpkgs-stable,
       nixos-wsl,
       home-manager,
+      nur,
       ...
     }@inputs:
     let
@@ -63,14 +67,16 @@
           home-manager.nixosModules.default
 
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.zdonik = home;
-          }
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "bak";
+              users.zdonik = home;
+            };
 
-          {
             nixpkgs.overlays = with inputs; [
-              # (final: prev: { hyprland = hyprland.packages.${prev.system}.default; })
+              nur.overlays.default
+
               (final: prev: { grimblast = hyprland-contrib.packages.${prev.system}.grimblast; })
               (final: prev: { zjstatus = zjstatus.packages.${prev.system}.default; })
 

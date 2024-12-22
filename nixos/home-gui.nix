@@ -3,6 +3,7 @@
 {
   imports = [
     ./home.nix
+    ./gui/firefox
   ];
 
   home.packages = with pkgs; [
