@@ -15,6 +15,15 @@
 
   programs.yazi = {
     enable = true;
+    initLua = ./init.lua;
+
+    settings = {
+      manager = {
+        linemode = "size_and_mtime";
+        show_hidden = true;
+        scrolloff = 5;
+      };
+    };
   };
 
   xdg.configFile = {
