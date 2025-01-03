@@ -61,38 +61,39 @@
         };
       };
 
-      defaultModules =
-        { home }:
-        [
-          home-manager.nixosModules.default
+      makeHomeManagerModules = home: [
+        home-manager.nixosModules.default
 
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "bak";
-              users.zdonik = home;
-            };
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            backupFileExtension = "bak";
+            users.zdonik = home;
+          };
+        }
+      ];
 
-            nixpkgs.overlays = with inputs; [
-              nur.overlays.default
+      overlayModule = {
+        nixpkgs.overlays = with inputs; [
+          nur.overlays.default
 
-              (final: prev: { grimblast = hyprland-contrib.packages.${prev.system}.grimblast; })
-              (final: prev: { zjstatus = zjstatus.packages.${prev.system}.default; })
+          (final: prev: { grimblast = hyprland-contrib.packages.${prev.system}.grimblast; })
+          (final: prev: { zjstatus = zjstatus.packages.${prev.system}.default; })
 
-              (final: prev: {
-                rofi-calc = prev.rofi-calc.override { rofi-unwrapped = prev.rofi-wayland-unwrapped; };
-              })
+          (final: prev: {
+            rofi-calc = prev.rofi-calc.override { rofi-unwrapped = prev.rofi-wayland-unwrapped; };
+          })
 
-              # (final: prev: { distant = distant.packages.${prev.system}.default; })
-            ];
-          }
+          # (final: prev: { distant = distant.packages.${prev.system}.default; })
         ];
+      };
     in
     {
       nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = defaultModules { home = ./home-wsl.nix; } ++ [
+        modules = (makeHomeManagerModules ./home-wsl.nix) ++ [
+          overlayModule
           ./hosts/wsl/configuration.nix
           nixos-wsl.nixosModules.wsl
         ];
@@ -100,7 +101,8 @@
 
       nixosConfigurations.work-wsl = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = defaultModules { home = ./home-wsl.nix; } ++ [
+        modules = (makeHomeManagerModules ./home-wsl.nix) ++ [
+          overlayModule
           ./hosts/work-wsl/configuration.nix
           nixos-wsl.nixosModules.wsl
         ];
@@ -108,7 +110,8 @@
 
       nixosConfigurations.think = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = defaultModules { home = ./home-hyprland.nix; } ++ [
+        modules = (makeHomeManagerModules ./home-hyprland.nix) ++ [
+          overlayModule
           ./hosts/think/configuration.nix
           ./system/greetd
           ./system/connman
