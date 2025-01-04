@@ -5,10 +5,10 @@
       imports = [
         ../home/home-manager
         ../home/cli
-        ../gui/hyprland
-        ../gui/mako
-        ../gui/keepmenu
-        ../gui/firefox
+        ../home/hyprland
+        ../home/mako
+        ../home/keepmenu
+        ../home/firefox
       ];
 
       home.packages = with pkgs; [
