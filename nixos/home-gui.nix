@@ -2,7 +2,8 @@
 
 {
   imports = [
-    ./home.nix
+    ./home/home-manager
+    ./home/cli
     ./gui/firefox
   ];
 
