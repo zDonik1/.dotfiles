@@ -61,6 +61,23 @@
         };
       };
 
+      overlays = with inputs; [
+        nur.overlays.default
+
+        (final: prev: { grimblast = hyprland-contrib.packages.${prev.system}.grimblast; })
+        (final: prev: { zjstatus = zjstatus.packages.${prev.system}.default; })
+
+        (final: prev: {
+          rofi-calc = prev.rofi-calc.override { rofi-unwrapped = prev.rofi-wayland-unwrapped; };
+        })
+
+        # (final: prev: { distant = distant.packages.${prev.system}.default; })
+      ];
+
+      overlayModule = {
+        nixpkgs.overlays = overlays;
+      };
+
       makeHomeManagerModules = home: [
         home-manager.nixosModules.default
 
@@ -74,20 +91,21 @@
         }
       ];
 
-      overlayModule = {
-        nixpkgs.overlays = with inputs; [
-          nur.overlays.default
-
-          (final: prev: { grimblast = hyprland-contrib.packages.${prev.system}.grimblast; })
-          (final: prev: { zjstatus = zjstatus.packages.${prev.system}.default; })
-
-          (final: prev: {
-            rofi-calc = prev.rofi-calc.override { rofi-unwrapped = prev.rofi-wayland-unwrapped; };
-          })
-
-          # (final: prev: { distant = distant.packages.${prev.system}.default; })
+      makeModuleSet =
+        {
+          host,
+          profile,
+          overlays ? [ ],
+        }:
+        let
+          prof = import profile;
+        in
+        (makeHomeManagerModules prof.home)
+        ++ [
+          host
+          prof.system
+          { nixpkgs.overlays = overlays; }
         ];
-      };
     in
     {
       nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
@@ -110,13 +128,11 @@
 
       nixosConfigurations.think = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = (makeHomeManagerModules ./home-hyprland.nix) ++ [
-          overlayModule
-          ./hosts/think/configuration.nix
-          ./system/greetd
-          ./system/connman
-          ./system/expressvpn
-        ];
+        modules = makeModuleSet {
+          host = ./hosts/think;
+          profile = ./profiles/hyprland.nix;
+          inherit overlays;
+        };
         specialArgs = {
           inherit pkgs-stable;
         };
