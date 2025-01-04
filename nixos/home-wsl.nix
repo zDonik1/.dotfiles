@@ -1,5 +1,8 @@
 { ... }:
 
 {
-  imports = [ ./base.nix ];
+  imports = [
+    ./home/home-manager
+    ./home/cli
+  ];
 }

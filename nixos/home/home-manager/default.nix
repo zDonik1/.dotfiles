@@ -28,26 +28,4 @@ in
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  imports = [
-    ./headless/neovim
-    ./headless/nushell
-    ./headless/git
-    ./headless/zellij
-    ./headless/eza
-    ./headless/yazi
-  ];
-
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  home.packages = with pkgs; [
-    ripgrep
-    fd
-    fzf
-    zoxide
-    just
-    broot
-    bat
-    # distant
-  ];
 }

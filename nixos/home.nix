@@ -2,7 +2,8 @@
 
 {
   imports = [
-    ./base.nix
+    ./home/home-manager
+    ./home/cli
   ];
 
   home.packages = with pkgs; [
