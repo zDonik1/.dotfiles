@@ -25,6 +25,7 @@
       zoxide
       nushell
     ];
+    sessionVariables.SHELL = "nu";
     shells = [ pkgs.nushell ];
   };
 
@@ -34,4 +35,8 @@
   ];
 
   virtualisation.docker.enable = true;
+
+  fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
+
+  nixpkgs.config.allowUnfree = true;
 }

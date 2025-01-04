@@ -17,9 +17,7 @@
     };
   };
 
-  networking = {
-    hostName = "DTOKHIROV";
-  };
+  networking.hostName = "DTOKHIROV";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -59,7 +57,6 @@
   };
 
   services = {
-    getty.autologinUser = "zdonik";
     printing.enable = true;
     openssh.enable = true;
     udisks2.enable = true;
@@ -70,32 +67,11 @@
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-      # If you want to use JACK applications, uncomment this
-      #jack.enable = true;
-
-      # use the example session manager (no others are packaged yet so this is enabled by default,
-      # no need to redefine it in your config for now)
-      #media-session.enable = true;
     };
   };
 
-  programs = {
-    firefox.enable = true;
-    hyprland.enable = true;
-  };
-
-  environment = {
-    sessionVariables = {
-      NIXOS_OZONE_WL = "1";
-      SHELL = "nu";
-    };
-
-    systemPackages = with pkgs; [ kdePackages.polkit-kde-agent-1 ];
-  };
-
-  fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
-
-  nixpkgs.config.allowUnfree = true;
+  programs.firefox.enable = true;
+  environment.systemPackages = with pkgs; [ kdePackages.polkit-kde-agent-1 ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

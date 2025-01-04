@@ -44,6 +44,7 @@
     { ... }:
     {
       imports = [
+        ../system/hyprland
         ../system/greetd
         ../system/connman
         ../system/expressvpn
