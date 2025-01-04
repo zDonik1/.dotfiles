@@ -74,10 +74,6 @@
         # (final: prev: { distant = distant.packages.${prev.system}.default; })
       ];
 
-      overlayModule = {
-        nixpkgs.overlays = overlays;
-      };
-
       makeHomeManagerModules = home: [
         home-manager.nixosModules.default
 
@@ -95,35 +91,39 @@
         {
           host,
           profile,
+          extra ? [ ],
           overlays ? [ ],
         }:
         let
           prof = import profile;
         in
-        (makeHomeManagerModules prof.home)
-        ++ [
+        [
           host
-          prof.system
           { nixpkgs.overlays = overlays; }
-        ];
+        ]
+        ++ extra
+        ++ (if prof ? system then [ prof.system ] else [ ])
+        ++ (if prof ? home then (makeHomeManagerModules prof.home) else [ ]);
     in
     {
       nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = (makeHomeManagerModules ./home-wsl.nix) ++ [
-          overlayModule
-          ./hosts/wsl/configuration.nix
-          nixos-wsl.nixosModules.wsl
-        ];
+        modules = makeModuleSet {
+          host = ./hosts/wsl/configuration.nix;
+          profile = ./profiles/cli.nix;
+          extra = [ nixos-wsl.nixosModules.wsl ];
+          inherit overlays;
+        };
       };
 
       nixosConfigurations.work-wsl = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = (makeHomeManagerModules ./home-wsl.nix) ++ [
-          overlayModule
-          ./hosts/work-wsl/configuration.nix
-          nixos-wsl.nixosModules.wsl
-        ];
+        modules = makeModuleSet {
+          host = ./hosts/work-wsl/configuration.nix;
+          profile = ./profiles/cli.nix;
+          extra = [ nixos-wsl.nixosModules.wsl ];
+          inherit overlays;
+        };
       };
 
       nixosConfigurations.think = nixpkgs.lib.nixosSystem {
