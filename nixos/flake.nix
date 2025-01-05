@@ -126,16 +126,24 @@
         };
       };
 
-      nixosConfigurations.think = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.think-hyprland = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = makeModuleSet {
           host = ./hosts/think;
           profile = ./profiles/hyprland.nix;
           inherit overlays;
         };
-        specialArgs = {
-          inherit pkgs-stable;
+        specialArgs = { inherit pkgs-stable; };
+      };
+
+      nixosConfigurations.think-awesome = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = makeModuleSet {
+          host = ./hosts/think;
+          profile = ./profiles/awesome.nix;
+          inherit overlays;
         };
+        specialArgs = { inherit pkgs-stable; };
       };
     };
 }
