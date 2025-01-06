@@ -48,5 +48,7 @@
 
       # needed for ../home/theme/adwaita
       programs.dconf.enable = true;
+
+      services.autorandr.enable = true;
     };
 }
