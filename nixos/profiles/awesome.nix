@@ -19,7 +19,8 @@
         mpv
         loupe
         nautilus
-        davinci-resolve
+        kdePackages.kdenlive
+        libqalculate
       ];
 
       programs = {

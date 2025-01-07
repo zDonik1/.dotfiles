@@ -14,6 +14,10 @@ fontconfig
 /autostart
 /enchant
 /expressvpn
+/kdeglobals
+/kdenlive-layoutsrc
+/kdenliverc
+/autorandr
 
 # autoconfig by nix
 /git
