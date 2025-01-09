@@ -6,5 +6,6 @@
   home.packages = with pkgs; [
     maim
     xclip
+    xorg.xbacklight
   ];
 }
