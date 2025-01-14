@@ -7,5 +7,6 @@
     maim
     xclip
     xorg.xbacklight
+    alsa-utils
   ];
 }
