@@ -57,6 +57,12 @@ keybinds clear-defaults=true {
 
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
+
+        bind "Ctrl Down" { ScrollDown; }
+        bind "Ctrl Up" { ScrollUp; }
+        bind "Ctrl PageDown" { HalfPageScrollDown; }
+        bind "Ctrl PageUp" { HalfPageScrollUp; }
+        bind "Ctrl Alt e" { EditScrollback; }
     }
     // tmux mode is taken for all bindings with prefixes
     tmux {
