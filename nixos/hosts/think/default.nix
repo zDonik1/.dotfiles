@@ -28,8 +28,6 @@
   };
 
   hardware = {
-    pulseaudio.enable = false;
-
     bluetooth = {
       enable = true;
       powerOnBoot = true;
@@ -57,6 +55,7 @@
   };
 
   services = {
+    pulseaudio.enable = false;
     printing.enable = true;
     openssh.enable = true;
     udisks2.enable = true;
