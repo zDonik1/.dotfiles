@@ -1,4 +1,4 @@
-{ pkgs, pkgs-stable, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -7,7 +7,6 @@
   ];
 
   boot = {
-    kernelPackages = pkgs-stable.linuxPackages;
     kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
     supportedFilesystems = [ "ntfs" ];
 
@@ -43,6 +42,7 @@
 
     # xserver.videoDrivers = [ "nvidia" ]; should be there for nvidia to work
     nvidia = {
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
       modesetting.enable = true;
       nvidiaSettings = true;
       open = false;

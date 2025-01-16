@@ -8,3 +8,7 @@ switch config:
 # test the nixos system
 test config:
     sudo nixos-rebuild test -p {{ config }} --flake ./nixos#{{ config }}
+
+# add nixos system to boot menu
+boot config:
+    sudo nixos-rebuild boot -p {{ config }} --flake ./nixos#{{ config }}
