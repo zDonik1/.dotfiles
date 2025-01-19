@@ -45,6 +45,7 @@
         ../system/connman
         ../system/expressvpn
         ../system/game
+        ../system/vm/virtualbox
       ];
 
       # needed for ../home/theme/adwaita
