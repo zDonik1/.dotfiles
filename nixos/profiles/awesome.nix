@@ -41,7 +41,7 @@
     { ... }:
     {
       imports = [
-        ../system/awesome
+        ../system/wm/awesome
         ../system/connman
         ../system/expressvpn
         ../system/game
