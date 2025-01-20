@@ -44,6 +44,7 @@
         ../system/wm/awesome
         ../system/connman
         ../system/expressvpn
+        ../system/nfs
         ../system/game
         ../system/vm/virtualbox
       ];

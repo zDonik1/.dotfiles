@@ -16,7 +16,10 @@
     };
   };
 
-  networking.hostName = "DTOKHIROV";
+  networking = {
+    hostName = "zdonik-pc";
+    domain = "mukhtarov.net";
+  };
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
