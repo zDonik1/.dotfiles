@@ -1,28 +1,3 @@
-scoop
-dlv
-mc
-systemd
-nushell/history.txt
-environment.d
-fontconfig
-/inkscape
-/unity3d
-/audacity
-/go
-/htop
-/qcal
-/autostart
-/enchant
-/expressvpn
-/kdeglobals
-/kdenlive-layoutsrc
-/kdenliverc
-/autorandr
+/*
 
-# autoconfig by nix
-/git
-/gh
-/zellij
-/clangd
-/yazi
-/.android
+!/nixos

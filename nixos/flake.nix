@@ -145,5 +145,14 @@
         };
         specialArgs = { inherit pkgs-stable; };
       };
+
+      nixosConfigurations.think-plasma = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = makeModuleSet {
+          host = ./hosts/think;
+          profile = ./profiles/plasma.nix;
+          inherit overlays;
+        };
+      };
     };
 }
