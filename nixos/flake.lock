@@ -200,6 +200,7 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",
         "nur": "nur",
+        "yazi-plugins": "yazi-plugins",
         "zjstatus": "zjstatus"
       }
     },
@@ -257,6 +258,44 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "yazi-plugins": {
+      "inputs": {
+        "flake-utils": [
+          "nixos-wsl",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "yazi-plugins-src": "yazi-plugins-src"
+      },
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-g2vdzQ2wcgVb0zds9U5h+Oilq1KjpC7+zms21OZB1M0=",
+        "path": "/nix/store/wdf3jvs2c7q50q59w8j96xkaccyh9gzs-source/nixos/flakes/yazi-plugins",
+        "type": "path"
+      },
+      "original": {
+        "path": "/nix/store/wdf3jvs2c7q50q59w8j96xkaccyh9gzs-source/nixos/flakes/yazi-plugins",
+        "type": "path"
+      }
+    },
+    "yazi-plugins-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1733962089,
+        "narHash": "sha256-PSVzjC1sdaIOtK5ave4kn3Ck8YwpjO3N9uV/WE6Skdo=",
+        "owner": "yazi-rs",
+        "repo": "plugins",
+        "rev": "62f078905b4de55f19e328452c8a1f889ff2f6f4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yazi-rs",
+        "repo": "plugins",
         "type": "github"
       }
     },

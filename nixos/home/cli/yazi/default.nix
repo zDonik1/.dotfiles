@@ -1,5 +1,11 @@
 { pkgs, ... }:
-
+let
+  smart-enter-binding = on: {
+    inherit on;
+    run = "plugin smart-enter";
+    desc = "Enter the child directory, or open the file";
+  };
+in
 {
   home.packages = with pkgs; [
     ffmpegthumbnailer
@@ -16,6 +22,9 @@
   programs.yazi = {
     enable = true;
     initLua = ./init.lua;
+    plugins = with pkgs.yazi-plugins; {
+      inherit smart-enter;
+    };
 
     settings = {
       manager = {
@@ -23,6 +32,13 @@
         show_hidden = true;
         scrolloff = 5;
       };
+    };
+
+    keymap = {
+      manager.prepend_keymap = [
+        (smart-enter-binding "l")
+        (smart-enter-binding "Enter")
+      ];
     };
   };
 

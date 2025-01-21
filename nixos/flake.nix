@@ -33,6 +33,13 @@
       };
     };
 
+    yazi-plugins = {
+      url = "./flakes/yazi-plugins";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "nixos-wsl/flake-utils";
+      };
+    };
     # distant = {
     #   url = "./flakes/distant";
     #   inputs = {
@@ -49,6 +56,7 @@
       nixos-wsl,
       home-manager,
       nur,
+      yazi-plugins,
       ...
     }@inputs:
     let
@@ -63,6 +71,7 @@
 
       overlays = with inputs; [
         nur.overlays.default
+        yazi-plugins.overlays.default
 
         (final: prev: { grimblast = hyprland-contrib.packages.${prev.system}.grimblast; })
         (final: prev: { zjstatus = zjstatus.packages.${prev.system}.default; })
@@ -133,7 +142,9 @@
           profile = ./profiles/hyprland.nix;
           inherit overlays;
         };
-        specialArgs = { inherit pkgs-stable; };
+        specialArgs = {
+          inherit pkgs-stable;
+        };
       };
 
       nixosConfigurations.think-awesome = nixpkgs.lib.nixosSystem {
@@ -143,7 +154,9 @@
           profile = ./profiles/awesome.nix;
           inherit overlays;
         };
-        specialArgs = { inherit pkgs-stable; };
+        specialArgs = {
+          inherit pkgs-stable;
+        };
       };
     };
 }
