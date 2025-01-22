@@ -21,6 +21,7 @@
         nautilus
         kdePackages.kdenlive
         libqalculate
+        borgbackup
       ];
 
       programs = {
