@@ -5,7 +5,6 @@
       imports = [
         ../home/home-manager
         ../home/cli
-        ../home/theme/adwaita
         ../home/wm/awesome
         ../home/firefox
         ../home/kitty
@@ -43,15 +42,13 @@
     {
       imports = [
         ../system/wm/awesome
+        ../system/wm/plasma
         ../system/connman
         ../system/expressvpn
         ../system/nfs
         ../system/game
         ../system/vm/virtualbox
       ];
-
-      # needed for ../home/theme/adwaita
-      programs.dconf.enable = true;
 
       services.autorandr.enable = true;
     };
