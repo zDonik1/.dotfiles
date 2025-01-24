@@ -37,14 +37,10 @@
     {
       imports = [
         ../system/wm/plasma
-        ../system/connman
+        ../system/netman
         ../system/expressvpn
         ../system/game
-        ../system/vm/virtualbox
       ];
-
-      # needed for ../home/theme/adwaita
-      programs.dconf.enable = true;
 
       services.autorandr.enable = true;
     };
