@@ -42,7 +42,7 @@
     {
       imports = [
         ../system/wm/awesome
-        ../system/wm/plasma
+        ../system/wm/xfce
         ../system/connman
         ../system/expressvpn
         ../system/nfs

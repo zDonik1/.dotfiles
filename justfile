@@ -12,3 +12,7 @@ test config:
 # add nixos system to boot menu
 boot config:
     sudo nixos-rebuild boot -p {{ config }} --flake ./nixos#{{ config }}
+
+# delete older generations
+del-old config:
+    nix profile wipe-history --profile /nix/var/nix/profiles/system-profiles/{{ config }} --older-than 1d
