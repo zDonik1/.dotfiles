@@ -15,6 +15,7 @@
       bold_italic_font = "family=\"JetBrainsMono Nerd Font\" style=\"Bold Italic\"";
 
       window_padding_width = "6 8";
+      shell = "nu";
     };
   };
 }
