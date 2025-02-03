@@ -1,19 +1,15 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
   # set the env vars since the default shell is nushell
   _ = pkgs.runCommand "set-env-vars" { } ''
     source $env.HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
   '';
-  homeDir = "/home/zdonik";
 in
 {
   home = {
-    username = "zdonik";
-    homeDirectory = homeDir;
-
     sessionVariables = {
-      XDG_CONFIG_HOME = homeDir + "/.config";
-      XDG_DATA_HOME = homeDir + "/.local/share";
+      XDG_CONFIG_HOME = config.home.homeDirectory + "/.config";
+      XDG_DATA_HOME = config.home.homeDirectory + "/.local/share";
     };
 
     # This value determines the Home Manager release that your configuration is
