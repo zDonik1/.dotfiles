@@ -3,7 +3,6 @@
 {
   home.packages = with pkgs; [
     zellij
-    zjstatus
   ];
 
   home.file = {
