@@ -1,63 +1,67 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    neovim
+  home.packages =
+    with pkgs;
+    [
+      neovim
 
-    # compiling fzf-native
-    nushell
-    cmake
-    gnumake
-    gcc
+      # compiling fzf-native
+      nushell
+      cmake
+      gnumake
+      gcc
 
-    # fugitive
-    git
+      # fugitive
+      git
 
-    # lua
-    lua-language-server
-    stylua
+      # lua
+      lua-language-server
+      stylua
 
-    # csharp
-    csharp-ls
+      # nix
+      nil
+      nixd
+      nixfmt-rfc-style
+      biome
 
-    # nix
-    nil
-    nixd
-    nixfmt-rfc-style
-    biome
+      # python
+      ruff
+      (python3.withPackages (
+        python-pkgs: with python-pkgs; [
+          python-lsp-server
+          debugpy
+        ]
+      ))
 
-    # python
-    ruff
-    (python3.withPackages (
-      python-pkgs: with python-pkgs; [
-        python-lsp-server
-        debugpy
-      ]
-    ))
+      # cpp
+      clang-tools_18
+      lldb_18
+      cmake-language-server
+      cmake-format
 
-    # cpp
-    clang-tools_18
-    lldb_18
-    cmake-language-server
-    cmake-format
+      # rust
+      rustfmt
+      rust-analyzer
 
-    # rust
-    rustfmt
-    rust-analyzer
+      # go
+      gopls
 
-    # go
-    gopls
+      # gdscript
+      gdtoolkit_4
 
-    # gdscript
-    gdtoolkit_4
+      # yaml
+      yaml-language-server
+      prettierd
 
-    # yaml
-    yaml-language-server
-    prettierd
+      # toml
+      taplo
 
-    # toml
-    taplo
-  ];
+    ]
+    ++ lib.optionals (!pkgs.stdenv.isDarwin) [
+      # csharp
+      csharp-ls
+    ];
 
   home.file = {
     ".config/clangd/config.yaml".text = ''

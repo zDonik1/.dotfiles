@@ -16,3 +16,7 @@ boot config:
 # delete older generations
 del-old config:
     nix profile wipe-history --profile /nix/var/nix/profiles/system-profiles/{{ config }} --older-than 1d
+
+# switch to darwin system
+switch-mac:
+    darwin-rebuild switch --flake ./nixos

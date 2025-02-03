@@ -4,6 +4,12 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
+    };
 
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
@@ -46,6 +52,7 @@
     {
       nixpkgs,
       nixpkgs-stable,
+      nix-darwin,
       nixos-wsl,
       home-manager,
       nur,
@@ -74,18 +81,23 @@
         # (final: prev: { distant = distant.packages.${prev.system}.default; })
       ];
 
-      makeHomeManagerModules = home: [
-        home-manager.nixosModules.default
-
+      makeHomeManagerModules =
         {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            backupFileExtension = "bak";
-            users.zdonik = home;
-          };
-        }
-      ];
+          home,
+          isDarwin,
+        }:
+        [
+          (if isDarwin then home-manager.darwinModules.default else home-manager.nixosModules.default)
+
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "bak";
+              users.zdonik = home;
+            };
+          }
+        ];
 
       makeModuleSet =
         {
@@ -93,6 +105,7 @@
           profile,
           extra ? [ ],
           overlays ? [ ],
+          isDarwin ? false,
         }:
         let
           prof = import profile;
@@ -103,7 +116,15 @@
         ]
         ++ extra
         ++ (if prof ? system then [ prof.system ] else [ ])
-        ++ (if prof ? home then (makeHomeManagerModules prof.home) else [ ]);
+        ++ (
+          if prof ? home then
+            (makeHomeManagerModules {
+              home = prof.home;
+              inherit isDarwin;
+            })
+          else
+            [ ]
+        );
     in
     {
       nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
@@ -152,6 +173,15 @@
           host = ./hosts/think;
           profile = ./profiles/plasma.nix;
           inherit overlays;
+        };
+      };
+
+      darwinConfigurations.zdonik-mac = nix-darwin.lib.darwinSystem {
+        modules = makeModuleSet {
+          host = ./hosts/mac;
+          profile = ./profiles/mac.nix;
+          inherit overlays;
+          isDarwin = true;
         };
       };
     };

@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../common-configuration.nix
+    ../common-linux.nix
   ];
 
   boot = {
