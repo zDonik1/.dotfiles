@@ -52,7 +52,6 @@ $env.CPM_SOURCE_CACHE = ($env.HOME | path join ".cache/CPM")
 $env.EDITOR = "nvim"
 $env.PAGER = "less"
 $env.BROWSER = "firefox"
-$env.SHELL = "nu"
 $env.LS_COLORS = (source ~/.config/nushell/themes/ls-themes/catppuccin-mocha.nu)
 
 $env.FZF_DEFAULT_COMMAND = "fd --hidden --strip-cwd-prefix --exclude .git"
