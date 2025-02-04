@@ -5,6 +5,7 @@
       imports = [
         ../home/home-manager
         ../home/cli
+        ../home/firefox
         ../home/kitty
       ];
 

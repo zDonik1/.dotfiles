@@ -4,6 +4,7 @@
 {
   programs.firefox = {
     enable = true;
+    package = if pkgs.stdenv.isDarwin then null else pkgs.firefox;
 
     profiles.default = {
       isDefault = true;
