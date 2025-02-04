@@ -15,7 +15,9 @@
       bold_italic_font = "family=\"JetBrainsMono Nerd Font\" style=\"Bold Italic\"";
 
       window_padding_width = "6 8";
-      shell = "nu";
+
+      # make sure that nushell is started with all global/hm-session env vars
+      shell = "$SHELL -c nu";
     };
   };
 }
