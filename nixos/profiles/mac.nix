@@ -14,6 +14,7 @@
         keepassxc
         obsidian
         libqalculate
+        rclone
       ];
 
       services.syncthing.enable = true;

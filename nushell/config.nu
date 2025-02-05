@@ -687,8 +687,6 @@ use ~/.config/nushell/starship
 # SHELL FUNCTIONS
 # =======================================
 
-use ~/.config/broot/launcher/nushell/br_mod.nu *
-
 def --env y [...args] {
 	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
 	yazi ...$args --cwd-file $tmp
@@ -722,13 +720,6 @@ alias gl  = git log
 alias gph = git push
 alias gp  = git pull
 alias gf  = git fetch
-
-# broot
-alias bs = br --no-tree --sort-by-type -ih
-alias ba = br --no-tree --sort-by-type -sdpigh
-alias bt = br --sort-by-type -ih
-alias bw = br -iwh
-alias bm = br --sort-by-date -idh
 
 # eza 
 alias ls = eza -1 --group-directories-first --icons

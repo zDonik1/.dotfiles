@@ -16,7 +16,6 @@
     fzf
     zoxide
     just
-    broot
     bat
   ];
 }
