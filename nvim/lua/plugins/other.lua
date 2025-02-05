@@ -81,7 +81,11 @@ return {
 
 	{
 		"echasnovski/mini.operators",
-		config = true,
+		opts = {
+			exchange = {
+				prefix = "gy",
+			},
+		},
 	},
 
 	{
