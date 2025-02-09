@@ -1,7 +1,7 @@
 return {
 	"epwalsh/obsidian.nvim",
 	event = {
-		"BufReadPre " .. vim.fn.expand("~") .. "/SecondBrain/**.md",
+		"BufReadPost " .. vim.fn.expand("~") .. "/SecondBrain/**.md",
 		"BufNewFile " .. vim.fn.expand("~") .. "/SecondBrain/**.md",
 	},
 	cmd = {

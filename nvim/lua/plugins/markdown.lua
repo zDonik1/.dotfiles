@@ -1,3 +1,10 @@
+vim.api.nvim_create_autocmd("BufReadPre", {
+	pattern = "*.md",
+	callback = function()
+		vim.opt_local.conceallevel = 2
+	end,
+})
+
 return {
 	-- creates links with <C-m> which is undocumented, clashing with harpoon
 	{
