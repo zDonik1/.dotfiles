@@ -13,6 +13,8 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 vim.opt.smartindent = true
 vim.opt.showmode = false
+vim.opt.winwidth = 100
+vim.opt.winminwidth = 2
 vim.opt.fillchars:append({ diff = "/" })
 
 vim.opt.shell = "nu"
