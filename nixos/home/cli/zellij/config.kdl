@@ -39,7 +39,7 @@ plugins {
 
 keybinds clear-defaults=true {
     normal {
-        bind "Insert" { SwitchToMode "tmux"; }
+        bind "Ctrl Space" { SwitchToMode "tmux"; }
 
         bind "Ctrl 1" { GoToTab 1; }
         bind "Ctrl 2" { GoToTab 2; }

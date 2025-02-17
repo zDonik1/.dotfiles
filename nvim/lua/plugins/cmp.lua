@@ -6,7 +6,6 @@ local function make_mappings()
 		["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
 		["<Up>"] = cmp.mapping.select_prev_item(cmp_select),
 		["<Down>"] = cmp.mapping.select_next_item(cmp_select),
-		["<C-Space>"] = cmp.mapping.complete(),
 		["<Tab>"] = function(fallback)
 			if cmp.visible() then
 				cmp.confirm({ select = true })
