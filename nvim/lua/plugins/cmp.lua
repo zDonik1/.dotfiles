@@ -34,17 +34,17 @@ end
 
 return {
 	"hrsh7th/nvim-cmp",
+	version = false,
 	event = { "InsertEnter", "CmdlineEnter" },
 	dependencies = {
-		"saadparwaiz1/cmp_luasnip",
 		"hrsh7th/cmp-nvim-lua",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
 		"petertriho/cmp-git",
+		"abeldekat/cmp-mini-snippets",
 
-		"L3MON4D3/LuaSnip",
 		"VonHeikemen/lsp-zero.nvim",
 		"onsails/lspkind.nvim",
 	},
@@ -57,7 +57,7 @@ return {
 				{ name = "path" },
 				{ name = "nvim_lsp" },
 				{ name = "nvim_lua" },
-				{ name = "luasnip", keyword_length = 2 },
+				{ name = "mini_snippets" },
 				{ name = "buffer", keyword_length = 3 },
 			},
 			window = {
@@ -85,6 +85,14 @@ return {
 				end,
 			},
 			mapping = expand_mappings(mappings, { "i", "s" }),
+			snippet = {
+				expand = function(args)
+					local insert = MiniSnippets.config.expand.insert or MiniSnippets.default_insert
+					insert({ body = args.body }) -- Insert at cursor
+					cmp.resubscribe({ "TextChangedI", "TextChangedP" })
+					require("cmp.config").set_onetime({ sources = {} })
+				end,
+			},
 		})
 
 		cmp.setup.filetype("gitcommit", {
