@@ -5,7 +5,12 @@ return {
 	dependencies = "rafamadriz/friendly-snippets",
 
 	opts = function()
-		local snippets = require("mini.snippets")
-		return { snippets = { snippets.gen_loader.from_lang() } }
+		local gen_loader = require("mini.snippets").gen_loader
+		return {
+			snippets = {
+				gen_loader.from_lang(),
+				gen_loader.from_file(".vscode/project.code-snippets"),
+			},
+		}
 	end,
 }
