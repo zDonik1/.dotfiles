@@ -18,10 +18,8 @@ return {
 		end
 		require("nvim-surround").setup({
 			surrounds = {
-				["e"] = {
-					add = { "*", "*" },
-					find = get_text_object("@markup.italic.markdown_inline"),
-					delete = "^(.)().-(.)()$",
+				["j"] = {
+					add = { { "", "" }, { "", "" } },
 				},
 				["d"] = {
 					add = { "**", "**" },
