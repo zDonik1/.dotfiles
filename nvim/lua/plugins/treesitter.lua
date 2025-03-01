@@ -4,8 +4,6 @@ return {
 		"nvim-treesitter/nvim-treesitter-context",
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		"lewis6991/gitsigns.nvim",
-		"nushell/tree-sitter-nu",
-		"IndianBoy42/tree-sitter-just",
 	},
 	build = function()
 		vim.cmd("TSUpdate")
@@ -63,7 +61,6 @@ return {
 	config = function(_, opts)
 		require("nvim-treesitter.configs").setup(opts)
 		require("treesitter-context").setup({ separator = "─", max_lines = 5 })
-		require("tree-sitter-just").setup({})
 
 		local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
 		vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
