@@ -77,6 +77,7 @@ keybinds clear-defaults=true {
         bind "p" { SwitchToMode "pane"; }
         bind "r" { SwitchToMode "resize"; }
         bind "Space" { SwitchFocus; SwitchToMode "normal"; }
+        bind "Ctrl Space" { SwitchFocus; SwitchToMode "normal"; }
         bind "z" { ToggleFocusFullscreen; SwitchToMode "normal"; }
 
         // sessions
