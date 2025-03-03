@@ -85,6 +85,7 @@ local setup_lspconfigs = function()
 		"yamlls",
 		"taplo",
 		"gopls",
+		"dartls",
 	}
 	for _, lsp in ipairs(lsps) do
 		lspconfig[lsp].setup({})
