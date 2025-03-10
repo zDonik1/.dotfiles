@@ -11,7 +11,6 @@
 
       home.packages = with pkgs; [
         telegram-desktop
-        keepassxc
         obsidian
         libqalculate
         rclone
