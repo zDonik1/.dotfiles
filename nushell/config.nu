@@ -676,7 +676,6 @@ $env.config = {
 source ~/.config/nushell/completions/cargo-completions.nu
 source ~/.config/nushell/completions/git-completions.nu
 source ~/.config/nushell/completions/gh-completions.nu
-source ~/.config/nushell/completions/just-completions.nu
 source ~/.config/nushell/completions/rg-completions.nu
 
 source ~/.config/nushell/zoxide/zoxide.nu
