@@ -7,6 +7,7 @@
         ../home/cli
         ../home/firefox
         ../home/kitty
+        ../home/raycast
       ];
 
       home.packages = with pkgs; [
