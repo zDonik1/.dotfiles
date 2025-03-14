@@ -8,6 +8,7 @@
     ./zellij
     ./eza
     ./yazi
+    ./taskwarrior
   ];
 
   home.packages = with pkgs; [
