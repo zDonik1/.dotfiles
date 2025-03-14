@@ -105,4 +105,6 @@ return {
 			})
 		end,
 	},
+
+	{ "stevearc/overseer.nvim", config = true },
 }
