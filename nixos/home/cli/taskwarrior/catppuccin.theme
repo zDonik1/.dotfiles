@@ -18,10 +18,10 @@ color.completed=black
 color.deleted=red
 color.active=green
 color.recurring=blue
-color.scheduled=white on green
+color.scheduled=cyan
 color.until=yellow
-color.blocked=black on white
-color.blocking=black on bright white
+color.blocked=bright black
+color.blocking=
 
 # Project
 color.project.none=red
@@ -45,9 +45,9 @@ color.overdue=bold red
 #color.uda.X=
 
 # Report: burndown
-color.burndown.done=on green
-color.burndown.pending=on magenta
-color.burndown.started=on blue
+color.burndown.done=black on green
+color.burndown.pending=black on magenta
+color.burndown.started=black on blue
 
 # Report: history
 color.history.add=black on blue
@@ -62,10 +62,10 @@ color.summary.bar=black on green
 color.calendar.due=red
 color.calendar.due.today=underline bold red
 color.calendar.holiday=black on bright yellow
-color.calendar.overdue=bold white on bright red
+color.calendar.overdue=bold black on bright red
 color.calendar.scheduled=green
 color.calendar.today=black on cyan
-color.calendar.weekend=black
+color.calendar.weekend=bright black
 color.calendar.weeknumber=bold blue
 
 # Command: sync

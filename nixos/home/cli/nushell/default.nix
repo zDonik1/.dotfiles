@@ -8,7 +8,9 @@
     envFile.source = ./env.nu;
 
     shellAliases = {
-      ts = "task";
+      t = "task";
+      ta = "task add";
+      tal = "task add dep:(task +LATEST uuids)";
     };
   };
 
