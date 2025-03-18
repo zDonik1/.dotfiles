@@ -8,13 +8,17 @@
     config = {
       verbose = "no";
       uda.priority.values = "H,M,,L";
+      urgency.user.project.jrn.coefficient = -1;
       urgency.uda.priority.L.coefficient = -2;
     };
   };
+
+  home.packages = [ pkgs.timewarrior ];
 
   programs.nushell.shellAliases = {
     t = "task";
     ta = "task add";
     tal = "task add dep:(task +LATEST uuids)";
+    tw = "timew";
   };
 }
