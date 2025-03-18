@@ -239,6 +239,7 @@
         "nixpkgs-darwin": "nixpkgs-darwin",
         "nixpkgs-stable": "nixpkgs-stable",
         "nur": "nur",
+        "tgt": "tgt",
         "zjstatus": "zjstatus"
       }
     },
@@ -275,6 +276,26 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "tgt": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1741936433,
+        "narHash": "sha256-P+KBhq59zOZmpmDzvlobLdlRmNVJTy7ADYnqE0Hf1ko=",
+        "owner": "FedericoBruzzone",
+        "repo": "tgt",
+        "rev": "8f0dc98c359293701cc44df234bcac6b9f565cb1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "FedericoBruzzone",
+        "repo": "tgt",
         "type": "github"
       }
     },

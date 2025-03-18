@@ -18,5 +18,6 @@
     zoxide
     just
     bat
+    tgt
   ];
 }
