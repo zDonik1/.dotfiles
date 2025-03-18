@@ -11,4 +11,10 @@
       urgency.uda.priority.L.coefficient = -2;
     };
   };
+
+  programs.nushell.shellAliases = {
+    t = "task";
+    ta = "task add";
+    tal = "task add dep:(task +LATEST uuids)";
+  };
 }
