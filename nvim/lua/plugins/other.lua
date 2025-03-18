@@ -106,5 +106,12 @@ return {
 		end,
 	},
 
-	{ "stevearc/overseer.nvim", config = true },
+	{
+		"stevearc/overseer.nvim",
+		opts = {
+			task_list = {
+				direction = "right",
+			},
+		},
+	},
 }
