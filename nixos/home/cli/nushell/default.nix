@@ -8,6 +8,7 @@
     envFile.source = ./env.nu;
 
     shellAliases = {
+      jt = "just devtest";
     };
   };
 
