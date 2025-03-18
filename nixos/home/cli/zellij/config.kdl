@@ -1,7 +1,7 @@
 theme "catppuccin-mocha-custom"
 
 default_shell "nu"
-pane_frames false
+// pane_frames false
 
 ui {
 	pane_frames { rounded_corners true; }
