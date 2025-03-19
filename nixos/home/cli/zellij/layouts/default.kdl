@@ -3,7 +3,7 @@ layout {
         pane size=1 borderless=true {
             plugin location="file:@zjstatus_path@" {
                 format_left   "{mode} #[fg=#f2cdcd]  #[fg=#cdd6f4]{session} #[fg=#45475a]| {tabs}"
-                format_right  "{notifications} #[fg=#74c7ec]#[fg=#11111b,bg=#74c7ec] #[fg=#cdd6f4,bg=#313244] {command_git_branch}#[fg=#313244] #[fg=#a6e3a1]#[fg=#11111b,bg=#a6e3a1] #[fg=#cdd6f4,bg=#313244] {command_user}@{command_host}#[fg=#313244] #[fg=#f38ba8]#[fg=#11111b,bg=#f38ba8]󰃭 {datetime}#[fg=#313244]"
+                format_right  "{notifications} #[fg=#74c7ec]#[fg=#11111b,bg=#74c7ec] #[fg=#cdd6f4,bg=#313244] {command_git_branch}#[fg=#313244] #[fg=#b4befe]#[fg=#11111b,bg=#b4befe] #[fg=#cdd6f4,bg=#313244] {swap_layout}#[fg=#313244] #[fg=#a6e3a1]#[fg=#11111b,bg=#a6e3a1] #[fg=#cdd6f4,bg=#313244] {command_user}@{command_host}#[fg=#313244] #[fg=#f38ba8]#[fg=#11111b,bg=#f38ba8]󰃭 {datetime}#[fg=#313244]"
 
                 format_hide_on_overlength "true"
                 format_precedence         "lrc"
@@ -55,7 +55,12 @@ layout {
                 datetime_timezone "Asia/Tashkent"
             }
         }
-        children
+
+        pane split_direction="vertical" {
+            children
+            pane
+            pane focus=true size="30%"
+        }
     }
 }
 
