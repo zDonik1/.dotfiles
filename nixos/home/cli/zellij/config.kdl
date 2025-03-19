@@ -50,6 +50,8 @@ keybinds clear-defaults=true {
         bind "Ctrl 7" { GoToTab 7; }
         bind "Ctrl 8" { GoToTab 8; }
         bind "Ctrl 9" { GoToTab 9; }
+        bind "Ctrl f" { ToggleFloatingPanes; SwitchToMode "normal"; }
+
 
         bind "Alt h" "Alt Left" { MoveFocus "Left"; }
         bind "Alt l" "Alt Right" { MoveFocus "Right"; }
