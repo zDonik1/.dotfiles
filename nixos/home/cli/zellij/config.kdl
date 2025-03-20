@@ -52,10 +52,15 @@ keybinds clear-defaults=true {
         bind "Alt 8" { GoToTab 8; }
         bind "Alt 9" { GoToTab 9; }
 
-        bind "Alt h" "Alt Left" { MoveFocus "Left"; }
-        bind "Alt l" "Alt Right" { MoveFocus "Right"; }
-        bind "Alt j" "Alt Down" { MoveFocus "Down"; }
-        bind "Alt k" "Alt Up" { MoveFocus "Up"; }
+        bind "Ctrl Alt h" "Ctrl Alt Left" { MoveFocus "Left"; }
+        bind "Ctrl Alt l" "Ctrl Alt Right" { MoveFocus "Right"; }
+        bind "Ctrl Alt j" "Ctrl Alt Down" { MoveFocus "Down"; }
+        bind "Ctrl Alt k" "Ctrl Alt Up" { MoveFocus "Up"; }
+
+        bind "Alt h" "Alt Left" { Resize "Left"; }
+        bind "Alt l" "Alt Right" { Resize "Right"; }
+        bind "Alt j" "Alt Down" { Resize "Down"; }
+        bind "Alt k" "Alt Up" { Resize "Up"; }
 
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
