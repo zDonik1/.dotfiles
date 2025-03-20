@@ -40,7 +40,7 @@ plugins {
 keybinds clear-defaults=true {
     normal {
         bind "Ctrl Space" { SwitchToMode "tmux"; }
-        bind "Ctrl f" { ToggleFloatingPanes; SwitchToMode "normal"; }
+        bind "Ctrl g" { ToggleFocusFullscreen; SwitchFocus; }
 
         bind "Alt 1" { GoToTab 1; }
         bind "Alt 2" { GoToTab 2; }
