@@ -80,11 +80,12 @@ keybinds clear-defaults=true {
         bind "Space" { SwitchFocus; SwitchToMode "normal"; }
         bind "Ctrl Space" { SwitchFocus; SwitchToMode "normal"; }
         bind "z" { ToggleFocusFullscreen; SwitchToMode "normal"; }
+        bind "f" { ToggleFloatingPanes; SwitchToMode "normal"; }
 
         // sessions
         bind "d" { Detach; }
         bind "q" { Quit; }
-        bind "f" {
+        bind "n" {
             LaunchOrFocusPlugin "session-manager" {
                 floating true
                 move_to_focused_tab true
