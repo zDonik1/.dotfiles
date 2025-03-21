@@ -19,5 +19,6 @@
     just
     bat
     tgt
+    watchexec
   ];
 }
