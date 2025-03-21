@@ -9,6 +9,7 @@
     ./eza
     ./yazi
     ./taskwarrior
+    ./timewarrior
   ];
 
   home.packages = with pkgs; [

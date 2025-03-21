@@ -13,16 +13,12 @@
     };
   };
 
-  home.packages = with pkgs; [
-    taskwarrior-tui
-    timewarrior
-  ];
+  home.packages = with pkgs; [ taskwarrior-tui ];
 
   programs.nushell.shellAliases = {
     t = "task";
     ta = "task add";
     tal = "task add dep:(task +LATEST uuids)";
     tui = "taskwarrior-tui";
-    tw = "timew";
   };
 }
