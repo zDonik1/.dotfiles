@@ -108,6 +108,10 @@ return {
 
 	{
 		"stevearc/overseer.nvim",
+		keys = {
+			{ "<leader>mo", ":OverseerToggle<cr>" },
+			{ "<leader>mr", ":OverseerRun<cr>" },
+		},
 		opts = {
 			task_list = {
 				direction = "right",
