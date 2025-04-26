@@ -8,6 +8,7 @@
     config = {
       verbose = "no";
       uda.priority.values = "H,M,,L";
+      urgency.due.coefficient = 17;
       urgency.user.project.jrn.coefficient = -1;
       urgency.uda.priority.L.coefficient = -2;
     };
