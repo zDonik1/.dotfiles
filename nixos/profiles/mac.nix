@@ -7,6 +7,7 @@
         ../home/cli
         ../home/firefox
         ../home/kitty
+        ../home/ghostty
         ../home/raycast
         ../home/wm/aerospace
       ];
