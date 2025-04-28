@@ -42,25 +42,25 @@ keybinds clear-defaults=true {
         bind "Ctrl Space" { SwitchToMode "tmux"; }
         bind "Ctrl g" { ToggleFocusFullscreen; SwitchFocus; }
 
-        bind "Alt 1" { GoToTab 1; }
-        bind "Alt 2" { GoToTab 2; }
-        bind "Alt 3" { GoToTab 3; }
-        bind "Alt 4" { GoToTab 4; }
-        bind "Alt 5" { GoToTab 5; }
-        bind "Alt 6" { GoToTab 6; }
-        bind "Alt 7" { GoToTab 7; }
-        bind "Alt 8" { GoToTab 8; }
-        bind "Alt 9" { GoToTab 9; }
+        bind "Ctrl 1" { GoToTab 1; }
+        bind "Ctrl 2" { GoToTab 2; }
+        bind "Ctrl 3" { GoToTab 3; }
+        bind "Ctrl 4" { GoToTab 4; }
+        bind "Ctrl 5" { GoToTab 5; }
+        bind "Ctrl 6" { GoToTab 6; }
+        bind "Ctrl 7" { GoToTab 7; }
+        bind "Ctrl 8" { GoToTab 8; }
+        bind "Ctrl 9" { GoToTab 9; }
 
         bind "Ctrl Alt h" "Ctrl Alt Left" { MoveFocus "Left"; }
         bind "Ctrl Alt l" "Ctrl Alt Right" { MoveFocus "Right"; }
         bind "Ctrl Alt j" "Ctrl Alt Down" { MoveFocus "Down"; }
         bind "Ctrl Alt k" "Ctrl Alt Up" { MoveFocus "Up"; }
 
-        bind "Alt h" "Alt Left" { Resize "Left"; }
-        bind "Alt l" "Alt Right" { Resize "Right"; }
-        bind "Alt j" "Alt Down" { Resize "Down"; }
-        bind "Alt k" "Alt Up" { Resize "Up"; }
+        bind "Ctrl Alt Shift h" "Ctrl Alt Shift Left" { Resize "Left"; }
+        bind "Ctrl Alt Shift l" "Ctrl Alt Shift Right" { Resize "Right"; }
+        bind "Ctrl Alt Shift j" "Ctrl Alt Shift Down" { Resize "Down"; }
+        bind "Ctrl Alt Shift k" "Ctrl Alt Shift Up" { Resize "Up"; }
 
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
