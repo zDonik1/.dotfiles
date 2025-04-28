@@ -8,6 +8,7 @@
         ../home/firefox
         ../home/kitty
         ../home/raycast
+        ../home/wm/aerospace
       ];
 
       home.packages = with pkgs; [
