@@ -10,6 +10,7 @@
     ./yazi
     ./taskwarrior
     ./timewarrior
+    ./aichat
   ];
 
   home.packages = with pkgs; [
