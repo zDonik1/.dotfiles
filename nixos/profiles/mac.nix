@@ -20,6 +20,7 @@
       ];
 
       services.syncthing.enable = true;
+      services.ollama.enable = true;
 
       fonts.fontconfig.enable = true;
     };
