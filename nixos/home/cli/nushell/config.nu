@@ -582,3 +582,5 @@ def create-redir [service] {
 def build-bat-cache [] {
     ^bat cache --build
 }
+
+def yest [time] { (date now) - 1day | format date $"%Y%m%dT($time | fill -a r -c 0 -w 4)" }
