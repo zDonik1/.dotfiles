@@ -82,10 +82,10 @@ keybinds clear-defaults=true {
         // panes
         bind "p" { SwitchToMode "pane"; }
         bind "r" { SwitchToMode "resize"; }
-        bind "Space" { SwitchFocus; SwitchToMode "normal"; }
+        bind "Space" "Ctrl Space" { SwitchFocus; SwitchToMode "normal"; }
         bind "Ctrl Space" { SwitchFocus; SwitchToMode "normal"; }
         bind "z" { ToggleFocusFullscreen; SwitchToMode "normal"; }
-        bind "f" { ToggleFloatingPanes; SwitchToMode "normal"; }
+        bind "f" "Ctrl f" { ToggleFloatingPanes; SwitchToMode "normal"; }
 
         // sessions
         bind "d" { Detach; }
