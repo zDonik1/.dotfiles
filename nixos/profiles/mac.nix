@@ -16,7 +16,8 @@
         telegram-desktop
         obsidian
         libqalculate
-        rclone
+        kubectl
+        kubetui
       ];
 
       services.syncthing.enable = true;

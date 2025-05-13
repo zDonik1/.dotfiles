@@ -23,5 +23,6 @@
     bat
     tgt
     watchexec
+    htop
   ];
 }
