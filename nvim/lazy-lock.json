@@ -1,5 +1,5 @@
 {
-  "avante.nvim": { "branch": "main", "commit": "c6d5527ea811bf8f99e3ebeacf3978f38d4c28a4" },
+  "avante.nvim": { "branch": "main", "commit": "555b2e615c47f1587b21a05c9cae6c48537146a7" },
   "calendar.vim": { "branch": "master", "commit": "66e6d0955efb6beb68912dce3ff484e8805d975c" },
   "catppuccin.nvim": { "branch": "main", "commit": "045e3499d9ec8d84635fb08877ae44fd33f6a38d" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },

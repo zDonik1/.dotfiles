@@ -3,14 +3,26 @@ return {
 	event = "VeryLazy",
 	version = false,
 	opts = {
-		provider = "claude",
+		provider = "ollama",
+		cursor_applying_provider = "gemma3",
+		behaviour = { enable_cursor_planning_mode = true },
+
+		ollama = { model = "qwen3" },
 		claude = {
 			endpoint = "https://api.anthropic.com",
 			model = "claude-3-7-sonnet-20250219",
 			temperature = 0,
 			max_tokens = 4096,
 		},
-		disabled_tools = { "web_search" },
+
+		vendors = {
+			gemma3 = {
+				__inherited_from = "openai",
+				endpoint = "http://localhost:11434/v1",
+				model = "gemma3",
+				api_key_name = "",
+			},
+		},
 	},
 	build = "make",
 	dependencies = {
@@ -19,12 +31,9 @@ return {
 		"nvim-lua/plenary.nvim",
 		"MunifTanjim/nui.nvim",
 		--- The below dependencies are optional,
-		"echasnovski/mini.pick", -- for file_selector provider mini.pick
 		"nvim-telescope/telescope.nvim", -- for file_selector provider telescope
 		"hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-		"ibhagwan/fzf-lua", -- for file_selector provider fzf
 		"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-		"zbirenbaum/copilot.lua", -- for providers='copilot'
 		{
 			-- support for image pasting
 			"HakonHarnes/img-clip.nvim",
