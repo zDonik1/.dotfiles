@@ -61,6 +61,8 @@ keybinds clear-defaults=true {
         bind "Ctrl Alt Shift l" "Ctrl Alt Shift Right" { Resize "Right"; }
         bind "Ctrl Alt Shift j" "Ctrl Alt Shift Down" { Resize "Down"; }
         bind "Ctrl Alt Shift k" "Ctrl Alt Shift Up" { Resize "Up"; }
+        bind "Ctrl Alt Shift =" "Ctrl Alt Shift +" { Resize "Increase"; }
+        bind "Ctrl Alt Shift -" { Resize "Decrease"; }
 
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
