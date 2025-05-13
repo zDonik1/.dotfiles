@@ -11,13 +11,13 @@
     ./taskwarrior
     ./timewarrior
     ./aichat
+    ./zoxide
   ];
 
   home.packages = with pkgs; [
     ripgrep
     fd
     fzf
-    zoxide
     just
     bat
     tgt

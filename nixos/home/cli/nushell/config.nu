@@ -514,7 +514,6 @@ source ~/.config/nushell/completions/git-completions.nu
 source ~/.config/nushell/completions/gh-completions.nu
 source ~/.config/nushell/completions/rg-completions.nu
 
-source ~/.config/nushell/zoxide/zoxide.nu
 use ~/.config/nushell/starship
 
 
