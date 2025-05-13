@@ -11,6 +11,7 @@
     ./taskwarrior
     ./timewarrior
     ./aichat
+    ./direnv
     ./zoxide
   ];
 
