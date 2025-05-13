@@ -6,7 +6,13 @@ return {
 			winwidth = 26, -- 80 + 20 + 6 (signcolumn) gives 100 column width
 		},
 		ignore = {
-			filetype = { "undotree", "Avante", "AvanteInput", "AvanteSelectedFiles" },
+			filetype = {
+				"undotree",
+				"no-neck-pain",
+				"Avante",
+				"AvanteInput",
+				"AvanteSelectedFiles",
+			},
 		},
 	},
 }
