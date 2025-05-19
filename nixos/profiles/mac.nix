@@ -18,6 +18,7 @@
         libqalculate
         kubectl
         kubetui
+        aider-chat
       ];
 
       services.syncthing.enable = true;
