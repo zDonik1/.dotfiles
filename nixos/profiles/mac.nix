@@ -5,6 +5,7 @@
       imports = [
         ../home/home-manager
         ../home/cli
+        ../home/cli/aider
         ../home/firefox
         ../home/kitty
         ../home/ghostty
@@ -18,7 +19,6 @@
         libqalculate
         kubectl
         kubetui
-        aider-chat
       ];
 
       services.syncthing.enable = true;
