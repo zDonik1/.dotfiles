@@ -85,6 +85,9 @@ return {
 			exchange = {
 				prefix = "gy",
 			},
+			replace = {
+				prefix = "gf",
+			},
 		},
 	},
 
