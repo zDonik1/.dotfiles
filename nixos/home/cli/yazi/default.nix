@@ -11,6 +11,7 @@
     fzf
     zoxide
     imagemagick
+    exiftool
   ];
 
   programs.yazi = {
