@@ -6,6 +6,7 @@
         ../home/home-manager
         ../home/cli
         ../home/cli/aider
+        ../home/cli/kubetui
         ../home/firefox
         ../home/kitty
         ../home/ghostty
@@ -18,7 +19,6 @@
         obsidian
         libqalculate
         kubectl
-        kubetui
       ];
 
       services.syncthing.enable = true;
