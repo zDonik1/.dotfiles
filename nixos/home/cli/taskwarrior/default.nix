@@ -9,6 +9,8 @@
       verbose = "no";
       uda.priority.values = "H,M,,L";
       urgency.due.coefficient = 17;
+      urgency.blocking.coefficient = 4;
+      urgency.user.tag.soon.coefficient = 10;
       urgency.user.project.jrn.coefficient = -1;
       urgency.uda.priority.L.coefficient = -2;
     };
