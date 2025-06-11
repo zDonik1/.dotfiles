@@ -566,6 +566,8 @@ alias lm = la -s date -r
 # CUSTOM COMMANDS
 # =======================================
 
+use ~/.config/nushell/taskwarrior.nu *
+
 def create-redir [service] {
     let randNum = random int ..9999 | fill --alignment right --character '0' --width 4
     let alias = $"d_($service)($randNum)@tokhirov.uz"
@@ -581,5 +583,3 @@ def create-redir [service] {
 def build-bat-cache [] {
     ^bat cache --build
 }
-
-def yest [time] { (date now) - 1day | format date $"%Y%m%dT($time | fill -a r -c 0 -w 4)" }
