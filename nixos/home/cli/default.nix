@@ -13,6 +13,7 @@
     ./aichat
     ./direnv
     ./zoxide
+    ./gdu
   ];
 
   home.packages = with pkgs; [
