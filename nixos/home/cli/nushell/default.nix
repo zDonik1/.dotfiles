@@ -3,6 +3,8 @@
 {
   home.shell.enableNushellIntegration = true;
 
+  programs.starship.enable = true;
+
   programs.nushell = {
     enable = true;
     plugins = with pkgs.nushellPlugins; [ polars ];
@@ -14,14 +16,9 @@
     };
   };
 
-  home.packages = with pkgs; [
-    starship
-  ];
-
   xdg.configFile = {
     "nushell/completions".source = ./completions;
     "nushell/themes".source = ./themes;
-    "nushell/starship".source = ./starship;
     "nushell/taskwarrior.nu".source = ./taskwarrior.nu;
   };
 }

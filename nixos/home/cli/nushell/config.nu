@@ -514,8 +514,6 @@ source ~/.config/nushell/completions/git-completions.nu
 source ~/.config/nushell/completions/gh-completions.nu
 source ~/.config/nushell/completions/rg-completions.nu
 
-use ~/.config/nushell/starship
-
 
 # =======================================
 # ALIASES
