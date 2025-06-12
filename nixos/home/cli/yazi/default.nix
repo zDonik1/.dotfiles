@@ -17,6 +17,7 @@
   programs.yazi = {
     enable = true;
     initLua = ./init.lua;
+    shellWrapperName = "y";
 
     settings = {
       manager = {

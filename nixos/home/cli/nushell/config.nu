@@ -518,21 +518,6 @@ use ~/.config/nushell/starship
 
 
 # =======================================
-# SHELL FUNCTIONS
-# =======================================
-
-def --env y [...args] {
-	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
-	yazi ...$args --cwd-file $tmp
-	let cwd = (open $tmp)
-	if $cwd != "" and $cwd != $env.PWD {
-		cd $cwd
-	}
-	rm -fp $tmp
-}
-
-
-# =======================================
 # ALIASES
 # =======================================
 
@@ -556,10 +541,8 @@ alias gp  = git pull
 alias gf  = git fetch
 
 # eza 
-alias ls = eza -1 --group-directories-first --icons
-alias la = ls -la
-alias lt = ls -T
-alias lm = la -s date -r
+alias lt = eza -T
+alias lm = eza -la -s date -r
 
 
 # =======================================
