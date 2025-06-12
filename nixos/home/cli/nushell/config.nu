@@ -547,8 +547,6 @@ alias lm = eza -la -s date -r
 # CUSTOM COMMANDS
 # =======================================
 
-use ~/.config/nushell/taskwarrior.nu *
-
 def create-redir [service] {
     let randNum = random int ..9999 | fill --alignment right --character '0' --width 4
     let alias = $"d_($service)($randNum)@tokhirov.uz"

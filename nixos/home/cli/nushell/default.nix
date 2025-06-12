@@ -19,6 +19,5 @@
   xdg.configFile = {
     "nushell/completions".source = ./completions;
     "nushell/themes".source = ./themes;
-    "nushell/taskwarrior.nu".source = ./taskwarrior.nu;
   };
 }

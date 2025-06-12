@@ -43,5 +43,8 @@
     '';
   };
 
-  programs.nushell.shellAliases.tw = "timew";
+  programs.nushell = {
+    shellAliases.tw = "timew";
+    extraConfig = "use ${./timewarrior.nu} *";
+  };
 }
