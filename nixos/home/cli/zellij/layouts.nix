@@ -197,15 +197,19 @@ in
           }
           tab name="time" focus=true split_direction="vertical" {
               pane size="40%" {
-                  pane name="2 day summary" size="65%" command="watchexec" {
-                      args "-q" "-c" "-w" "${homeDir}/.local/share/timewarrior/data" \
-                           "timew sum 2days ago"
+                  pane name="2 day summary" size="40%" command="watchexec" {
+                      args "-qc" "-w" "${homeDir}/.local/share/timewarrior/data" \
+                           "timew sum 1days ago"
+                  }
+                  pane name="time budget" size="25%" command="watchexec" {
+                      args "-qc" "--shell" "nu" "-w" "${homeDir}/.local/share/timewarrior/data" \
+                           "source $nu.config-path; twbud"
                   }
                   pane
               }
               pane {
                   pane name="2 week report" size="30%" command="watchexec" {
-                      args "-q" "-c" "-w" "${homeDir}/.local/share/timewarrior/data" \
+                      args "-qc" "-w" "${homeDir}/.local/share/timewarrior/data" \
                            "timew week 14days before tomor"
                   }
                   pane name="tasks" command="taskwarrior-tui"
