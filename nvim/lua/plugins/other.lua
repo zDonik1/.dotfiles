@@ -29,11 +29,6 @@ return {
 	},
 
 	{
-		"itchyny/calendar.vim",
-		cmd = "Calendar",
-	},
-
-	{
 		"tpope/vim-unimpaired",
 		keys = { "[", "]" },
 	},
