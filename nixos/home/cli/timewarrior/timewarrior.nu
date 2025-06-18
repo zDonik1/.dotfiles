@@ -30,7 +30,7 @@ export def twbud [] {
         jobsearch: 2hr
         journal: 1hr
         gosleep: 2hr
-        "chores|errands": 2hr
+        "chores|errands|config": 2hr
     }
 
     $budgets
