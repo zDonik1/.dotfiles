@@ -6,9 +6,10 @@ return {
 	},
 	cmd = {
 		"ObsidianQuickSwitch",
+		"ObsidianNewZettel",
+		"ObsidianNewFromTemplate",
 		"ObsidianDailies",
 		"ObsidianToday",
-		"ObsidianNew",
 		"ObsidianTag",
 	},
 	dependencies = {
@@ -27,14 +28,26 @@ return {
 		vim.keymap.set(
 			"n",
 			"<leader>on",
-			vim.cmd.ObsidianNew,
+			vim.cmd.ObsidianNewFromTemplate,
 			{ desc = "Obsidian: Create new note" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>oz",
+			vim.cmd.ObsidianNewZettel,
+			{ desc = "Obsidian: Create new zettel" }
 		)
 		vim.keymap.set(
 			"n",
 			"<leader>oq",
 			vim.cmd.ObsidianQuickSwitch,
 			{ desc = "Obsidian: Open quick switch dialog" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>ob",
+			vim.cmd.ObsidianBacklinks,
+			{ desc = "Obsidian: Open backlinks" }
 		)
 		vim.keymap.set(
 			"n",
@@ -78,7 +91,6 @@ return {
 
 		require("obsidian").setup({
 			sort_by = "accessed",
-			disable_frontmatter = true,
 			workspaces = {
 				{ name = "personal", path = "~/SecondBrain" },
 			},
@@ -104,24 +116,23 @@ return {
 			note_id_func = function(title)
 				return title
 			end,
-			wiki_link_func = "use_path_only",
+			wiki_link_func = "use_alias_only",
+
+			note_frontmatter_func = function(note)
+				if note.metadata ~= nil then
+					return note.metadata
+				end
+				return {}
+			end,
+
 			mappings = {
-				["gf"] = {
-					action = function()
-						return require("obsidian").util.gf_passthrough()
-					end,
+				["<cr>"] = {
+					action = require("obsidian").util.gf_passthrough,
 					opts = { noremap = false, expr = true, buffer = true },
 				},
-				["<leader>oh"] = {
-					action = function()
-						return require("obsidian").util.toggle_checkbox()
-					end,
-					opts = { buffer = true },
-				},
 			},
+			follow_url_func = vim.ui.open,
 			callbacks = {
-				---@param client obsidian.Client
-				---@param workspace obsidian.Workspace
 				post_set_workspace = function(client, workspace)
 					client.log.info("Changing directory to %s", workspace.path)
 					vim.cmd.cd(tostring(workspace.path))
@@ -150,6 +161,29 @@ return {
 		})
 
 		-- custom Ex commands
+		vim.api.nvim_create_user_command("ObsidianNewZettel", function(_)
+			local util = require("obsidian.util")
+			local log = require("obsidian.log")
+			local client = require("obsidian").get_client()
+
+			local note
+			local title = util.input("Enter title or path (optional): ", { completion = "file" })
+			if not title then
+				log.warn("Aborted")
+				return
+			elseif title == "" then
+				title = nil
+			end
+			note = client:create_note({ title = title, no_write = true })
+			client:open_note(note, { sync = true })
+			client:write_note_to_buffer(note, { template = "note_template" })
+		end, {
+			bang = false,
+			bar = false,
+			register = false,
+			desc = "Create a new zettel note",
+		})
+
 		local offset_daily = function(offset)
 			local filename = vim.fn.expand("%:t:r")
 			local year, month, day = filename:match("(%d+)-(%d+)-(%d+)")
