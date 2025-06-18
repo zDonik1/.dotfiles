@@ -18,6 +18,7 @@
 
       keybind = [
         "global:cmd+grave_accent=toggle_quick_terminal"
+        "super+enter=unbind"
       ];
     };
     themes = {
