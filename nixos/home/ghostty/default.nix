@@ -15,6 +15,10 @@
 
       command = "$SHELL -c nu";
       macos-titlebar-style = "hidden";
+
+      keybind = [
+        "global:cmd+grave_accent=toggle_quick_terminal"
+      ];
     };
     themes = {
       catppuccin-mocha = {
