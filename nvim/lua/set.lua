@@ -15,16 +15,6 @@ vim.opt.sidescroll = 5
 vim.opt.listchars:append({ precedes = "<", extends = ">" })
 vim.opt.fillchars:append({ diff = "/" })
 
-vim.opt.shell = "nu"
-vim.opt.shellcmdflag = "--stdin -c"
-vim.opt.shellredir = "o+e> %s"
-vim.opt.shellpipe = "o+e>| tee { save %s }"
-vim.opt.shellquote = "'"
-vim.opt.shellxquote = ""
-if string.find(vim.uv.os_uname().sysname, "Windows") then
-	vim.opt.shellslash = true
-end
-
 if os.getenv("XDG_DATA_HOME") then
 	vim.opt.directory = os.getenv("XDG_DATA_HOME") .. "/nvim-data/swap"
 end
