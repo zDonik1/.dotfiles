@@ -17,6 +17,10 @@ export def tra [start: string, end: string, ...tags: string] {
     _tra (to-datetime $start) (to-datetime $end) ...$tags
 }
 
+export def trafl [end: string, ...tags: string] {
+    _tra (to-datetime (timew get dom.tracked.1.end)) (to-datetime $end) ...$tags
+}
+
 export def tras [start: string, rest: int, end: string] {
     let $start = to-datetime $start
     let $resttime = $start + ($rest | into duration --unit min)
