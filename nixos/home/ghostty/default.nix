@@ -7,7 +7,7 @@
     settings = {
       theme = "catppuccin-mocha";
       font-family = "JetBrainsMono Nerd Font";
-      font-size = 11;
+      font-size = 12;
       window-padding-x = 6;
       window-padding-y = 4;
       window-padding-balance = true;
