@@ -16,7 +16,9 @@
       "zellij/config.kdl".source = ./config.kdl;
       "zellij/layouts/default.kdl".text = layouts.default;
       "zellij/layouts/default.swap.kdl".text = layouts.defaultSwap;
-      "zellij/layouts/journal.kdl".text = layouts.journal;
-      "zellij/layouts/journal.swap.kdl".text = layouts.defaultSwap;
+      "zellij/layouts/time.kdl".text = layouts.time;
+      "zellij/layouts/time.swap.kdl".text = layouts.defaultSwap;
+      "zellij/layouts/ledger.kdl".text = layouts.ledger;
+      "zellij/layouts/ledger.swap.kdl".text = layouts.defaultSwap;
     };
 }

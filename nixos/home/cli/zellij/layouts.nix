@@ -178,7 +178,7 @@ in
 
   '';
 
-  journal =
+  time =
     let
       homeDir = config.home.homeDirectory;
     in
@@ -186,9 +186,6 @@ in
       layout {
           ${defaultTabTemplate { }}
           
-          tab name="jrn" {
-              pane name="journal" command="nvim" cwd="~/SecondBrain"
-          }
           tab name="ledger" split_direction="vertical" cwd="~/ledger" {
               pane name="ledger" size="40%" command="nvim"
               pane name="report" command="just" {
@@ -217,4 +214,17 @@ in
           }
       }
     '';
+
+  ledger = ''
+    layout {
+        ${defaultTabTemplate { }}
+        
+        tab name="ledger" split_direction="vertical" cwd="~/ledger" {
+            pane name="ledger" size="40%" command="nvim"
+            pane name="report" command="just" {
+                args "dev"
+            }
+        }
+    }
+  '';
 }
