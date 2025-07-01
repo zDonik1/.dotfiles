@@ -44,6 +44,10 @@ vim.keymap.set("n", "<leader>r", function()
 	end
 end, { desc = "go to last window" })
 
+
+-- tabs
+vim.keymap.set("n", "<leader>tc", vim.cmd.tabc)
+
 vim.keymap.set("v", "J", ":m '>+1<cr>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<cr>gv=gv")
 
