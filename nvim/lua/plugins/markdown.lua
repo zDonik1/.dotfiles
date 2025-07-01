@@ -31,7 +31,6 @@ return {
 						{ mode = "n", left = "]c", right = "<Plug>Markdown_MoveToCurHeader" },
 						{ mode = "n", left = "]u", right = "<Plug>Markdown_MoveToParentHeader" },
 						{ mode = "n", left = "<C-c>", right = "<Plug>Markdown_Checkbox" },
-						{ mode = "n", left = "<tab>", right = "<Plug>Markdown_Fold" },
 						{ mode = "n", left = "O", right = "<Plug>Markdown_NewLineAbove" },
 						{ mode = "n", left = "o", right = "<Plug>Markdown_NewLineBelow" },
 
