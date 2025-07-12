@@ -32,8 +32,8 @@ export def tras [start: string, rest: int, end: string] {
 export def twbud [] {
     let budgets = {
         jobsearch: 1hr
-        journal: 1hr
-        gosleep: 2hr
+        journal: 0.5hr
+        gosleep: 3.5hr
         "chores|errands|config": 2hr
     }
 
