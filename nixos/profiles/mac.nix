@@ -20,6 +20,7 @@
         obsidian
         libqalculate
         kubectl
+        helmfile
       ];
 
       services.syncthing.enable = true;
