@@ -20,12 +20,19 @@ return {
 				python = { require("formatter.filetypes.python").ruff },
 				nix = { require("formatter.filetypes.nix").nixfmt },
 				cmake = { require("formatter.filetypes.cmake").cmakeformat },
-				yaml = { require("formatter.filetypes.yaml").prettierd },
 				json = { require("formatter.filetypes.json").biome },
 				toml = { require("formatter.filetypes.toml").taplo },
 				gdscript = {
 					function()
 						return { exe = "gdformat" }
+					end,
+				},
+				yaml = {
+					function()
+						if util.get_current_buffer_file_name() == "helmfile.yaml" then
+							return nil
+						end
+						return require("formatter.filetypes.yaml").prettierd()
 					end,
 				},
 				cpp = {
