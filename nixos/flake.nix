@@ -31,6 +31,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-rosetta-builder = {
+      url = "github:cpick/nix-rosetta-builder";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
+    };
+
     zjstatus = {
       url = "github:dj95/zjstatus";
       inputs = {
@@ -60,6 +65,7 @@
       nix-darwin,
       nixos-wsl,
       home-manager,
+      nix-rosetta-builder,
       nur,
       tgt,
       ...
@@ -190,6 +196,7 @@
           inherit overlays;
           isDarwin = true;
         };
+        specialArgs = { inherit nix-rosetta-builder; };
       };
     };
 }
