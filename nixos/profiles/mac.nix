@@ -34,6 +34,7 @@
     {
       imports = [
         nix-rosetta-builder.darwinModules.default
+        ../system/devenv
       ];
 
       nix.linux-builder.enable = true;
