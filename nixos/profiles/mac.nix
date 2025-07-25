@@ -21,6 +21,7 @@
         libqalculate
         kubectl
         helmfile
+        claude-code
       ];
 
       services.syncthing.enable = true;
