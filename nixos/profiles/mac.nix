@@ -24,7 +24,7 @@
       ];
 
       services.syncthing.enable = true;
-      services.ollama.enable = true;
+      services.ollama.enable = false;
 
       fonts.fontconfig.enable = true;
     };
