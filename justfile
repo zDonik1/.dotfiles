@@ -18,5 +18,5 @@ del-old config:
     nix profile wipe-history --profile /nix/var/nix/profiles/system-profiles/{{ config }} --older-than 1d
 
 # switch to darwin system
-switch-mac:
-    darwin-rebuild switch --flake ./nixos
+switch-mac *ARGS:
+    sudo darwin-rebuild switch --flake ./nixos {{ ARGS }}

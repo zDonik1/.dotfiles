@@ -9,7 +9,7 @@
     profiles.default = {
       isDefault = true;
       search = {
-        default = "DuckDuckGo";
+        default = "ddg";
         force = true;
       };
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
