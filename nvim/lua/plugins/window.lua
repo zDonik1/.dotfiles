@@ -1,6 +1,7 @@
 local ft_ignores = {
 	"undotree",
 	"no-neck-pain",
+	"snacks_terminal",
 	"Avante",
 	"AvanteInput",
 	"AvanteSelectedFiles",
