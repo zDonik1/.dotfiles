@@ -25,5 +25,6 @@
     tgt
     watchexec
     htop
+    devenv
   ];
 }
