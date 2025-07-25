@@ -1,3 +1,11 @@
+local ft_ignores = {
+	"undotree",
+	"no-neck-pain",
+	"Avante",
+	"AvanteInput",
+	"AvanteSelectedFiles",
+}
+
 return {
 	"anuvyklack/windows.nvim",
 	dependencies = { "anuvyklack/middleclass" },
@@ -6,13 +14,7 @@ return {
 			winwidth = 26, -- 80 + 20 + 6 (signcolumn) gives 100 column width
 		},
 		ignore = {
-			filetype = {
-				"undotree",
-				"no-neck-pain",
-				"Avante",
-				"AvanteInput",
-				"AvanteSelectedFiles",
-			},
+			filetype = ft_ignores,
 		},
 	},
 
@@ -31,7 +33,6 @@ return {
 			},
 		},
 		config = function(_, opts)
-			local ignore_filetypes = {}
 			local ignore_buftypes = { "nofile", "prompt", "popup" }
 
 			local augroup = vim.api.nvim_create_augroup("FocusDisable", { clear = true })
@@ -51,7 +52,7 @@ return {
 			vim.api.nvim_create_autocmd("FileType", {
 				group = augroup,
 				callback = function(_)
-					if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
+					if vim.tbl_contains(ft_ignores, vim.bo.filetype) then
 						vim.b.focus_disable = true
 					else
 						vim.b.focus_disable = false
