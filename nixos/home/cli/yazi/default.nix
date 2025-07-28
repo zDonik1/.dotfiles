@@ -20,7 +20,7 @@
     shellWrapperName = "y";
 
     settings = {
-      manager = {
+      mgr = {
         linemode = "size_and_mtime";
         show_hidden = true;
         scrolloff = 5;
