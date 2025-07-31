@@ -44,6 +44,9 @@ vim.keymap.set("n", "<leader>r", function()
 	end
 end, { desc = "go to last window" })
 
+-- buffers
+vim.keymap.set("n", "<leader>bd", vim.cmd.bd)
+vim.keymap.set("n", "<leader>bo", "<cmd>%bd|e#|bd#<cr>")
 
 -- tabs
 vim.keymap.set("n", "<leader>tc", vim.cmd.tabc)
