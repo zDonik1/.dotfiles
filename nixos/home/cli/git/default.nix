@@ -1,5 +1,8 @@
 { pkgs, ... }:
-
+let
+  email = "doniyor@tokhirov.uz";
+  name = "Doniyor Tokhirov";
+in
 {
   home.packages = with pkgs; [
     git-machete
@@ -9,8 +12,8 @@
 
   programs.git = {
     enable = true;
-    userEmail = "doniyor@tokhirov.uz";
-    userName = "Doniyor Tokhirov";
+    userEmail = email;
+    userName = name;
 
     aliases = {
       s = "status";
@@ -29,6 +32,13 @@
       aliases = {
         co = "pr checkout";
       };
+    };
+  };
+
+  programs.jujutsu = {
+    enable = true;
+    settings.user = {
+      inherit email name;
     };
   };
 }
