@@ -4,6 +4,8 @@ local add_hidden_flags = function(command)
 	table.insert(command, "!**/.git/*")
 	table.insert(command, "--glob")
 	table.insert(command, "!**/.jj/*")
+	table.insert(command, "--glob")
+	table.insert(command, "!**/.devenv*/*")
 	return command
 end
 
