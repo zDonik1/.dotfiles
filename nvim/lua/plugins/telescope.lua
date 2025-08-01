@@ -1,21 +1,19 @@
--- We cache the results of "git rev-parse"
--- Process creation is expensive in Windows, so this reduces latency
-local is_inside_work_tree = {}
+local add_hidden_flags = function(command)
+	table.insert(command, "--hidden")
+	table.insert(command, "--glob")
+	table.insert(command, "!**/.git/*")
+	table.insert(command, "--glob")
+	table.insert(command, "!**/.jj/*")
+	return command
+end
+
+local search_command = add_hidden_flags({ "rg", "--files" })
 
 local project_files = function()
-	local opts = {} -- define here if you want to define something
-
-	local cwd = vim.fn.getcwd()
-	if is_inside_work_tree[cwd] == nil then
-		vim.fn.system("git rev-parse --is-inside-work-tree")
-		is_inside_work_tree[cwd] = vim.v.shell_error == 0
-	end
-
-	if is_inside_work_tree[cwd] then
-		require("telescope.builtin").git_files(opts)
-	else
-		require("telescope.builtin").find_files(opts)
-	end
+	local command = vim.deepcopy(search_command)
+	table.insert(command, "--ignore-file")
+	table.insert(command, ".gitignore")
+	require("telescope.builtin").find_files({ find_command = command })
 end
 
 return {
@@ -28,13 +26,6 @@ return {
 		},
 	},
 	opts = function()
-		local add_hidden_flags = function(command)
-			table.insert(command, "--hidden")
-			table.insert(command, "--glob")
-			table.insert(command, "!**/.git/*")
-			return command
-		end
-
 		local vimgrep_arguments = { unpack(require("telescope.config").values.vimgrep_arguments) }
 
 		return {
@@ -53,7 +44,7 @@ return {
 			},
 			pickers = {
 				find_files = {
-					find_command = add_hidden_flags({ "rg", "--files" }),
+					find_command = search_command,
 				},
 			},
 		}
