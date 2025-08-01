@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   programs.taskwarrior = {
@@ -13,6 +13,24 @@
       urgency.user.tag.soon.coefficient = 10;
       urgency.user.project.jrn.coefficient = -1;
       urgency.uda.priority.L.coefficient = -2;
+
+      context = {
+        soon = {
+          read = lib.concatStrings [
+            "(tag:soon or tag:next or sched.before:eond or due.before:eond) "
+            "pro.not:go pro.not:secops"
+          ];
+          write = "tag:soon";
+        };
+        go = rec {
+          read = "pro:go";
+          write = read;
+        };
+        secops = rec {
+          read = "pro:secops";
+          write = read;
+        };
+      };
     };
   };
 
