@@ -37,8 +37,10 @@ in
 
   programs.jujutsu = {
     enable = true;
-    settings.user = {
-      inherit email name;
+    settings = {
+      user = { inherit email name; };
+
+      ui.default-command = "log";
     };
   };
 }
