@@ -8,11 +8,17 @@ let
       | ${pkgs.keepassxc}/bin/keepassxc-cli show -sq -a password ~/keepass/Passwords.kdbx $1
   '';
 
-  retention = {
-    keepDaily = 5;
-    keepWeekly = 3;
-    keepMonthly = 2;
-    keepYearly = 1;
+  common = {
+    retention = {
+      keepDaily = 5;
+      keepWeekly = 3;
+      keepMonthly = 2;
+      keepYearly = 1;
+    };
+
+    hooks.extraConfig = {
+      healthchecks.ping_url = "https://hc.tokhirov.uz/ping/ca35e3c3-ab27-4446-b5d9-9dc17ed4f5bf";
+    };
   };
 in
 {
@@ -25,16 +31,18 @@ in
           repositories = [ "${backupsDir}/SecondBrain" ];
         };
         storage.encryptionPasscommand = "${getKeepassEntry}/bin/get-keepass-entry SecondBrain";
-        inherit retention;
-      };
+      }
+      // common;
+
       ledger = {
         location = {
           sourceDirectories = [ "${homeDir}/ledger" ];
           repositories = [ "${backupsDir}/ledger" ];
         };
         storage.encryptionPasscommand = "${getKeepassEntry}/bin/get-keepass-entry ledger";
-        inherit retention;
-      };
+      }
+      // common;
+
       timetask = {
         location = {
           sourceDirectories = [
@@ -44,8 +52,8 @@ in
           repositories = [ "${backupsDir}/timetask" ];
         };
         storage.encryptionPasscommand = "${getKeepassEntry}/bin/get-keepass-entry timetask";
-        inherit retention;
-      };
+      }
+      // common;
     };
   };
 
