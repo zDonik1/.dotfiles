@@ -92,7 +92,7 @@ return {
 				callback = function()
 					vim.keymap.set(
 						"n",
-						"<leader>h",
+						"<leader>i",
 						vim.cmd.Ouroboros,
 						{ desc = "Open alternate (header/source) file" }
 					)
