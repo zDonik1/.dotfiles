@@ -1,5 +1,4 @@
-local function make_mappings()
-	local cmp = require("cmp")
+local function make_mappings(cmp)
 	local cmp_select = { behavior = cmp.SelectBehavior.Select }
 	return {
 		["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
@@ -48,11 +47,9 @@ return {
 		"VonHeikemen/lsp-zero.nvim",
 		"onsails/lspkind.nvim",
 	},
-	config = function()
+	opts = function()
 		local cmp = require("cmp")
-		local mappings = make_mappings()
-
-		cmp.setup({
+		return {
 			sources = {
 				{ name = "path" },
 				{ name = "nvim_lsp" },
@@ -84,7 +81,7 @@ return {
 					return kind
 				end,
 			},
-			mapping = expand_mappings(mappings, { "i", "s" }),
+			mapping = expand_mappings(make_mappings(cmp), { "i", "s" }),
 			snippet = {
 				expand = function(args)
 					local insert = MiniSnippets.config.expand.insert or MiniSnippets.default_insert
@@ -93,7 +90,13 @@ return {
 					require("cmp.config").set_onetime({ sources = {} })
 				end,
 			},
-		})
+		}
+	end,
+	config = function(_, opts)
+		local cmp = require("cmp")
+		local mappings = expand_mappings(make_mappings(cmp), { "c" })
+
+		cmp.setup(opts)
 
 		cmp.setup.filetype("gitcommit", {
 			sources = cmp.config.sources({
@@ -107,7 +110,7 @@ return {
 			sources = {
 				{ name = "buffer" },
 			},
-			mapping = expand_mappings(mappings, { "c" }),
+			mapping = mappings,
 		})
 
 		cmp.setup.cmdline(":", {
@@ -116,7 +119,7 @@ return {
 			}, {
 				{ name = "cmdline" },
 			}),
-			mapping = expand_mappings(mappings, { "c" }),
+			mapping = mappings,
 		})
 	end,
 }
