@@ -23,6 +23,19 @@ in
       adog = "log --all --decorate --oneline --graph";
       cm = "commit";
     };
+
+    extraConfig = {
+      diff.colorMoved = "default";
+      include.path = "${./catppuccin.gitconfig}";
+    };
+
+    delta = {
+      enable = true;
+      options = {
+        features = "catppuccin-mocha";
+        line-numbers = true;
+      };
+    };
   };
 
   programs.gh = {
@@ -63,11 +76,21 @@ in
         ui = {
           editor = "nvim";
           default-command = "log";
+          diff-formatter = "delta";
           diff-editor = "nvim";
         };
 
-        merge-tools.nvim = {
-          program = "${nvimdiff}/bin/nvimdiff";
+        merge-tools = {
+          nvim = {
+            program = "${nvimdiff}/bin/nvimdiff";
+          };
+          delta = {
+            program = "delta";
+            diff-expected-exit-codes = [
+              0
+              1
+            ];
+          };
         };
       };
     };
