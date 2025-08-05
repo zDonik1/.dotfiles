@@ -43,4 +43,9 @@ return {
 		"sindrets/diffview.nvim",
 		cmd = "DiffviewOpen",
 	},
+
+	{
+		"avm99963/vim-jjdescription",
+		ft = ".jjdescription",
+	},
 }
