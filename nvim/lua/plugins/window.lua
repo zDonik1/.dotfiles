@@ -9,15 +9,18 @@ local ft_ignores = {
 }
 
 return {
-	"anuvyklack/windows.nvim",
-	dependencies = { "anuvyklack/middleclass" },
-	opts = {
-		autowidth = {
-			winwidth = 26, -- 80 + 20 + 6 (signcolumn) gives 100 column width
-		},
-		ignore = {
-			filetype = ft_ignores,
-			buftype = { "terminal" },
+	{
+		"anuvyklack/windows.nvim",
+		dependencies = { "anuvyklack/middleclass" },
+		opts = {
+			autowidth = {
+				enable = true,
+				winwidth = 26, -- 80 + 20 + 6 (signcolumn) gives 100 column width
+			},
+			ignore = {
+				filetype = ft_ignores,
+				buftype = { "terminal" },
+			},
 		},
 	},
 

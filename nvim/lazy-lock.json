@@ -23,6 +23,7 @@
   "lsp-zero.nvim": { "branch": "v3.x", "commit": "81c25389c855dd0e0fad4863f7464e1389e45ca3" },
   "lspkind.nvim": { "branch": "master", "commit": "d79a1c3299ad0ef94e255d045bed9fa26025dab6" },
   "lualine.nvim": { "branch": "master", "commit": "7d131a8d3ba5016229e8a1d08bf8782acea98852" },
+  "middleclass": { "branch": "master", "commit": "9fab4d5bca67262614960960ca35c4740eb2be2c" },
   "mini.icons": { "branch": "main", "commit": "ec61af6e606fc89ee3b1d8f2f20166a3ca917a36" },
   "mini.operators": { "branch": "main", "commit": "2df4df029be367adfc781a8a1b5e8067d2d979df" },
   "mini.snippets": { "branch": "main", "commit": "c9fc2dac03fa86e976b95b62724145d7cf4d9721" },
