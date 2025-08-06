@@ -47,16 +47,21 @@ return {
 		"VonHeikemen/lsp-zero.nvim",
 		"onsails/lspkind.nvim",
 	},
-	opts = function()
+	opts = function(_, opts)
 		local cmp = require("cmp")
-		return {
-			sources = {
-				{ name = "path" },
-				{ name = "nvim_lsp" },
-				{ name = "nvim_lua" },
-				{ name = "mini_snippets" },
-				{ name = "buffer", keyword_length = 3 },
-			},
+		local sources = {
+			{ name = "path" },
+			{ name = "nvim_lsp" },
+			{ name = "nvim_lua" },
+			{ name = "mini_snippets" },
+			{ name = "buffer", keyword_length = 3 },
+		}
+		if opts.sources ~= nil then
+			vim.list_extend(sources, opts.sources)
+		end
+
+		return vim.tbl_deep_extend("force", opts, {
+			sources = sources,
 			window = {
 				documentation = cmp.config.window.bordered(),
 				completion = vim.tbl_deep_extend("force", cmp.config.window.bordered(), {
@@ -90,7 +95,7 @@ return {
 					require("cmp.config").set_onetime({ sources = {} })
 				end,
 			},
-		}
+		})
 	end,
 	config = function(_, opts)
 		local cmp = require("cmp")
