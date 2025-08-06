@@ -14,6 +14,7 @@
     ./direnv
     ./zoxide
     ./gdu
+    ./moar
   ];
 
   home.packages = with pkgs; [

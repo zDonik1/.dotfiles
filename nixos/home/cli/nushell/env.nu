@@ -50,7 +50,6 @@ $env.XDG_STATE_HOME = ($env.HOME | path join ".local/state")
 $env.NVIM_LOG_FILE = ($env.HOME | path join ".cache/nvim/log")
 $env.CPM_SOURCE_CACHE = ($env.HOME | path join ".cache/CPM")
 $env.EDITOR = "nvim"
-$env.PAGER = "less -RFX"
 $env.BROWSER = "firefox"
 $env.LS_COLORS = (source ~/.config/nushell/themes/ls-themes/catppuccin-mocha.nu)
 
