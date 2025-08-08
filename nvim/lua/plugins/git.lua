@@ -1,23 +1,5 @@
 return {
 	{
-		"lewis6991/gitsigns.nvim",
-		event = "VeryLazy",
-		keys = {
-			{ "<leader>gh", "<cmd>Gitsigns preview_hunk<cr>", desc = "Preview hunk" },
-			{ "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>", desc = "Reset hunk" },
-			{ "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>", desc = "Stage hunk" },
-			{ "<leader>gS", "<cmd>Gitsigns stage_buffer<cr>", desc = "Stage buffer" },
-			{ "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr>", desc = "Undo stage hunk" },
-		},
-		opts = {
-			current_line_blame = true,
-		},
-		config = function(_, opts)
-			require("gitsigns").setup(opts)
-		end,
-	},
-
-	{
 		"NeogitOrg/neogit",
 		cmd = "Neogit",
 		dependencies = {
@@ -47,5 +29,53 @@ return {
 	{
 		"avm99963/vim-jjdescription",
 		ft = ".jjdescription",
+	},
+
+	{
+		"algmyr/vcsigns.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			{ "algmyr/vcmarkers.nvim", opts = {} },
+			"algmyr/vclib.nvim",
+		},
+		opts = {
+			target_commit = 1, -- Nice default for jj with new+squash flow.
+		},
+		config = function(_, opts)
+			require("vcsigns").setup(opts)
+
+			local function map(mode, lhs, rhs, desc, opt)
+				local options = { noremap = true, silent = true, desc = desc }
+				if opt then
+					options = vim.tbl_extend("force", options, opt)
+				end
+				vim.keymap.set(mode, lhs, rhs, options)
+			end
+
+			map("n", "[r", function()
+				require("vcsigns").actions.target_older_commit(0, vim.v.count1)
+			end, "Move diff target back")
+			map("n", "]r", function()
+				require("vcsigns").actions.target_newer_commit(0, vim.v.count1)
+			end, "Move diff target forward")
+			map("n", "[h", function()
+				require("vcsigns").actions.hunk_prev(0, vim.v.count1)
+			end, "Go to previous hunk")
+			map("n", "]h", function()
+				require("vcsigns").actions.hunk_next(0, vim.v.count1)
+			end, "Go to next hunk")
+			map("n", "[H", function()
+				require("vcsigns").actions.hunk_prev(0, 9999)
+			end, "Go to first hunk")
+			map("n", "]H", function()
+				require("vcsigns").actions.hunk_next(0, 9999)
+			end, "Go to last hunk")
+			map("n", "<leader>gr", function()
+				require("vcsigns").actions.hunk_undo(0)
+			end, "Undo hunks in range")
+			map("n", "<leader>gh", function()
+				require("vcsigns").actions.toggle_hunk_diff(0)
+			end, "Show hunk diffs inline in the current buffer")
+		end,
 	},
 }
