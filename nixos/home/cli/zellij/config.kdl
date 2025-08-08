@@ -1,6 +1,7 @@
 theme "catppuccin-mocha-custom"
 
 default_shell "nu"
+advanced_mouse_actions false
 // pane_frames false
 
 ui {
