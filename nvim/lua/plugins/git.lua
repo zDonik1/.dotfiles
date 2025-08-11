@@ -34,10 +34,6 @@ return {
 	{
 		"algmyr/vcsigns.nvim",
 		event = "VeryLazy",
-		dependencies = {
-			{ "algmyr/vcmarkers.nvim", opts = {} },
-			"algmyr/vclib.nvim",
-		},
 		opts = {
 			target_commit = 1, -- Nice default for jj with new+squash flow.
 		},
@@ -77,5 +73,26 @@ return {
 				require("vcsigns").actions.toggle_hunk_diff(0)
 			end, "Show hunk diffs inline in the current buffer")
 		end,
+	},
+
+	{
+		"algmyr/vcmarkers.nvim",
+		event = "VeryLazy",
+		opts = {},
+	},
+
+	{
+		"rafikdraoui/jj-diffconflicts",
+		cmd = { "JJDiffConflicts" },
+	},
+
+	{
+		"julienvincent/hunk.nvim",
+		cmd = { "DiffEditor" },
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"nvim-tree/nvim-web-devicons",
+		},
+		opts = {},
 	},
 }

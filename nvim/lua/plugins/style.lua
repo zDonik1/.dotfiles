@@ -7,6 +7,11 @@ return {
 			show_end_of_buffer = true,
 			custom_highlights = function(colors)
 				return {
+					Green = { fg = colors.green },
+					Red = { fg = colors.red },
+					Blue = { fg = colors.blue },
+					Yellow = { fg = colors.yellow },
+
 					["@text.emphasis"] = { fg = colors.green },
 					["@markup.italic"] = { fg = colors.green },
 					["@markup.quote"] = { fg = colors.lavender },
