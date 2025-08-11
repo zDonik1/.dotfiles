@@ -1,10 +1,10 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = [ pkgs.moar ];
 
-  home.sessionVariables.PAGER = lib.concatStrings [
-    "moar -style catppuccin-mocha -statusbar bold "
-    "-no-clear-on-exit -quit-if-one-screen"
-  ];
+  home.sessionVariables = {
+    PAGER = "moar";
+    MOAR = "-style catppuccin-mocha -statusbar bold -no-clear-on-exit -quit-if-one-screen";
+  };
 }
