@@ -34,6 +34,7 @@ in
       options = {
         features = "catppuccin-mocha";
         line-numbers = true;
+        side-by-side = true;
       };
     };
   };
@@ -76,7 +77,8 @@ in
         ui = {
           editor = "nvim";
           default-command = "log";
-          diff-formatter = "delta";
+          pager = "delta";
+          diff-formatter = ":git";
           diff-editor = "nvim";
         };
 
@@ -85,7 +87,6 @@ in
             program = "${nvimdiff}/bin/nvimdiff";
           };
           delta = {
-            program = "delta";
             diff-expected-exit-codes = [
               0
               1
