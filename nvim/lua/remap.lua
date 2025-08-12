@@ -36,13 +36,6 @@ vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h")
 vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l")
 vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j")
 vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k")
-vim.keymap.set("n", "<leader>r", function()
-	local win = vim.api.nvim_get_current_win()
-	vim.cmd.wincmd("p")
-	if win == vim.api.nvim_get_current_win() then
-		vim.cmd.wincmd("w")
-	end
-end, { desc = "go to last window" })
 
 -- buffers
 vim.keymap.set("n", "<leader>bd", vim.cmd.bd)
