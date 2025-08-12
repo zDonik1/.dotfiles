@@ -66,7 +66,7 @@ return {
 			},
 		},
 		opts = {
-			target_commit = 1, -- Nice default for jj with new+squash flow.
+			show_delete_count = false,
 		},
 	},
 
