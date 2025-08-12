@@ -73,6 +73,43 @@ return {
 	{
 		"algmyr/vcmarkers.nvim",
 		event = "VeryLazy",
+		keys = {
+			{
+				"<space>m]",
+				function()
+					require("vcmarkers").actions.next_marker(0, vim.v.count1)
+				end,
+				desc = "Go to next marker",
+			},
+			{
+				"<space>m[",
+				function()
+					require("vcmarkers").actions.prev_marker(0, vim.v.count1)
+				end,
+				desc = "Go to previous marker",
+			},
+			{
+				"<space>ms",
+				function()
+					require("vcmarkers").actions.select_section(0)
+				end,
+				desc = "Select the section under the cursor",
+			},
+			{
+				"<space>mf",
+				function()
+					require("vcmarkers").fold.toggle(0)
+				end,
+				desc = "Fold outside markers",
+			},
+			{
+				"<space>mc",
+				function()
+					require("vcmarkers").actions.cycle_marker(0)
+				end,
+				desc = "Cycle marker representations",
+			},
+		},
 		opts = {},
 	},
 
