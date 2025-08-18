@@ -7,10 +7,8 @@
       neovim
 
       # compiling fzf-native
-      nushell
       cmake
-      gnumake
-      gcc
+      (if stdenv.isDarwin then clang else gcc)
 
       # fugitive
       git
