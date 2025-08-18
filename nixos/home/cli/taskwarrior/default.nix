@@ -18,7 +18,7 @@
         soon = {
           read = lib.concatStrings [
             "(tag:soon or tag:next or sched.before:eond or due.before:eond) "
-            "pro.not:go pro.not:secops"
+            "pro.not:go pro.not:secops pro.not:scorb"
           ];
           write = "tag:soon";
         };
