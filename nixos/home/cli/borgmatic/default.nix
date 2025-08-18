@@ -54,6 +54,15 @@ in
         storage.encryptionPasscommand = "${getKeepassEntry}/bin/get-keepass-entry timetask";
       }
       // common;
+
+      partition-event = {
+        location = {
+          sourceDirectories = [ "${homeDir}/partition-event" ];
+          repositories = [ "${backupsDir}/partition-event" ];
+        };
+        storage.encryptionPasscommand = "${getKeepassEntry}/bin/get-keepass-entry partition-event";
+      }
+      // common;
     };
   };
 
