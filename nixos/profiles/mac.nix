@@ -24,6 +24,8 @@
         claude-code
       ];
 
+      home.sessionPath = [ "$HOME/.local/bin" ];
+
       services.syncthing.enable = true;
       services.ollama.enable = false;
 
