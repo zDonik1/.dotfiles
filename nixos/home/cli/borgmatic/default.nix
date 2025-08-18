@@ -60,13 +60,20 @@ in
   launchd.agents."borgmatic" = {
     enable = true;
     config = {
-      ProgramArguments = [ "${config.programs.borgmatic.package}/bin/borgmatic" ];
+      ProgramArguments = [
+        "open"
+        "--background"
+        "--hide"
+        "/Applications/Borgmatic.app"
+      ];
       StartCalendarInterval = [
         {
           Hour = 0;
           Minute = 0;
         }
       ];
+      StandardOutPath = "${homeDir}/.local/share/borgmatic-agent/out.log";
+      StandardErrorPath = "${homeDir}/.local/share/borgmatic-agent/error.log";
     };
   };
 }
