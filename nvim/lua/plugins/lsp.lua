@@ -71,6 +71,9 @@ local lua_ls_opts = {
 
 local setup_lspconfigs = function()
 	local lspconfig = require("lspconfig")
+	local capabilities = vim.lsp.protocol.make_client_capabilities()
+	capabilities.textDocument.completion.completionItem.snippetSupport = false
+
 	local lsps = {
 		"csharp_ls",
 		"rust_analyzer",
@@ -88,10 +91,10 @@ local setup_lspconfigs = function()
 		"dartls",
 	}
 	for _, lsp in ipairs(lsps) do
-		lspconfig[lsp].setup({})
+		lspconfig[lsp].setup({ capabilities = capabilities })
 	end
 
-	-- lsp setup with opts
+	lua_ls_opts.capabilities = capabilities
 	lspconfig.lua_ls.setup(lua_ls_opts)
 end
 
