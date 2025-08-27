@@ -10,9 +10,6 @@
       cmake
       (if stdenv.isDarwin then clang else gcc)
 
-      # fugitive
-      git
-
       # lua
       lua-language-server
       stylua
@@ -22,31 +19,6 @@
       nixd
       nixfmt-rfc-style
       biome
-
-      # python
-      ruff
-      (python3.withPackages (
-        python-pkgs: with python-pkgs; [
-          python-lsp-server
-          debugpy
-        ]
-      ))
-
-      # cpp
-      clang-tools_18
-      lldb_18
-      cmake-language-server
-      cmake-format
-
-      # rust
-      rustfmt
-      rust-analyzer
-
-      # go
-      gopls
-
-      # gdscript
-      gdtoolkit_4
 
       # yaml
       yaml-language-server
