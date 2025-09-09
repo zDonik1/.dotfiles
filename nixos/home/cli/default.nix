@@ -26,5 +26,6 @@
     tgt
     watchexec
     htop
+    wget
   ];
 }
