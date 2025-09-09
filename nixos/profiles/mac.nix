@@ -42,5 +42,41 @@
 
       nix.linux-builder.enable = true;
       nix-rosetta-builder.onDemand = true;
+
+      homebrew = {
+        enable = true;
+
+        brews = [
+          "docker"
+          "docker-buildx"
+          "docker-completion"
+          "docker-compose"
+          "helm"
+        ];
+
+        casks = [
+          "anydesk"
+          "cursorcerer"
+          "discord"
+          "expressvpn"
+          "ghostty"
+          "gimp"
+          "jordanbaird-ice"
+          "karabiner-elements"
+          "keepassxc"
+          "libreoffice"
+          "localsend"
+          "obs"
+          "orbstack"
+          "raycast"
+          "rectangle"
+          "scroll-reverser"
+          "shottr"
+          "stats"
+          "thunderbird"
+          "whatsapp"
+          "zen"
+        ];
+      };
     };
 }
