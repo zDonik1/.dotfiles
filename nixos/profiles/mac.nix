@@ -33,15 +33,11 @@
     };
 
   system =
-    { nix-rosetta-builder, ... }:
+    { ... }:
     {
       imports = [
-        nix-rosetta-builder.darwinModules.default
         ../system/devenv
       ];
-
-      nix.linux-builder.enable = true;
-      nix-rosetta-builder.onDemand = true;
 
       homebrew = {
         enable = true;
