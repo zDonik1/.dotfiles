@@ -3,6 +3,8 @@
 {
   imports = [ ../common-configuration.nix ];
 
+  system.primaryUser = "zdonik";
+
   users.users.zdonik = {
     name = "zdonik";
     home = "/Users/zdonik";
