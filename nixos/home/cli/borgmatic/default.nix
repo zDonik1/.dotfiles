@@ -7,11 +7,7 @@
 let
   homeDir = config.home.homeDirectory;
   backupsDir = "${homeDir}/diskstation/backups";
-
-  getKeepassEntry = pkgs.writeShellScriptBin "get-keepass-entry" ''
-    cat ~/keepass/master \
-      | ${pkgs.keepassxc}/bin/keepassxc-cli show -sq -a password ~/keepass/Passwords.kdbx $1
-  '';
+  getKeepassEntry = pkgs.callPackage ../../common/get-keepass-entry.nix { };
 
   common = {
     retention = {
@@ -42,7 +38,7 @@ in
           ];
           repositories = [ "${backupsDir}/private" ];
         };
-        storage.encryptionPasscommand = "${getKeepassEntry}/bin/get-keepass-entry borg-private";
+        storage.encryptionPasscommand = "${lib.getExe getKeepassEntry} borg-private";
       }
       // common;
 
@@ -56,7 +52,7 @@ in
           ];
           repositories = [ "${backupsDir}/system" ];
         };
-        storage.encryptionPasscommand = "${getKeepassEntry}/bin/get-keepass-entry borg-system";
+        storage.encryptionPasscommand = "${lib.getExe getKeepassEntry} borg-system";
       }
       // common;
 
@@ -65,7 +61,7 @@ in
           sourceDirectories = [ "${homeDir}/partition-event" ];
           repositories = [ "${backupsDir}/partition-event" ];
         };
-        storage.encryptionPasscommand = "${getKeepassEntry}/bin/get-keepass-entry borg-partition-event";
+        storage.encryptionPasscommand = "${lib.getExe getKeepassEntry} borg-partition-event";
       }
       // common;
     };
