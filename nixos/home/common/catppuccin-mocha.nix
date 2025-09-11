@@ -1,11 +1,16 @@
 {
   rosewater = "#f5e0dc";
+  flamingo = "#f2cdcd";
   pink = "#f5c2e7";
+  mauve = "#cba6f7";
   red = "#f38ba8";
+  peach = "#fab387";
   yellow = "#f9e2af";
   green = "#a6e3a1";
   teal = "#94e2d5";
+  sky = "#89dceb";
   blue = "#89b4fa";
+  lavender = "#b4befe";
 
   text = "#cdd6f4";
   subtext-1 = "#bac2de";
@@ -14,4 +19,6 @@
   surface-1 = "#45475a";
   surface-0 = "#313244";
   base = "#1e1e2e";
+  mantle = "#181825";
+  crust = "#11111b";
 }
