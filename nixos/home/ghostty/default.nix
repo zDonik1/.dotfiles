@@ -22,32 +22,36 @@
       ];
     };
     themes = {
-      catppuccin-mocha = {
-        background = "1e1e2e";
-        foreground = "cdd6f4";
-        cursor-color = "f5e0dc";
-        cursor-text = "1e1e2e";
-        selection-background = "353749";
-        selection-foreground = "cdd6f4";
-        palette = [
-          "0=#45475a"
-          "1=#f38ba8"
-          "2=#a6e3a1"
-          "3=#f9e2af"
-          "4=#89b4fa"
-          "5=#f5c2e7"
-          "6=#94e2d5"
-          "7=#bac2de"
-          "8=#585b70"
-          "9=#f38ba8"
-          "10=#a6e3a1"
-          "11=#f9e2af"
-          "12=#89b4fa"
-          "13=#f5c2e7"
-          "14=#94e2d5"
-          "15=#a6adc8"
-        ];
-      };
+      catppuccin-mocha =
+        let
+          mocha = import ../common/catppuccin-mocha.nix;
+        in
+        {
+          background = mocha.base;
+          foreground = mocha.text;
+          cursor-color = mocha.rosewater;
+          cursor-text = mocha.base;
+          selection-background = mocha.surface-0;
+          selection-foreground = mocha.text;
+          palette = [
+            "0=${mocha.surface-1}"
+            "1=${mocha.red}"
+            "2=${mocha.green}"
+            "3=${mocha.yellow}"
+            "4=${mocha.blue}"
+            "5=${mocha.pink}"
+            "6=${mocha.teal}"
+            "7=${mocha.subtext-1}"
+            "8=${mocha.surface-2}"
+            "9=${mocha.red}"
+            "10=${mocha.green}"
+            "11=${mocha.yellow}"
+            "12=${mocha.blue}"
+            "13=${mocha.pink}"
+            "14=${mocha.teal}"
+            "15=${mocha.subtext-0}"
+          ];
+        };
     };
   };
 }
