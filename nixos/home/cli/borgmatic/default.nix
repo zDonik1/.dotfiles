@@ -30,33 +30,33 @@ in
   programs.borgmatic = {
     enable = true;
     backups = {
-      second-brain = {
-        location = {
-          sourceDirectories = [ "${homeDir}/SecondBrain" ];
-          repositories = [ "${backupsDir}/SecondBrain" ];
-        };
-        storage.encryptionPasscommand = "${getKeepassEntry}/bin/get-keepass-entry SecondBrain";
-      }
-      // common;
-
-      ledger = {
-        location = {
-          sourceDirectories = [ "${homeDir}/ledger" ];
-          repositories = [ "${backupsDir}/ledger" ];
-        };
-        storage.encryptionPasscommand = "${getKeepassEntry}/bin/get-keepass-entry ledger";
-      }
-      // common;
-
-      timetask = {
+      private = {
         location = {
           sourceDirectories = [
+            "${homeDir}/SecondBrain"
+            "${homeDir}/ledger"
+            "${homeDir}/cloudfiles"
+            "${homeDir}/keepass"
             "${homeDir}/.local/share/task"
             "${homeDir}/.local/share/timewarrior"
           ];
-          repositories = [ "${backupsDir}/timetask" ];
+          repositories = [ "${backupsDir}/private" ];
         };
-        storage.encryptionPasscommand = "${getKeepassEntry}/bin/get-keepass-entry timetask";
+        storage.encryptionPasscommand = "${getKeepassEntry}/bin/get-keepass-entry borg-private";
+      }
+      // common;
+
+      system = {
+        location = {
+          sourceDirectories = [
+            "${homeDir}/.config"
+            "${homeDir}/Library/thunderbird"
+            "${homeDir}/Library/Preferences"
+            "${homeDir}/Library/Application Support/zen"
+          ];
+          repositories = [ "${backupsDir}/system" ];
+        };
+        storage.encryptionPasscommand = "${getKeepassEntry}/bin/get-keepass-entry borg-system";
       }
       // common;
 
@@ -65,7 +65,7 @@ in
           sourceDirectories = [ "${homeDir}/partition-event" ];
           repositories = [ "${backupsDir}/partition-event" ];
         };
-        storage.encryptionPasscommand = "${getKeepassEntry}/bin/get-keepass-entry partition-event";
+        storage.encryptionPasscommand = "${getKeepassEntry}/bin/get-keepass-entry borg-partition-event";
       }
       // common;
     };
