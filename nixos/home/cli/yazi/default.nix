@@ -12,6 +12,7 @@
     zoxide
     imagemagick
     exiftool
+    mpv
   ];
 
   programs.yazi = {
