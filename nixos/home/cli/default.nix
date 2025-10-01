@@ -28,5 +28,6 @@
     watchexec
     htop
     wget
+    exiftool
   ];
 }
