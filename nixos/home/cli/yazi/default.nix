@@ -15,6 +15,7 @@
       imagemagick
       exiftool
       mpv
+      mediainfo
     ];
 
     initLua = ./init.lua;
