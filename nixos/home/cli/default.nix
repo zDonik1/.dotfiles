@@ -23,7 +23,6 @@
     fzf
     just
     bat
-    tgt
     watchexec
     htop
     wget

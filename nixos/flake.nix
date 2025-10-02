@@ -44,11 +44,6 @@
       };
     };
 
-    tgt = {
-      url = "github:FedericoBruzzone/tgt";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # distant = {
     #   url = "./flakes/distant";
     #   inputs = {
@@ -67,7 +62,6 @@
       home-manager,
       nix-rosetta-builder,
       nur,
-      tgt,
       ...
     }@inputs:
     let
@@ -85,7 +79,6 @@
 
         (final: prev: { grimblast = hyprland-contrib.packages.${prev.system}.grimblast; })
         (final: prev: { zjstatus = zjstatus.packages.${prev.system}.default; })
-        (final: prev: { tgt = tgt.packages.${prev.system}.default; })
 
         (final: prev: {
           rofi-calc = prev.rofi-calc.override { rofi-unwrapped = prev.rofi-wayland-unwrapped; };
