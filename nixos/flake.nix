@@ -43,14 +43,6 @@
         flake-utils.follows = "nixos-wsl/flake-utils";
       };
     };
-
-    # distant = {
-    #   url = "./flakes/distant";
-    #   inputs = {
-    #     nixpkgs.follows = "nixpkgs";
-    #     flake-utils.follows = "nixos-wsl/flake-utils";
-    #   };
-    # };
   };
 
   outputs =
@@ -83,8 +75,6 @@
         (final: prev: {
           rofi-calc = prev.rofi-calc.override { rofi-unwrapped = prev.rofi-wayland-unwrapped; };
         })
-
-        # (final: prev: { distant = distant.packages.${prev.system}.default; })
       ];
 
       makeHomeManagerModules =
