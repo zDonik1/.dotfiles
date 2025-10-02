@@ -3,12 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
-    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     nix-darwin = {
       url = "github:LnL7/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixos-wsl = {
@@ -33,7 +31,7 @@
 
     nix-rosetta-builder = {
       url = "github:cpick/nix-rosetta-builder";
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     zjstatus = {
@@ -48,7 +46,6 @@
   outputs =
     {
       nixpkgs,
-      nixpkgs-stable,
       nix-darwin,
       nixos-wsl,
       home-manager,
@@ -58,13 +55,6 @@
     }@inputs:
     let
       system = "x86_64-linux";
-
-      pkgs-stable = import nixpkgs-stable {
-        inherit system;
-        config = {
-          allowUnfree = true;
-        };
-      };
 
       overlays = with inputs; [
         nur.overlays.default
@@ -150,7 +140,6 @@
           profile = ./profiles/hyprland.nix;
           inherit overlays;
         };
-        specialArgs = { inherit pkgs-stable; };
       };
 
       nixosConfigurations.think-awesome = nixpkgs.lib.nixosSystem {
@@ -160,7 +149,6 @@
           profile = ./profiles/awesome.nix;
           inherit overlays;
         };
-        specialArgs = { inherit pkgs-stable; };
       };
 
       nixosConfigurations.think-plasma = nixpkgs.lib.nixosSystem {
