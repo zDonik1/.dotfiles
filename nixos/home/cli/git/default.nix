@@ -26,16 +26,6 @@ in
 
     extraConfig = {
       diff.colorMoved = "default";
-      include.path = "${./catppuccin.gitconfig}";
-    };
-
-    delta = {
-      enable = true;
-      options = {
-        features = "catppuccin-mocha";
-        line-numbers = true;
-        side-by-side = true;
-      };
     };
   };
 

@@ -1,6 +1,3 @@
-use ~/.config/nushell/themes/nu-themes/catppuccin-mocha.nu
-
-# The default config record. This is where much of your global configuration is setup.
 $env.config = {
     show_banner: false
 
@@ -22,23 +19,6 @@ $env.config = {
     }
 
     error_style: "fancy" # "fancy" or "plain" for screen reader-friendly error messages
-
-    explore: {
-        status_bar_background: {fg: "#1D1F21", bg: "#C4C9C6"},
-        command_bar_text: {fg: "#C4C9C6"},
-        highlight: {fg: "black", bg: "yellow"},
-        status: {
-            error: {fg: "white", bg: "red"},
-            warn: {}
-            info: {}
-        },
-        table: {
-            split_line: {fg: "#404040"},
-            selected_cell: {bg: light_blue},
-            selected_row: {},
-            selected_column: {},
-        },
-    }
 
     history: {
         max_size: 100_000 # Session has to be reloaded for this to take effect
@@ -66,13 +46,11 @@ $env.config = {
         vi_normal: block
     }
 
-    color_config: (catppuccin-mocha)
     float_precision: 2 # the precision for displaying floats in tables
     bracketed_paste: true # enable bracketed paste, currently useless on windows
     edit_mode: vi
     render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
     use_kitty_protocol: false # enables keyboard enhancement protocol implemented by kitty console, only if your terminal support this.
-    highlight_resolved_externals: false # true enables highlighting of external commands in the repl resolved by which.
 
     menus: [
         # Configuration for default nushell menus
@@ -503,16 +481,6 @@ $env.config = {
         }
     ]
 }
-
-
-# =======================================
-# COMPLETIONS
-# =======================================
-
-source ~/.config/nushell/completions/cargo-completions.nu
-source ~/.config/nushell/completions/git-completions.nu
-source ~/.config/nushell/completions/gh-completions.nu
-source ~/.config/nushell/completions/rg-completions.nu
 
 
 # =======================================

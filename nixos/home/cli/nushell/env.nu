@@ -51,7 +51,6 @@ $env.NVIM_LOG_FILE = ($env.HOME | path join ".cache/nvim/log")
 $env.CPM_SOURCE_CACHE = ($env.HOME | path join ".cache/CPM")
 $env.EDITOR = "nvim"
 $env.BROWSER = "firefox"
-$env.LS_COLORS = (source ~/.config/nushell/themes/ls-themes/catppuccin-mocha.nu)
 
 $env.FZF_DEFAULT_COMMAND = "fd --hidden --strip-cwd-prefix --exclude .git"
 $env.FZF_DEFAULT_OPTS = (

@@ -3,7 +3,9 @@
 {
   imports = [
     ./neovim
+    ./starship
     ./nushell
+    ./delta
     ./git
     ./zellij
     ./eza

@@ -24,6 +24,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -49,6 +54,7 @@
       nix-darwin,
       nixos-wsl,
       home-manager,
+      catppuccin,
       nix-rosetta-builder,
       nur,
       ...
@@ -80,7 +86,17 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "bak";
-              users.zdonik = home;
+
+              extraSpecialArgs = {
+                catppuccin = catppuccin.packages.aarch64-darwin;
+              };
+
+              users.zdonik = {
+                imports = [
+                  home
+                  catppuccin.homeModules.catppuccin
+                ];
+              };
             };
           }
         ];

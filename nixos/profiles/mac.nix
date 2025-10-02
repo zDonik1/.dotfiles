@@ -8,7 +8,6 @@
         ../home/cli/aider
         ../home/cli/kubetui
         ../home/cli/borgmatic
-        ../home/firefox
         ../home/kitty
         ../home/ghostty
         ../home/raycast
@@ -30,6 +29,11 @@
       services.ollama.enable = false;
 
       fonts.fontconfig.enable = true;
+
+      catppuccin = {
+        enable = true;
+        accent = "blue";
+      };
     };
 
   system =

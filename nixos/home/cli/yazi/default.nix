@@ -49,9 +49,4 @@
       ];
     };
   };
-
-  xdg.configFile = {
-    "yazi/theme.toml".source = ./catppuccin-mocha-blue.toml;
-    "yazi/catppuccin-mocha.tmTheme".source = ./catppuccin-mocha.tmTheme;
-  };
 }
