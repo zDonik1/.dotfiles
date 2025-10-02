@@ -101,6 +101,8 @@ in
           prev_page = "u";
           focus_left = "h";
           focus_right = "l";
+          next_account = "L";
+          prev_account = "H";
 
           commands = [
             {
