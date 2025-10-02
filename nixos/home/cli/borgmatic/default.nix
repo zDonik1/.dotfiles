@@ -38,7 +38,7 @@ in
           ];
           repositories = [ "${backupsDir}/private" ];
         };
-        storage.encryptionPasscommand = "${lib.getExe getKeepassEntry} borg-private";
+        storage.encryptionPasscommand = "${lib.getExe getKeepassEntry} password borg-private";
       }
       // common;
 
@@ -52,7 +52,7 @@ in
           ];
           repositories = [ "${backupsDir}/system" ];
         };
-        storage.encryptionPasscommand = "${lib.getExe getKeepassEntry} borg-system";
+        storage.encryptionPasscommand = "${lib.getExe getKeepassEntry} password borg-system";
       }
       // common;
 
@@ -61,7 +61,7 @@ in
           sourceDirectories = [ "${homeDir}/partition-event" ];
           repositories = [ "${backupsDir}/partition-event" ];
         };
-        storage.encryptionPasscommand = "${lib.getExe getKeepassEntry} borg-partition-event";
+        storage.encryptionPasscommand = "${lib.getExe getKeepassEntry} password borg-partition-event";
       }
       // common;
     };

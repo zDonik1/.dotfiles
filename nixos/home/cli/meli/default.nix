@@ -2,9 +2,15 @@
 let
   getKeepassEntry = pkgs.callPackage ../../common/get-keepass-entry.nix { };
   mocha = import ../../common/catppuccin-mocha.nix;
+
+  oauth2 = pkgs.writeShellScriptBin "oauth2" ''
+    ${lib.getExe pkgs.python3} ${./oauth2.py} "$@"
+  '';
 in
 {
-  home.packages = with pkgs; [ w3m ];
+  home.packages = with pkgs; [
+    w3m
+  ];
 
   programs.meli = {
     enable = true;
@@ -20,15 +26,16 @@ in
       composing.use_signature = true;
 
       accounts = {
-        main = {
+        _main = {
           root_mailbox = "INBOX";
           format = "imap";
           server_hostname = "mail.tokhirov.uz";
           server_username = "doniyor@tokhirov.uz";
-          server_password_command = "${lib.getExe getKeepassEntry} main-email";
+          server_password_command = "${lib.getExe getKeepassEntry} password main-email";
           server_port = "993";
           identity = "doniyor@tokhirov.uz";
           display_name = "Doniyor Tokhirov";
+
           send_mail = {
             hostname = "mail.tokhirov.uz";
             port = 587;
@@ -36,10 +43,47 @@ in
               type = "auto";
               username = "doniyor@tokhirov.uz";
               password.type = "command_eval";
-              password.value = "${lib.getExe getKeepassEntry} main-email";
+              password.value = "${lib.getExe getKeepassEntry} password main-email";
             };
           };
         };
+
+        gmail =
+          let
+            tokenCommand = lib.concatStrings [
+              "TOKEN=$("
+              "${lib.getExe oauth2} --quiet "
+              "--user=tokhirovdoniyor@gmail.com "
+              "--client_id=$(${lib.getExe getKeepassEntry} username meli-oauth-client) "
+              "--client_secret=$(${lib.getExe getKeepassEntry} password meli-oauth-client) "
+              "--refresh_token=$(${lib.getExe getKeepassEntry} password meli-oauth-refresh-token)"
+              ") "
+              "&& ${lib.getExe oauth2} --user=tokhirovdoniyor@gmail.com --generate_oauth2_string --quiet --access_token=$TOKEN"
+            ];
+          in
+          {
+            root_mailbox = "[Gmail]";
+            format = "imap";
+            server_hostname = "imap.gmail.com";
+            server_username = "tokhirovdoniyor@gmail.com";
+            use_oauth2 = true;
+            server_password_command = tokenCommand;
+            server_port = "993";
+            identity = "tokhirovdoniyor@gmail.com";
+            display_name = "Doniyor Tokhirov";
+            composing.store_sent_mail = false;
+
+            send_mail = {
+              hostname = "smtp.gmail.com";
+              port = 587;
+              security.type = "STARTTLS";
+              auth = {
+                type = "xoauth2";
+                token_command = tokenCommand;
+                require_auth = true;
+              };
+            };
+          };
       };
 
       shortcuts = {
