@@ -15,7 +15,6 @@
     ./zoxide
     ./gdu
     ./moar
-    ./meli
   ];
 
   home.packages = with pkgs; [
