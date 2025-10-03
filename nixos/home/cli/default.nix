@@ -19,12 +19,13 @@
     ./moar
   ];
 
+  programs.bat.enable = true;
+
   home.packages = with pkgs; [
     ripgrep
     fd
     fzf
     just
-    bat
     watchexec
     htop
     wget
