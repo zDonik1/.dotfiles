@@ -25,6 +25,8 @@
 
       home.sessionPath = [ "$HOME/.local/bin" ];
 
+      programs.mpv.enable = true;
+
       services.syncthing.enable = true;
       services.ollama.enable = false;
 

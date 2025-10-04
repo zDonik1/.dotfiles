@@ -14,7 +14,6 @@
       zoxide
       imagemagick
       exiftool
-      mpv
       mediainfo
     ];
 
