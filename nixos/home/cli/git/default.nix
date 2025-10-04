@@ -5,9 +5,6 @@ let
 in
 {
   home.packages = with pkgs; [
-    git-machete
-    gitui
-    gh-dash
     neovim
   ];
 
