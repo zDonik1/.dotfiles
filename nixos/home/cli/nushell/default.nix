@@ -12,9 +12,6 @@
     plugins = with pkgs.nushellPlugins; [ polars ];
     configFile.source = ./config.nu;
     envFile.source = ./env.nu;
-    environmentVariables = {
-      LS_COLORS = builtins.readFile ./ls_colors/catppuccin;
-    };
 
     shellAliases = {
       jt = "just devtest";
