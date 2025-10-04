@@ -4,8 +4,8 @@ let
   name = "Doniyor Tokhirov";
 in
 {
-  home.packages = with pkgs; [
-    neovim
+  imports = [
+    ../neovim
   ];
 
   programs.git = {
