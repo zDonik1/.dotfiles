@@ -19,7 +19,10 @@
     ./moar
   ];
 
-  programs.bat.enable = true;
+  programs = {
+    bat.enable = true;
+    btop.enable = true;
+  };
 
   home.packages = with pkgs; [
     ripgrep
