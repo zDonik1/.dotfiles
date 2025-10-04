@@ -17,6 +17,7 @@
     ./zoxide
     ./gdu
     ./moar
+    ./fzf
   ];
 
   programs = {
@@ -27,7 +28,6 @@
   home.packages = with pkgs; [
     ripgrep
     fd
-    fzf
     just
     watchexec
     htop
