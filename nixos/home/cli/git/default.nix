@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 let
   email = "doniyor@tokhirov.uz";
   name = "Doniyor Tokhirov";
@@ -49,6 +49,10 @@ in
         diff-formatter = ":git";
         diff-editor = "nvim";
         merge-editor = "nvim";
+      };
+
+      revsets = {
+        log = "ancestors(bookmarks() | remote_bookmarks() | visible_heads(), 3)";
       };
 
       merge-tools = {
