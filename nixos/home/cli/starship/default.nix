@@ -1,4 +1,9 @@
-{ ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   programs.starship = {
@@ -100,6 +105,73 @@
       scala.symbol = " ";
       swift.symbol = " ";
       zig.symbol = " ";
+    }
+    // lib.optionalAttrs config.programs.jujutsu.enable {
+      format = lib.concatStrings [
+        "$username"
+        "$hostname"
+        "$localip"
+        "$shlvl"
+        "$singularity"
+        "$kubernetes"
+        "$directory"
+        "$vcsh"
+        "$fossil_branch"
+        "$fossil_metrics"
+        "$git_branch"
+        "$git_commit"
+        "$git_state"
+        "$git_metrics"
+        "$git_status"
+        "\${custom.jj}"
+        "$all"
+      ];
+
+      custom.jj = {
+        command = "prompt";
+        format = "$output";
+        ignore_timeout = true;
+        shell = [
+          "${lib.getExe pkgs.starship-jj}"
+          "--ignore-working-copy"
+          "starship"
+        ];
+        use_stdin = false;
+        when = true;
+      };
+    };
+  };
+
+  xdg.configFile = lib.optionalAttrs config.programs.jujutsu.enable {
+    "starship-jj/starship-jj.toml".source = (pkgs.formats.toml { }).generate "starship-jj-config" {
+      module_separator = " ";
+
+      module = [
+        {
+          type = "Symbol";
+          symbol = " 󱗆 ";
+          color = "Blue";
+        }
+        {
+          type = "Bookmarks";
+          separator = " ";
+          color = "Red";
+          behind_symbol = "⇡";
+          surround_with_quotes = false;
+        }
+        {
+          type = "Commit";
+          max_length = 24;
+          color = "Green";
+          surround_with_quotes = false;
+        }
+        {
+          type = "State";
+        }
+        {
+          type = "Metrics";
+        }
+      ];
     };
   };
 }

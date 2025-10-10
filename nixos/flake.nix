@@ -29,6 +29,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    starship-jj = {
+      url = "gitlab:lanastara_foss/starship-jj";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,6 +60,7 @@
       nixos-wsl,
       home-manager,
       catppuccin,
+      starship-jj,
       nix-rosetta-builder,
       nur,
       ...
@@ -64,6 +70,7 @@
 
       overlays = with inputs; [
         nur.overlays.default
+        starship-jj.overlays.default
 
         (final: prev: { grimblast = hyprland-contrib.packages.${prev.system}.grimblast; })
         (final: prev: { zjstatus = zjstatus.packages.${prev.system}.default; })
