@@ -6,7 +6,7 @@
     ./starship
     ./nushell
     ./delta
-    ./git
+    ./vcs
     ./zellij
     ./eza
     ./yazi
