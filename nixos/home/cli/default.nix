@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../modules
     ./neovim
     ./starship
     ./nushell
@@ -16,13 +17,13 @@
     ./direnv
     ./zoxide
     ./gdu
-    ./moar
     ./fzf
   ];
 
   programs = {
     bat.enable = true;
     btop.enable = true;
+    moar.enable = true;
   };
 
   home.packages = with pkgs; [
