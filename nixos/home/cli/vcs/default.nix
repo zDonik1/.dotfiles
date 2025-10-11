@@ -1,12 +1,15 @@
-{ ... }:
+{ pkgs, ... }:
 let
   email = "doniyor@tokhirov.uz";
   name = "Doniyor Tokhirov";
+  mocha = import ../../common/catppuccin-mocha.nix;
 in
 {
   imports = [
     ../neovim
   ];
+
+  home.packages = with pkgs; [ lazyjj ];
 
   programs.git = {
     enable = true;
@@ -45,8 +48,6 @@ in
       ui = {
         editor = "nvim";
         default-command = "log";
-        pager = "delta";
-        diff-formatter = ":git";
         diff-editor = "nvim";
         merge-editor = "nvim";
       };
@@ -56,13 +57,6 @@ in
       };
 
       merge-tools = {
-        delta = {
-          diff-expected-exit-codes = [
-            0
-            1
-          ];
-        };
-
         nvim = {
           program = "nvim";
           edit-args = [
@@ -82,6 +76,12 @@ in
           merge-tool-edits-conflict-markers = true;
         };
       };
+
+      lazyjj = {
+        highlight-color = mocha.surface-0;
+      };
     };
   };
+
+  programs.nushell.shellAliases.ljj = "lazyjj -r \"all()\"";
 }
