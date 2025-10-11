@@ -87,7 +87,7 @@ in
       ''
     );
 
-  launchd.agents."borgmatic" = lib.mkIf pkgs.stdenv.isDarwin {
+  launchd.agents.borgmatic = {
     enable = true;
     config = {
       ProgramArguments = [

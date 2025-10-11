@@ -18,6 +18,7 @@
     ./zoxide
     ./gdu
     ./fzf
+    ./aerc
   ];
 
   programs = {
