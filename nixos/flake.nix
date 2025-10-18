@@ -78,6 +78,16 @@
         (final: prev: {
           rofi-calc = prev.rofi-calc.override { rofi-unwrapped = prev.rofi-wayland-unwrapped; };
         })
+
+        (final: prev: {
+          claude-code = prev.claude-code.overrideAttrs rec {
+            version = "2.0.15";
+            src = prev.fetchzip {
+              url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-${version}.tgz";
+              hash = "sha256-wMRW3rp/AimeqC6XcO+ouI39ZdcFMKF4wmA4EnCTQ3g=";
+            };
+          };
+        })
       ];
 
       makeHomeManagerModules =
