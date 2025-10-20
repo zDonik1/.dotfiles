@@ -19,6 +19,7 @@
     ./gdu
     ./fzf
     ./aerc
+    ./vdirsyncer
   ];
 
   programs = {
