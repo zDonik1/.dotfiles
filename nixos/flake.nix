@@ -88,6 +88,18 @@
             };
           };
         })
+
+        (final: prev: {
+          devenv = prev.devenv.overrideAttrs rec {
+            version = "1.9";
+            src = prev.fetchFromGitHub {
+              owner = "cachix";
+              repo = "devenv";
+              tag = "v${version}";
+              hash = "sha256-MG+c0mo4g9UHSuqibX3OVkiADWmMn/PWDfVhD4U29PM=";
+            };
+          };
+        })
       ];
 
       makeHomeManagerModules =
