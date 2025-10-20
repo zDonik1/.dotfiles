@@ -23,7 +23,10 @@
         claude-code
       ];
 
-      home.sessionPath = [ "$HOME/.local/bin" ];
+      home.sessionPath = [
+        "$HOME/.local/bin"
+        "$HOME/.cache/.bun/bin"
+      ];
 
       programs.mpv.enable = true;
 
