@@ -18,7 +18,6 @@
     };
 
     extraConfig = ''
-      source ${./completions/cargo-completions.nu}
       source ${./completions/git-completions.nu}
       source ${./completions/gh-completions.nu}
       source ${./completions/rg-completions.nu}
