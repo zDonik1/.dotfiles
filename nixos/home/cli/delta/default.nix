@@ -1,4 +1,9 @@
-{ lib, catppuccin, ... }:
+{
+  lib,
+  config,
+  catppuccin,
+  ...
+}:
 
 {
   catppuccin.sources.delta = catppuccin.delta.overrideAttrs {
@@ -8,7 +13,7 @@
   programs.delta = {
     enable = true;
     options = {
-      features = lib.mkForce "catppuccin-mocha";
+      features = lib.mkForce "side-by-side catppuccin-mocha";
       line-numbers = true;
 
       side-by-side = {
@@ -20,19 +25,19 @@
 
   programs.jujutsu.settings = {
     ui = {
-      diff-formatter = ":git";
-      pager = [
-        "delta"
-        "--features"
-        "side-by-side catppuccin-mocha"
-      ];
+      diff-formatter = "delta";
     };
 
     merge-tools = {
       delta = {
-        diff-expected-exit-codes = [
-          0
-          1
+        program = "sh";
+        diff-args = [
+          "-c"
+          (lib.concatStringsSep " " [
+            "${lib.getExe config.programs.git.package} diff --no-index $left $right"
+            "| sed 's|a/$left/|a/|g;s|b/$right/|b/|g'"
+            "| ${lib.getExe config.programs.delta.package} --width=$width"
+          ])
         ];
       };
     };

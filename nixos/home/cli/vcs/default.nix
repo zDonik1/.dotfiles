@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   email = "doniyor@tokhirov.uz";
   name = "Doniyor Tokhirov";
@@ -80,12 +85,18 @@ in
 
       lazyjj = {
         highlight-color = mocha.surface-0;
+        layout = "vertical";
+        layout-percent = 30;
       };
     };
   };
 
-  programs.nushell.shellAliases = {
-    j = "jj";
-    ljj = "lazyjj -r \"all()\"";
-  };
+  programs.nushell.extraConfig = ''
+    def --wrapped j [...args] {
+        with-env { COLUMNS: (tput cols) } { ${lib.getExe config.programs.jujutsu.package} ...$args }
+    }
+    def --wrapped ljj [...args] {
+        with-env { COLUMNS: 200 } { ${lib.getExe pkgs.lazyjj} -r "all()" ...$args }
+    }
+  '';
 }
