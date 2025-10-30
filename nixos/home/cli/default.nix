@@ -20,6 +20,7 @@
     ./fzf
     ./aerc
     ./vdirsyncer
+    ./cargo
   ];
 
   programs = {
