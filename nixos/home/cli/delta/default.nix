@@ -5,21 +5,17 @@
     src = ./catppuccin;
   };
 
-  programs.git = {
-    delta = {
-      enable = true;
-      options = {
-        features = lib.mkForce "catppuccin-mocha";
-        line-numbers = true;
-      };
-    };
+  programs.delta = {
+    enable = true;
+    options = {
+      features = lib.mkForce "catppuccin-mocha";
+      line-numbers = true;
 
-    extraConfig = {
-      # define the side-by-side delta feature
-      delta.side-by-side = {
+      side-by-side = {
         side-by-side = true;
       };
     };
+    enableGitIntegration = true;
   };
 
   programs.jujutsu.settings = {

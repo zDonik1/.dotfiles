@@ -13,18 +13,18 @@ in
 
   programs.git = {
     enable = true;
-    userEmail = email;
-    userName = name;
 
-    aliases = {
-      s = "status";
-      co = "checkout";
-      st = "stash";
-      adog = "log --all --decorate --oneline --graph";
-      cm = "commit";
-    };
+    settings = {
+      user = { inherit email name; };
 
-    extraConfig = {
+      alias = {
+        s = "status";
+        co = "checkout";
+        st = "stash";
+        adog = "log --all --decorate --oneline --graph";
+        cm = "commit";
+      };
+
       diff.colorMoved = "default";
       init.defaultBranch = "main";
     };

@@ -20,3 +20,7 @@ del-old config:
 # switch to darwin system
 switch-mac *ARGS:
     sudo darwin-rebuild switch --flake ./nixos {{ ARGS }}
+
+# update package repositories
+update:
+    nix flake update nixpkgs nix-darwin home-manager --flake ./nixos

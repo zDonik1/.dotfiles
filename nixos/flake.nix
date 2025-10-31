@@ -2,7 +2,7 @@
   description = "NixOS config flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/cfdc068760e4548d74531df8890218e26ace478f";
 
     nix-darwin = {
       url = "github:LnL7/nix-darwin/master";
@@ -77,28 +77,6 @@
 
         (final: prev: {
           rofi-calc = prev.rofi-calc.override { rofi-unwrapped = prev.rofi-wayland-unwrapped; };
-        })
-
-        (final: prev: {
-          claude-code = prev.claude-code.overrideAttrs rec {
-            version = "2.0.15";
-            src = prev.fetchzip {
-              url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-${version}.tgz";
-              hash = "sha256-wMRW3rp/AimeqC6XcO+ouI39ZdcFMKF4wmA4EnCTQ3g=";
-            };
-          };
-        })
-
-        (final: prev: {
-          devenv = prev.devenv.overrideAttrs rec {
-            version = "1.9";
-            src = prev.fetchFromGitHub {
-              owner = "cachix";
-              repo = "devenv";
-              tag = "v${version}";
-              hash = "sha256-MG+c0mo4g9UHSuqibX3OVkiADWmMn/PWDfVhD4U29PM=";
-            };
-          };
         })
       ];
 
