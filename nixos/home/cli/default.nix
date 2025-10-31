@@ -25,7 +25,7 @@
   programs = {
     bat.enable = true;
     btop.enable = true;
-    moar.enable = true;
+    moor.enable = true;
     k9s.enable = true;
 
     diffnav = {
