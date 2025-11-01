@@ -84,5 +84,8 @@ in
     };
   };
 
-  programs.nushell.shellAliases.ljj = "lazyjj -r \"all()\"";
+  programs.nushell.shellAliases = {
+    j = "jj";
+    ljj = "lazyjj -r \"all()\"";
+  };
 }
