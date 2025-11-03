@@ -6,6 +6,7 @@
 }:
 let
   getKeepassEntry = pkgs.callPackage ../../common/get-keepass-entry.nix { };
+  mbsyncExe = "${lib.getExe config.programs.mbsync.package}";
 
   toolConfig = {
     aerc.enable = config.programs.aerc.enable;
@@ -99,11 +100,19 @@ in
           message/delivery-status=colorize
         '';
 
-        hooks = {
-          mail-received = lib.mkIf pkgs.stdenv.isDarwin ''
-            osascript -e "display notification \"$AERC_SUBJECT\" with title \"$AERC_ACCOUNT/$AERC_FOLDER\" subtitle \"New mail from $AERC_FROM_NAME\""
-          '';
-        };
+        hooks =
+          let
+            syncAccountCmd = ''${mbsyncExe} $AERC_ACCOUNT'';
+          in
+          {
+            mail-received = lib.mkIf pkgs.stdenv.isDarwin ''
+              osascript -e "display notification \"$AERC_SUBJECT\" with title \"$AERC_ACCOUNT/$AERC_FOLDER\" subtitle \"New mail from $AERC_FROM_NAME\""
+            '';
+            mail-deleted = syncAccountCmd;
+            mail-added = syncAccountCmd;
+            mail-sent = syncAccountCmd;
+            flag-changed = syncAccountCmd;
+          };
       };
 
       extraBinds = builtins.readFile ./binds.conf;
