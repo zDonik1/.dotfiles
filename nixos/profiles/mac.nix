@@ -48,6 +48,8 @@
         ../system/devenv
       ];
 
+      services.tailscale.enable = true;
+
       homebrew = {
         enable = true;
 
