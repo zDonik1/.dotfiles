@@ -96,7 +96,7 @@ in
         with-env { COLUMNS: (tput cols) } { ${lib.getExe config.programs.jujutsu.package} ...$args }
     }
     def --wrapped ljj [...args] {
-        with-env { COLUMNS: 200 } { ${lib.getExe pkgs.lazyjj} -r "all()" ...$args }
+        with-env { COLUMNS: 179 } { ${lib.getExe pkgs.lazyjj} -r "all()" ...$args }
     }
   '';
 }

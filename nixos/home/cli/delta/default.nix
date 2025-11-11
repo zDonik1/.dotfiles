@@ -25,11 +25,11 @@
 
   programs.jujutsu.settings = {
     ui = {
-      diff-formatter = "delta";
+      diff-formatter = "delta-sbs";
     };
 
     merge-tools = {
-      delta = {
+      delta-sbs = {
         program = "sh";
         diff-args = [
           "-c"
@@ -37,6 +37,18 @@
             "${lib.getExe config.programs.git.package} diff --no-index $left $right"
             "| sed 's|a/$left/|a/|g;s|b/$right/|b/|g'"
             "| ${lib.getExe config.programs.delta.package} --width=$width"
+          ])
+        ];
+      };
+
+      delta = {
+        program = "sh";
+        diff-args = [
+          "-c"
+          (lib.concatStringsSep " " [
+            "${lib.getExe config.programs.git.package} diff --no-index $left $right"
+            "| sed 's|a/$left/|a/|g;s|b/$right/|b/|g'"
+            "| ${lib.getExe config.programs.delta.package} --features catppuccin-mocha --width=$width"
           ])
         ];
       };
