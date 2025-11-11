@@ -9,6 +9,18 @@ def to-datetime [time: string] {
 }
 
 def _tra [start: datetime, end: datetime, ...tags: string] {
+    let tags = $tags | each { |item|
+        match $item {
+            "tra" => "transport"
+            "cho" => "chores"
+            "meet" => "meetup"
+            "rec" => "islam-recite"
+            "arab" => "islam-arabic"
+            "err" => "errands"
+            "calis" => "activity-calis"
+            _ => $item
+        }
+    } 
     let start = if ($start > (date now)) { $start - 1day } else { $start }
     let end = if ($end > (date now)) { $end - 1day } else { $end }
     timew tra ($start | format date "%FT%T") - ($end | format date "%FT%T") ...$tags
