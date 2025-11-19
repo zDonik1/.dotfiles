@@ -6,7 +6,6 @@
     ./neovim
     ./starship
     ./nushell
-    ./delta
     ./vcs
     ./zellij
     ./eza
@@ -27,6 +26,7 @@
     bat.enable = true;
     btop.enable = true;
     moar.enable = true;
+    delta.enable = true;
   };
 
   home.packages = with pkgs; [
