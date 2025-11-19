@@ -5,5 +5,6 @@
     ./moar
     ./delta
     ./ftdv
+    ./diffnav
   ];
 }

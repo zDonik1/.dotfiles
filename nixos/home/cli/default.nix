@@ -26,7 +26,11 @@
     bat.enable = true;
     btop.enable = true;
     moar.enable = true;
-    delta.enable = true;
+
+    diffnav = {
+      enable = true;
+      enableJujutsuIntegration = true;
+    };
   };
 
   home.packages = with pkgs; [
