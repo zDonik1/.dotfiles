@@ -102,7 +102,7 @@ in
 
         hooks =
           let
-            syncAccountCmd = ''${mbsyncExe} $AERC_ACCOUNT'';
+            syncAccountCmd = ''sh -c "${mbsyncExe} $AERC_ACCOUNT > /dev/null 2>&1 &"'';
           in
           {
             mail-received = lib.mkIf pkgs.stdenv.isDarwin ''
