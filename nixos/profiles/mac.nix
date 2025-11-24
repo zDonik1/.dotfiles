@@ -19,7 +19,6 @@
         obsidian
         libqalculate
         kubectl
-        helmfile
         claude-code
       ];
 
@@ -58,7 +57,6 @@
           "docker-buildx"
           "docker-completion"
           "docker-compose"
-          "helm"
         ];
 
         casks = [
