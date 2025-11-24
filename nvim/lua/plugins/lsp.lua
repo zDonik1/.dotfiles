@@ -89,6 +89,7 @@ local setup_lspconfigs = function()
 		"taplo",
 		"gopls",
 		"dartls",
+		"helm_ls",
 	}
 	for _, lsp in ipairs(lsps) do
 		lspconfig[lsp].setup({ capabilities = capabilities })
