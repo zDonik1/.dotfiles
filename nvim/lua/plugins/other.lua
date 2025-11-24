@@ -80,9 +80,8 @@ return {
 	{
 		"echasnovski/mini.operators",
 		opts = {
-			exchange = {
-				prefix = "gy",
-			},
+			exchange = { prefix = "gy" },
+			replace = { prefix = "gl" },
 		},
 	},
 

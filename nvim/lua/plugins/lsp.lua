@@ -5,32 +5,11 @@ local set_lsp_maps = function(opts)
 	vim.keymap.set("n", "K", function()
 		vim.lsp.buf.hover()
 	end, opts)
-	vim.keymap.set("n", "<leader>vks", function()
-		vim.lsp.buf.workspace_symbol()
-	end, opts)
-	vim.keymap.set("n", "<leader>vd", function()
-		vim.diagnostic.open_float()
-	end, opts)
 	vim.keymap.set("n", "]d", function()
 		vim.diagnostic.jump({ count = 1, float = true })
 	end, opts)
 	vim.keymap.set("n", "[d", function()
 		vim.diagnostic.jump({ count = -1, float = true })
-	end, opts)
-	vim.keymap.set("n", "<leader>vca", function()
-		vim.lsp.buf.code_action()
-	end, opts)
-	vim.keymap.set("v", "<leader>vca", function()
-		vim.lsp.buf.range_code_action()
-	end, opts)
-	vim.keymap.set("n", "<leader>vrr", function()
-		vim.lsp.buf.references()
-	end, opts)
-	vim.keymap.set("n", "<leader>vrn", function()
-		vim.lsp.buf.rename()
-	end, opts)
-	vim.keymap.set("i", "<C-h>", function()
-		vim.lsp.buf.signature_help()
 	end, opts)
 end
 
@@ -90,6 +69,8 @@ local setup_lspconfigs = function()
 		"gopls",
 		"dartls",
 		"helm_ls",
+		"eslint",
+		"ts_ls",
 	}
 	for _, lsp in ipairs(lsps) do
 		lspconfig[lsp].setup({ capabilities = capabilities })
