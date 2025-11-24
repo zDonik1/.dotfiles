@@ -26,6 +26,7 @@
     bat.enable = true;
     btop.enable = true;
     moar.enable = true;
+    k9s.enable = true;
 
     diffnav = {
       enable = true;
