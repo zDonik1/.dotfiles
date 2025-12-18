@@ -106,8 +106,8 @@ return {
 	{
 		"stevearc/overseer.nvim",
 		keys = {
-			{ "<leader>ro", ":OverseerToggle<cr>" },
-			{ "<leader>rr", ":OverseerRun<cr>" },
+			{ "<leader>st", ":OverseerToggle<cr>" },
+			{ "<leader>sr", ":OverseerRun<cr>" },
 		},
 		opts = {
 			task_list = {

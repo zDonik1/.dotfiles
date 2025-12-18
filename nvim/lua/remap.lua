@@ -44,6 +44,11 @@ vim.keymap.set("n", "<leader>bo", "<cmd>%bd|e#|bd#<cr>")
 -- tabs
 vim.keymap.set("n", "<leader>tc", vim.cmd.tabc)
 
+-- substitute and replace
+vim.keymap.set("n", "<leader>r", ":%s:::g<Left><Left><Left>")
+vim.keymap.set("v", "<leader>r", ":s:::g<Left><Left><Left>")
+vim.keymap.set("c", ";\\", "\\(\\)<Left><Left>")
+
 vim.keymap.set("v", "J", ":m '>+1<cr>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<cr>gv=gv")
 
