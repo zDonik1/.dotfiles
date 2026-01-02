@@ -2,6 +2,9 @@ def to-datetime [time: string] {
     if ($time == "now") {
         return (date now)
     }
+    if ($time | str starts-with "y") {
+        return ((to-datetime ($time | str substring 1..)) - 1day)
+    }
     if (($time | str replace -r '^(\d{4}|\d{6})$' "") == "") {
         return (date now | format date $"%Y%m%dT($time)" | into datetime)
     }
