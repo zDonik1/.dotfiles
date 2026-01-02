@@ -30,7 +30,7 @@
       programs.mpv.enable = true;
 
       services.syncthing.enable = true;
-      services.ollama.enable = false;
+      services.ollama.enable = true;
 
       fonts.fontconfig.enable = true;
 
