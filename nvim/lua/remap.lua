@@ -6,8 +6,13 @@ vim.keymap.set("c", "<C-n>", "<Nop>")
 vim.keymap.set("c", "<C-p>", "<Nop>")
 vim.keymap.set("n", "<C-y>", "<C-r>")
 vim.keymap.set("n", "<leader>so", ":luafile $MYVIMRC<CR>")
+
 vim.keymap.set("n", "<cr>", function()
-	vim.cmd.normal("gx")
+	if vim.bo.filetype == "qf" then
+		vim.cmd(".cc")
+	else
+		vim.cmd.normal("gx")
+	end
 end)
 
 -- common commands
