@@ -27,6 +27,11 @@ return {
 						return { exe = "gdformat" }
 					end,
 				},
+				wgsl = {
+					function()
+						return { exe = "wgslfmt" }
+					end,
+				},
 				yaml = {
 					function()
 						if util.get_current_buffer_file_name() == "helmfile.yaml" then
