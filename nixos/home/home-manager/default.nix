@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 
 {
   home = {
@@ -23,6 +23,7 @@
   # add home manager session variables to shells
   programs.bash.enable = true;
   programs.zsh.enable = true;
+  programs.zsh.dotDir = "${config.xdg.configHome}/zsh";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

@@ -2,7 +2,7 @@
   description = "NixOS config flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/cfdc068760e4548d74531df8890218e26ace478f";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nix-darwin = {
       url = "github:LnL7/nix-darwin/master";
@@ -72,8 +72,10 @@
         nur.overlays.default
         starship-jj.overlays.default
 
-        (final: prev: { grimblast = hyprland-contrib.packages.${prev.system}.grimblast; })
-        (final: prev: { zjstatus = zjstatus.packages.${prev.system}.default; })
+        (final: prev: {
+          grimblast = hyprland-contrib.packages.${prev.stdenv.hostPlatform.system}.grimblast;
+        })
+        (final: prev: { zjstatus = zjstatus.packages.${prev.stdenv.hostPlatform.system}.default; })
 
         (final: prev: {
           rofi-calc = prev.rofi-calc.override { rofi-unwrapped = prev.rofi-wayland-unwrapped; };
