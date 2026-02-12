@@ -19,6 +19,7 @@ def _tra [start: datetime, end: datetime, ...tags: string] {
             "meet" => "meetup"
             "rec" => "islam-recite"
             "arab" => "islam-arabic"
+            "tafs" => "islam-tafseer"
             "err" => "errands"
             "calis" => "activity-calis"
             _ => $item
