@@ -22,6 +22,7 @@ def _tra [start: datetime, end: datetime, ...tags: string] {
             "tafs" => "islam-tafseer"
             "err" => "errands"
             "calis" => "activity-calis"
+            "disc" => "discussion"
             _ => $item
         }
     } 
