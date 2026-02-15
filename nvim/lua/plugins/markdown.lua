@@ -36,11 +36,12 @@ return {
 
 						{ mode = "i", left = "<tab>", right = "<Plug>Markdown_Jump" },
 						{ mode = "i", left = "<cr>", right = "<Plug>Markdown_NewLineBelow" },
-						{
-							mode = { "i", "v" },
-							left = "<C-k>",
-							right = "<Plug>Markdown_CreateLink",
-						},
+						-- Clashes with snippet jump key
+						-- {
+						-- 	mode = { "i", "v" },
+						-- 	left = "<C-k>",
+						-- 	right = "<Plug>Markdown_CreateLink",
+						-- },
 					}
 
 					for _, map in ipairs(maps) do

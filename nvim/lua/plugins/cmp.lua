@@ -43,6 +43,7 @@ return {
 		"hrsh7th/cmp-cmdline",
 		"petertriho/cmp-git",
 		"abeldekat/cmp-mini-snippets",
+		"saadparwaiz1/cmp_luasnip",
 
 		"VonHeikemen/lsp-zero.nvim",
 		"onsails/lspkind.nvim",
@@ -54,6 +55,7 @@ return {
 			{ name = "nvim_lsp" },
 			{ name = "nvim_lua" },
 			{ name = "mini_snippets" },
+			{ name = "luasnip" },
 			{ name = "buffer", keyword_length = 3 },
 		}
 		if opts.sources ~= nil then
@@ -89,10 +91,7 @@ return {
 			mapping = expand_mappings(make_mappings(cmp), { "i", "s" }),
 			snippet = {
 				expand = function(args)
-					local insert = MiniSnippets.config.expand.insert or MiniSnippets.default_insert
-					insert({ body = args.body }) -- Insert at cursor
-					cmp.resubscribe({ "TextChangedI", "TextChangedP" })
-					require("cmp.config").set_onetime({ sources = {} })
+					require("luasnip").lsp_expand(args.body)
 				end,
 			},
 		})
