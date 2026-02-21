@@ -1,10 +1,29 @@
+vim.opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,terminal"
+
 return {
 	"folke/persistence.nvim",
-	init = function()
-		vim.opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,terminal"
-		vim.keymap.set("n", "<leader>jw", require("persistence").load)
-		vim.keymap.set("n", "<leader>js", require("persistence").select)
-		vim.keymap.set("n", "<leader>jx", require("persistence").stop)
-	end,
+	keys = {
+		{
+			"<leader>jw",
+			function()
+				require("persistence").load()
+			end,
+			desc = "Load session",
+		},
+		{
+			"<leader>js",
+			function()
+				require("persistence").select()
+			end,
+			desc = "Select session",
+		},
+		{
+			"<leader>jx",
+			function()
+				require("persistence").stop()
+			end,
+			desc = "Disable session save",
+		},
+	},
 	config = true,
 }
