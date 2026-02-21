@@ -1,13 +1,5 @@
 return {
 	{
-		"mbbill/undotree",
-		cmd = "UndotreeToggle",
-		init = function()
-			vim.g.undotree_SetFocusWhenToggle = 1
-		end,
-	},
-
-	{
 		"kylechui/nvim-surround",
 		event = "VeryLazy",
 		dependencies = {
@@ -52,16 +44,6 @@ return {
 	},
 
 	{
-		"stevearc/dressing.nvim",
-		event = "VeryLazy",
-		opts = {
-			input = {
-				relative = "win",
-			},
-		},
-	},
-
-	{
 		"folke/twilight.nvim",
 		cmd = { "Twilight", "TwilightEnable", "TwilightDisable" },
 		opts = {
@@ -101,19 +83,6 @@ return {
 				end,
 			})
 		end,
-	},
-
-	{
-		"stevearc/overseer.nvim",
-		keys = {
-			{ "<leader>st", ":OverseerToggle<cr>" },
-			{ "<leader>sr", ":OverseerRun<cr>" },
-		},
-		opts = {
-			task_list = {
-				direction = "right",
-			},
-		},
 	},
 
 	{

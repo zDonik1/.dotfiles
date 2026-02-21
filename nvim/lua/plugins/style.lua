@@ -53,17 +53,6 @@ return {
 	},
 
 	{
-		"lukas-reineke/indent-blankline.nvim",
-		event = "BufReadPre",
-		opts = {
-			scope = { enabled = false },
-		},
-		config = function(_, opts)
-			require("ibl").setup(opts)
-		end,
-	},
-
-	{
 		"norcalli/nvim-colorizer.lua",
 		config = function()
 			require("colorizer").setup()
@@ -78,5 +67,25 @@ return {
 		opts = {
 			blending = { threshold = 1 },
 		},
+	},
+
+	{
+		"nvim-mini/mini.icons",
+		lazy = true,
+		opts = {
+			file = {
+				[".keep"] = { glyph = "󰊢", hl = "MiniIconsGrey" },
+				["devcontainer.json"] = { glyph = "", hl = "MiniIconsAzure" },
+			},
+			filetype = {
+				dotenv = { glyph = "", hl = "MiniIconsYellow" },
+			},
+		},
+		init = function()
+			package.preload["nvim-web-devicons"] = function()
+				require("mini.icons").mock_nvim_web_devicons()
+				return package.loaded["nvim-web-devicons"]
+			end
+		end,
 	},
 }

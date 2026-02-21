@@ -12,6 +12,8 @@ vim.opt.smartindent = true
 vim.opt.showmode = false
 vim.opt.wrap = false
 vim.opt.sidescroll = 5
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 vim.opt.listchars:append({ precedes = "<", extends = ">" })
 vim.opt.fillchars:append({ diff = "/" })
 

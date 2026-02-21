@@ -80,6 +80,4 @@ vim.keymap.set("n", "<leader>sc", require("util").scratch, { desc = "Command to 
 -- plugin keymaps
 vim.keymap.set("n", "<leader>l", vim.cmd.Lazy)
 
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
-
 vim.keymap.set("n", "-", "<cmd>Oil --float<cr>", { desc = "Open parent directory" })

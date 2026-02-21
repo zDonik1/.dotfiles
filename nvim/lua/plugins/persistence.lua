@@ -4,13 +4,6 @@ return {
 	"folke/persistence.nvim",
 	keys = {
 		{
-			"<leader>jw",
-			function()
-				require("persistence").load()
-			end,
-			desc = "Load session",
-		},
-		{
 			"<leader>js",
 			function()
 				require("persistence").select()
