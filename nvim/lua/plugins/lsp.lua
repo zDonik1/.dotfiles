@@ -1,18 +1,3 @@
-local set_lsp_maps = function(opts)
-	vim.keymap.set("n", "gd", function()
-		vim.lsp.buf.definition()
-	end, opts)
-	vim.keymap.set("n", "K", function()
-		vim.lsp.buf.hover()
-	end, opts)
-	vim.keymap.set("n", "]d", function()
-		vim.diagnostic.jump({ count = 1, float = true })
-	end, opts)
-	vim.keymap.set("n", "[d", function()
-		vim.diagnostic.jump({ count = -1, float = true })
-	end, opts)
-end
-
 local lua_ls_opts = {
 	on_init = function(client)
 		local path = client.workspace_folders[1].name
@@ -89,11 +74,7 @@ return {
 	},
 	branch = "v3.x",
 	config = function()
-		local lsp_zero = require("lsp-zero")
-		lsp_zero.on_attach(function(_, bufnr)
-			set_lsp_maps({ buffer = bufnr, remap = false })
-		end)
-		lsp_zero.extend_lspconfig()
+		require("lsp-zero").extend_lspconfig()
 		setup_lspconfigs()
 
 		require("fidget").setup({
