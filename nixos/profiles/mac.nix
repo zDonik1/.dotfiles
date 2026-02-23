@@ -27,6 +27,11 @@
         "$HOME/.cache/.bun/bin"
       ];
 
+      home.sessionVariables = {
+        EDITOR = "nvim";
+        BROWSER = "/Applications/Zen.app/Contents/MacOS/zen";
+      };
+
       programs.mpv.enable = true;
 
       services.syncthing.enable = true;
