@@ -49,6 +49,8 @@
 
       services.tailscale.enable = true;
 
+      environment.systemPath = [ "/opt/homebrew/bin" ];
+
       homebrew = {
         enable = true;
 
@@ -66,7 +68,6 @@
           "expressvpn"
           "ghostty"
           "gimp"
-          "jordanbaird-ice"
           "karabiner-elements"
           "keepassxc"
           "libreoffice"
