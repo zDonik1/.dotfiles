@@ -68,19 +68,23 @@
     let
       system = "x86_64-linux";
 
-      overlays = with inputs; [
-        nur.overlays.default
-        starship-jj.overlays.default
+      overlays =
+        with inputs;
+        [
+          nur.overlays.default
+          starship-jj.overlays.default
 
-        (final: prev: { grimblast = hyprland-contrib.packages.${prev.system}.grimblast; })
-        (final: prev: { zjstatus = zjstatus.packages.${prev.system}.default; })
+          (final: prev: { grimblast = hyprland-contrib.packages.${prev.system}.grimblast; })
+          (final: prev: { zjstatus = zjstatus.packages.${prev.system}.default; })
 
-        (final: prev: {
-          rofi-calc = prev.rofi-calc.override { rofi-unwrapped = prev.rofi-wayland-unwrapped; };
-        })
+          (final: prev: {
+            rofi-calc = prev.rofi-calc.override { rofi-unwrapped = prev.rofi-wayland-unwrapped; };
+          })
 
-        (final: prev: { ftdv = prev.callPackage ./pkgs/ftdv.nix { }; })
-      ];
+          (final: prev: { ftdv = prev.callPackage ./pkgs/ftdv.nix { }; })
+
+        ]
+        ++ (import ./upgrades.nix);
 
       makeHomeManagerModules =
         {

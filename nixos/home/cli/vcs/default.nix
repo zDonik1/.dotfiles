@@ -46,6 +46,37 @@ in
     };
   };
 
+  programs.diffnav = {
+    enable = true;
+    enableJujutsuIntegration = true;
+  };
+
+  programs.gh-dash = {
+    enable = true;
+    settings = {
+      defaults.preview.width = 100;
+      pager.diff = "diffnav";
+
+      prSections = [
+        {
+          title = "Pull Requests";
+          filters = "is:open";
+        }
+      ];
+
+      issuesSections = [
+        {
+          title = "Assigned";
+          filters = "is:open assignee:@me";
+        }
+        {
+          title = "Issues";
+          filters = "is:open";
+        }
+      ];
+    };
+  };
+
   programs.jujutsu = {
     enable = true;
     settings = {
