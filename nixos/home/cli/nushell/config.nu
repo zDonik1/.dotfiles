@@ -487,7 +487,6 @@ $env.config = {
 # =======================================
 
 alias lsn = ls
-alias led = hledger
 alias n = nvim
 alias cat = bat
 alias f = fzf
