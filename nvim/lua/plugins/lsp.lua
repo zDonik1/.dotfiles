@@ -73,6 +73,31 @@ return {
 		"j-hui/fidget.nvim",
 	},
 	branch = "v3.x",
+
+	keys = function()
+		local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
+		local next_diagnostic, prev_diagnostic = ts_repeat_move.make_repeatable_move_pair(function()
+			vim.diagnostic.jump({ count = 1, float = true })
+		end, function()
+			vim.diagnostic.jump({ count = -1, float = true })
+		end)
+
+		return {
+			{
+				"]d",
+				next_diagnostic,
+				desc = "Go to next LSP diagnostic",
+				mode = { "n", "x", "o" },
+			},
+			{
+				"[d",
+				prev_diagnostic,
+				desc = "Go to previous LSP diagnostic",
+				mode = { "n", "x", "o" },
+			},
+		}
+	end,
+
 	config = function()
 		require("lsp-zero").extend_lspconfig()
 		setup_lspconfigs()

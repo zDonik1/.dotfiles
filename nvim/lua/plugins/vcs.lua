@@ -6,65 +6,63 @@ return {
 
 	{
 		"algmyr/vcsigns.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
 		event = "VeryLazy",
-		keys = {
-			{
-				"[r",
-				function()
-					require("vcsigns").actions.target_older_commit(0, vim.v.count1)
-				end,
-				desc = "Move diff target back",
-			},
-			{
-				"]r",
-				function()
-					require("vcsigns").actions.target_newer_commit(0, vim.v.count1)
-				end,
-				desc = "Move diff target forward",
-			},
-			{
-				"[h",
-				function()
-					require("vcsigns").actions.hunk_prev(0, vim.v.count1)
-				end,
-				desc = "Go to previous hunk",
-			},
-			{
-				"]h",
-				function()
-					require("vcsigns").actions.hunk_next(0, vim.v.count1)
-				end,
-				desc = "Go to next hunk",
-			},
-			{
-				"[H",
-				function()
-					require("vcsigns").actions.hunk_prev(0, 9999)
-				end,
-				desc = "Go to first hunk",
-			},
-			{
-				"]H",
-				function()
-					require("vcsigns").actions.hunk_next(0, 9999)
-				end,
-				desc = "Go to last hunk",
-			},
-			{
-				"<leader>gr",
-				function()
-					require("vcsigns").actions.hunk_undo(0)
-				end,
-				desc = "Undo hunks in range",
-			},
-			{
-				"<leader>gh",
-				function()
-					require("vcsigns").actions.toggle_hunk_diff(0)
-				end,
-				desc = "Show hunk diffs inline in the current buffer",
-			},
-		},
+		keys = function()
+			local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
+			local next_hunk, prev_hunk = ts_repeat_move.make_repeatable_move_pair(function()
+				require("vcsigns").actions.hunk_next(0, vim.v.count1)
+			end, function()
+				require("vcsigns").actions.hunk_prev(0, vim.v.count1)
+			end)
+
+			return {
+				{
+					"[r",
+					function()
+						require("vcsigns").actions.target_older_commit(0, vim.v.count1)
+					end,
+					desc = "Move diff target back",
+				},
+				{
+					"]r",
+					function()
+						require("vcsigns").actions.target_newer_commit(0, vim.v.count1)
+					end,
+					desc = "Move diff target forward",
+				},
+				{ "]h", next_hunk, desc = "Go to next hunk" },
+				{ "[h", prev_hunk, desc = "Go to previous hunk" },
+				{
+					"[H",
+					function()
+						require("vcsigns").actions.hunk_prev(0, 9999)
+					end,
+					desc = "Go to first hunk",
+				},
+				{
+					"]H",
+					function()
+						require("vcsigns").actions.hunk_next(0, 9999)
+					end,
+					desc = "Go to last hunk",
+				},
+				{
+					"<leader>gr",
+					function()
+						require("vcsigns").actions.hunk_undo(0)
+					end,
+					desc = "Undo hunks in range",
+				},
+				{
+					"<leader>gh",
+					function()
+						require("vcsigns").actions.toggle_hunk_diff(0)
+					end,
+					desc = "Show hunk diffs inline in the current buffer",
+				},
+			}
+		end,
 		opts = {
 			show_delete_count = false,
 		},
