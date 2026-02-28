@@ -1,16 +1,41 @@
 return {
 	"mhartington/formatter.nvim",
 	cmd = "FormatWrite",
+
 	init = function()
-		vim.api.nvim_create_augroup("__formatter__", { clear = true })
-		vim.api.nvim_create_autocmd("BufWritePost", {
-			group = "__formatter__",
-			command = ":FormatWrite",
-		})
+		require("utils.snacks").on_snacks_loaded(function()
+			if _G.Snacks == nil then
+				return
+			end
+
+			Snacks.toggle
+				.new({
+					id = "formatter",
+					name = "Format on Save",
+					get = function()
+						local ok, _ = pcall(vim.api.nvim_get_autocmds, { group = "__formatter__" })
+						return ok
+					end,
+					set = function(state)
+						if state then
+							vim.api.nvim_create_augroup("__formatter__", { clear = true })
+							vim.api.nvim_create_autocmd("BufWritePost", {
+								group = "__formatter__",
+								command = ":FormatWrite",
+							})
+						else
+							vim.api.nvim_del_augroup_by_name("__formatter__")
+						end
+					end,
+				})
+				:map("<leader>uf")
+				:set(true)
+		end)
 	end,
-	config = function()
+
+	opts = function()
 		local util = require("formatter.util")
-		require("formatter").setup({
+		return {
 			filetype = {
 				lua = { require("formatter.filetypes.lua").stylua },
 				rust = { require("formatter.filetypes.rust").rustfmt },
@@ -55,6 +80,6 @@ return {
 					end,
 				},
 			},
-		})
+		}
 	end,
 }
