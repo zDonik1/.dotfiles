@@ -7,7 +7,7 @@ local function prequire(module_name)
 	return ret
 end
 
-prequire("remap")
+prequire("keymap")
 prequire("set")
 prequire("lazy_init")
 prequire("commands")
