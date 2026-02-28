@@ -16,7 +16,3 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.listchars:append({ precedes = "<", extends = ">" })
 vim.opt.fillchars:append({ diff = "/" })
-
-if os.getenv("XDG_DATA_HOME") then
-	vim.opt.directory = os.getenv("XDG_DATA_HOME") .. "/nvim-data/swap"
-end
