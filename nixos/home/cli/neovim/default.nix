@@ -17,7 +17,7 @@
       # nix
       nil
       nixd
-      nixfmt
+      nixfmt-rfc-style
       biome
 
       # yaml

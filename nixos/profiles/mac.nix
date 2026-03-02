@@ -62,6 +62,7 @@
         casks = [
           "anydesk"
           "cursorcerer"
+          "discord"
           "expressvpn"
           "ghostty"
           "gimp"

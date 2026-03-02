@@ -24,8 +24,8 @@ in
 {
   programs.aerospace = {
     enable = true;
-    launchd.enable = true;
-    settings = {
+    userSettings = {
+      start-at-login = true;
       gaps = {
         inner.horizontal = 8;
         inner.vertical = 8;
