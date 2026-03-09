@@ -57,6 +57,7 @@ local setup_lspconfigs = function()
 		"helm_ls",
 		"eslint",
 		"ts_ls",
+		"marksman",
 	}
 	for _, lsp in ipairs(lsps) do
 		lspconfig[lsp].setup({ capabilities = capabilities })

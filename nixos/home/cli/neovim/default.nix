@@ -27,6 +27,8 @@
       # toml
       taplo
 
+      # markdown
+      marksman
     ]
     ++ lib.optionals (!pkgs.stdenv.isDarwin) [
       # csharp

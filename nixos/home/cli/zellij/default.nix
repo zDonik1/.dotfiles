@@ -66,10 +66,10 @@ in
             (mkKeybind [ "Ctrl 8" ] [ { GoToTab = 8; } ])
             (mkKeybind [ "Ctrl 9" ] [ { GoToTab = 9; } ])
 
-            (mkKeybind [ "Ctrl Alt h" "Ctrl Alt Left" ] [ { MoveFocus = "Left"; } ])
-            (mkKeybind [ "Ctrl Alt l" "Ctrl Alt Right" ] [ { MoveFocus = "Right"; } ])
-            (mkKeybind [ "Ctrl Alt j" "Ctrl Alt Down" ] [ { MoveFocus = "Down"; } ])
-            (mkKeybind [ "Ctrl Alt k" "Ctrl Alt Up" ] [ { MoveFocus = "Up"; } ])
+            (mkKeybind [ "Alt h" "Alt Left" ] [ { MoveFocus = "Left"; } ])
+            (mkKeybind [ "Alt l" "Alt Right" ] [ { MoveFocus = "Right"; } ])
+            (mkKeybind [ "Alt j" "Alt Down" ] [ { MoveFocus = "Down"; } ])
+            (mkKeybind [ "Alt k" "Alt Up" ] [ { MoveFocus = "Up"; } ])
 
             (mkKeybind [ "Ctrl Alt Shift h" "Ctrl Alt Shift Left" ] [ { Resize = "Left"; } ])
             (mkKeybind [ "Ctrl Alt Shift l" "Ctrl Alt Shift Right" ] [ { Resize = "Right"; } ])
