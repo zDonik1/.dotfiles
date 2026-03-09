@@ -16,6 +16,8 @@
 
       reports.month.summary = off
       reports.week.summary = off
+
+      reports.week.cell = 10
     '';
 
     "timewarrior/themes/catppuccin.theme".text = ''

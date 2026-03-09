@@ -393,11 +393,10 @@ in
     };
 
     layouts = {
-      inherit (layouts) default time ledger;
+      inherit (layouts) default time;
 
       "default.swap" = layouts.defaultSwap;
       "time.swap" = layouts.defaultSwap;
-      "ledger.swap" = layouts.defaultSwap;
     };
   };
 }

@@ -72,15 +72,7 @@ in
 {
   default = ''
     layout {
-        ${defaultTabTemplate {
-          children = ''
-            pane split_direction="vertical" {
-                children
-                pane
-                pane focus=true size="30%"
-            }
-          '';
-        }}
+        ${defaultTabTemplate { }}
     }
   '';
 
@@ -186,45 +178,32 @@ in
       layout {
           ${defaultTabTemplate { }}
           
-          tab name="ledger" split_direction="vertical" cwd="~/ledger" {
-              pane name="ledger" size="40%" command="nvim"
-              pane name="report" command="just" {
-                  args "dev"
+          tab name="time" focus=true {
+              pane name="2 week report" size="30%" command="watchexec" {
+                  args "-qc" "-w" "${homeDir}/.local/share/timewarrior/data" \
+                       "timew week 14days before tomor"
+              }
+              pane split_direction="vertical" {
+                  pane size="40%" {
+                      pane name="time budget" size="20%" command="watchexec" {
+                          args "-qc" "--shell" "nu" "-w" "${homeDir}/.local/share/timewarrior/data" \
+                               "source $nu.config-path; twbud"
+                      }
+                      pane focus=true
+                  }
+                  pane {
+                      pane name="tasks" command="taskwarrior-tui"
+                  }
               }
           }
-          tab name="time" focus=true split_direction="vertical" {
-              pane size="40%" {
-                  pane name="2 day summary" size="40%" command="watchexec" {
-                      args "-qc" "-w" "${homeDir}/.local/share/timewarrior/data" \
-                           "timew sum 1days ago"
-                  }
-                  pane name="time budget" size="25%" command="watchexec" {
-                      args "-qc" "--shell" "nu" "-w" "${homeDir}/.local/share/timewarrior/data" \
-                           "source $nu.config-path; twbud"
-                  }
-                  pane
-              }
-              pane {
-                  pane name="2 week report" size="30%" command="watchexec" {
-                      args "-qc" "-w" "${homeDir}/.local/share/timewarrior/data" \
-                           "timew week 14days before tomor"
-                  }
-                  pane name="tasks" command="taskwarrior-tui"
-              }
+
+          tab name="email" {
+              pane command="aerc"
+          }
+
+          tab name="cal" {
+              pane command="zdcal"
           }
       }
     '';
-
-  ledger = ''
-    layout {
-        ${defaultTabTemplate { }}
-        
-        tab name="ledger" split_direction="vertical" cwd="~/ledger" {
-            pane name="ledger" size="40%" command="nvim"
-            pane name="report" command="just" {
-                args "dev"
-            }
-        }
-    }
-  '';
 }
