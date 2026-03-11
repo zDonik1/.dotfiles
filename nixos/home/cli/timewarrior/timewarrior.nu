@@ -20,6 +20,7 @@ def _tra [start: datetime, end: datetime, ...tags: string] {
             "rec" => "islam-recite"
             "arab" => "islam-arabic"
             "tafs" => "islam-tafseer"
+            "mem" => "islam-memorize"
             "err" => "errands"
             "calis" => "activity-calis"
             "disc" => "discussion"
