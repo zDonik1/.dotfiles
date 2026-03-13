@@ -20,6 +20,7 @@
     ./aerc
     ./vdirsyncer
     ./cargo
+    ./tmux
   ];
 
   programs = {
