@@ -20,5 +20,20 @@
       nativeInstallCheckInputs = [ prev.versionCheckHook ];
       doInstallCheck = true;
     };
+
+    jujutsu = prev.jujutsu.overrideAttrs rec {
+      version = "0.35.0";
+      src = prev.fetchFromGitHub {
+        owner = "jj-vcs";
+        repo = "jj";
+        tag = "v${version}";
+        hash = "sha256-YUrjP2tzABdy4eAV1hPmgYWU8ChcJ5B4IlmQUGm95ro=";
+      };
+
+      cargoDeps = prev.rustPlatform.fetchCargoVendor {
+        inherit src;
+        hash = "sha256-9VCAmtY029+CFNFcYLdA/VyT5CIvJnuA3iwPOKZpYV0=";
+      };
+    };
   })
 ]
