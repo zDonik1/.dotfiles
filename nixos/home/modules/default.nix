@@ -6,5 +6,6 @@
     ./delta
     ./ftdv
     ./diffnav
+    ./marksman
   ];
 }

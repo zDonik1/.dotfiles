@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  programs.marksman.enable = true;
+
   home.packages =
     with pkgs;
     [
@@ -26,9 +28,6 @@
 
       # toml
       taplo
-
-      # markdown
-      marksman
     ]
     ++ lib.optionals (!pkgs.stdenv.isDarwin) [
       # csharp
