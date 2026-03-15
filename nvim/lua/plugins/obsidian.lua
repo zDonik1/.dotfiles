@@ -1,96 +1,123 @@
+local function new_zettel()
+	local util = require("obsidian.util")
+	local log = require("obsidian.log")
+	local client = require("obsidian").get_client()
+
+	local note
+	local title = util.input("Enter title or path (optional): ", { completion = "file" })
+	if not title then
+		log.warn("Aborted")
+		return
+	elseif title == "" then
+		title = nil
+	end
+	note = client:create_note({ title = title, no_write = true })
+	client:open_note(note, { sync = true })
+	client:write_note_to_buffer(note, { template = "note_template" })
+end
+
+local function offset_daily(offset)
+	local filename = vim.fn.expand("%:t:r")
+	local year, month, day = filename:match("(%d+)-(%d+)-(%d+)")
+	require("obsidian.daily")
+		.daily({
+			date = os.time({ year = year, month = month, day = day }) + (offset * 3600 * 24),
+		})
+		:open()
+end
+
 return {
-	"epwalsh/obsidian.nvim",
-	event = {
-		"BufReadPost " .. vim.fn.expand("~") .. "/SecondBrain/**.md",
-		"BufNewFile " .. vim.fn.expand("~") .. "/SecondBrain/**.md",
-	},
-	cmd = {
-		"ObsidianQuickSwitch",
-		"ObsidianNewZettel",
-		"ObsidianNewFromTemplate",
-		"ObsidianDailies",
-		"ObsidianToday",
-		"ObsidianTag",
-	},
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-		"hrsh7th/nvim-cmp",
-		"nvim-telescope/telescope.nvim",
-		"nvim-treesitter/nvim-treesitter",
-	},
-	init = function()
-		vim.keymap.set(
-			"n",
+	"obsidian-nvim/obsidian.nvim",
+	-- dir = "~/projects/obsidian.nvim",
+
+	ft = "markdown",
+	cmd = { "Obsidian" },
+	keys = {
+		{
 			"<leader>oo",
-			vim.cmd.ObsidianOpen,
-			{ desc = "Obsidian: Open current note in Obsidian" }
-		)
-		vim.keymap.set(
-			"n",
+			function()
+				vim.cmd.Obsidian("open")
+			end,
+			desc = "Obsidian: Open current note in Obsidian",
+		},
+		{
 			"<leader>on",
-			vim.cmd.ObsidianNewFromTemplate,
-			{ desc = "Obsidian: Create new note" }
-		)
-		vim.keymap.set(
-			"n",
+			function()
+				vim.cmd.Obsidian("new_from_template")
+			end,
+			desc = "Obsidian: Create new note",
+		},
+		{
 			"<leader>oz",
-			vim.cmd.ObsidianNewZettel,
-			{ desc = "Obsidian: Create new zettel" }
-		)
-		vim.keymap.set(
-			"n",
+			new_zettel,
+			desc = "Obsidian: Create new zettel",
+		},
+		{
 			"<leader>oq",
-			vim.cmd.ObsidianQuickSwitch,
-			{ desc = "Obsidian: Open quick switch dialog" }
-		)
-		vim.keymap.set(
-			"n",
+			function()
+				vim.cmd.Obsidian("quick_switch")
+			end,
+			desc = "Obsidian: Open quick switch dialog",
+		},
+		{
 			"<leader>ob",
-			vim.cmd.ObsidianBacklinks,
-			{ desc = "Obsidian: Open backlinks" }
-		)
-		vim.keymap.set(
-			"n",
+			function()
+				vim.cmd.Obsidian("backlinks")
+			end,
+			desc = "Obsidian: Open backlinks",
+		},
+		{
 			"<leader>od",
-			vim.cmd.ObsidianDailies,
-			{ desc = "Obsidian: Open dailies dialog" }
-		)
-		vim.keymap.set(
-			"n",
+			function()
+				vim.cmd.Obsidian("dailies")
+			end,
+			desc = "Obsidian: Open dailies dialog",
+		},
+		{
 			"<leader>oy",
-			vim.cmd.ObsidianToday,
-			{ desc = "Obsidian: Open today's note" }
-		)
-		vim.keymap.set(
-			"n",
+			function()
+				vim.cmd.Obsidian("today")
+			end,
+			desc = "Obsidian: Open today's note",
+		},
+		{
 			"[o",
-			vim.cmd.ObsidianPrevDay,
-			{ desc = "Obsidian: Open previous day relative to current note" }
-		)
-		vim.keymap.set(
-			"n",
+			function()
+				offset_daily(-1)
+			end,
+			desc = "Obsidian: Open previous day relative to current note",
+		},
+		{
 			"]o",
-			vim.cmd.ObsidianNextDay,
-			{ desc = "Obsidian: Open next day relative to current note" }
-		)
-		vim.keymap.set(
-			"n",
+			function()
+				offset_daily(1)
+			end,
+			desc = "Obsidian: Open next day relative to current note",
+		},
+		{
 			"<leader>om",
-			vim.cmd.ObsidianTemplate,
-			{ desc = "Obsidian: Insert templates with dialog" }
-		)
-		vim.keymap.set(
-			"n",
+			function()
+				vim.cmd.Obsidian("template")
+			end,
+			desc = "Obsidian: Insert templates with dialog",
+		},
+		{
 			"<leader>ot",
-			vim.cmd.ObsidianTags,
-			{ desc = "Obsidian: Open dialog for tags" }
-		)
-	end,
-	config = function()
+			function()
+				vim.cmd.Obsidian("tags")
+			end,
+			desc = "Obsidian: Open dialog for tags",
+		},
+	},
+
+	---@module 'obsidian'
+	---@type function|obsidian.config
+	opts = function()
 		local mocha = require("catppuccin.palettes").get_palette("mocha")
 
-		require("obsidian").setup({
-			sort_by = "accessed",
+		return {
+			legacy_commands = false,
+			search = { sort_by = "accessed" },
 			workspaces = {
 				{ name = "personal", path = "~/SecondBrain" },
 			},
@@ -109,43 +136,61 @@ return {
 				},
 			},
 			completion = {
-				nvim_cmp = true,
+				nvim_cmp = false,
 				min_chars = 1,
 			},
 			new_notes_location = "current_dir",
 			note_id_func = function(title)
 				return title
 			end,
-			wiki_link_func = "use_alias_only",
+			link = { style = "wiki" },
 
-			note_frontmatter_func = function(note)
-				if note.metadata ~= nil then
-					return note.metadata
-				end
-				return {}
-			end,
-
-			mappings = {
-				["<cr>"] = {
-					action = require("obsidian").util.gf_passthrough,
-					opts = { noremap = false, expr = true, buffer = true },
-				},
+			frontmatter = {
+				func = function(note)
+					local out = {
+						id = note.id,
+						date_created = os.date("%Y-%m-%dT%H:%M:%S"),
+						type = "zettel",
+					}
+					if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+						for k, v in pairs(note.metadata) do
+							out[k] = v
+						end
+					end
+					return out
+				end,
+				sort = { "id", "date_created", "type" },
 			},
-			follow_url_func = vim.ui.open,
+
 			callbacks = {
-				post_set_workspace = function(client, workspace)
-					client.log.info("Changing directory to %s", workspace.path)
-					vim.cmd.cd(tostring(workspace.path))
+				enter_note = function(note)
+					local actions = require("obsidian.actions")
+					vim.keymap.del("n", "<cr>", { buffer = true })
+					vim.keymap.del("n", "]o", { buffer = true })
+					vim.keymap.del("n", "[o", { buffer = true })
+
+					vim.keymap.set(
+						"n",
+						"<CR>",
+						actions.smart_action,
+						{ expr = true, buffer = true, desc = "Obsidian Smart Action" }
+					)
+
+					vim.keymap.set("n", "]l", function()
+						actions.nav_link("next")
+					end, { buffer = true, desc = "Go to next link" })
+					vim.keymap.set("n", "[l", function()
+						actions.nav_link("prev")
+					end, { buffer = true, desc = "Go to previous link" })
 				end,
 			},
+
 			ui = {
-				checkboxes = {},
 				bullets = {},
 				external_link_icon = {},
 				reference_text = {},
 				highlight_text = {},
-				tags = { hl_group = "ObsidianTag" },
-				block_ids = {},
+				block_ids = { hl_group = "ObsidianBlockID" },
 				hl_groups = {
 					ObsidianTodo = { bold = true, fg = mocha.peach },
 					ObsidianDone = { bold = true, fg = mocha.sapphire },
@@ -158,57 +203,6 @@ return {
 					ObsidianHighlightText = { bg = mocha.flamingo },
 				},
 			},
-		})
-
-		-- custom Ex commands
-		vim.api.nvim_create_user_command("ObsidianNewZettel", function(_)
-			local util = require("obsidian.util")
-			local log = require("obsidian.log")
-			local client = require("obsidian").get_client()
-
-			local note
-			local title = util.input("Enter title or path (optional): ", { completion = "file" })
-			if not title then
-				log.warn("Aborted")
-				return
-			elseif title == "" then
-				title = nil
-			end
-			note = client:create_note({ title = title, no_write = true })
-			client:open_note(note, { sync = true })
-			client:write_note_to_buffer(note, { template = "note_template" })
-		end, {
-			bang = false,
-			bar = false,
-			register = false,
-			desc = "Create a new zettel note",
-		})
-
-		local offset_daily = function(offset)
-			local filename = vim.fn.expand("%:t:r")
-			local year, month, day = filename:match("(%d+)-(%d+)-(%d+)")
-			local date = os.time({ year = year, month = month, day = day })
-			local client = require("obsidian").get_client()
-			local note = client:_daily(date + (offset * 3600 * 24))
-			client:open_note(note)
-		end
-
-		vim.api.nvim_create_user_command("ObsidianPrevDay", function(_)
-			offset_daily(-1)
-		end, {
-			bang = false,
-			bar = false,
-			register = false,
-			desc = "Create and switch to the previous daily note based on current buffer",
-		})
-
-		vim.api.nvim_create_user_command("ObsidianNextDay", function(_)
-			offset_daily(1)
-		end, {
-			bang = false,
-			bar = false,
-			register = false,
-			desc = "Create and switch to the next daily note based on current buffer",
-		})
+		}
 	end,
 }
