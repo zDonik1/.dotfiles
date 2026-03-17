@@ -35,5 +35,15 @@
         hash = "sha256-9VCAmtY029+CFNFcYLdA/VyT5CIvJnuA3iwPOKZpYV0=";
       };
     };
+
+    neovim-unwrapped = prev.neovim-unwrapped.overrideAttrs rec {
+      version = "0.11.6";
+      src = prev.fetchFromGitHub {
+        owner = "neovim";
+        repo = "neovim";
+        tag = "v${version}";
+        hash = "sha256-GdfCaKNe/qPaUV2NJPXY+ATnQNWnyFTFnkOYDyLhTNg=";
+      };
+    };
   })
 ]
