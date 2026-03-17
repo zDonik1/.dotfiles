@@ -10,7 +10,7 @@
 -- 	},
 -- })
 
-local lsps = {
+vim.lsp.enable({
 	"lua_ls",
 	"csharp_ls",
 	"rust_analyzer",
@@ -30,11 +30,8 @@ local lsps = {
 	"helm_ls",
 	"eslint",
 	"ts_ls",
-	"marksman",
-}
-for _, lsp in ipairs(lsps) do
-	vim.lsp.enable(lsp)
-end
+	"markdown_oxide",
+})
 
 vim.diagnostic.config({
 	float = {

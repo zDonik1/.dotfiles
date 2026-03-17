@@ -1,8 +1,6 @@
 { pkgs, ... }:
 
 {
-  programs.marksman.enable = true;
-
   home.packages =
     with pkgs;
     [
@@ -28,6 +26,9 @@
 
       # toml
       taplo
+
+      # markdown
+      markdown-oxide
     ]
     ++ lib.optionals (!pkgs.stdenv.isDarwin) [
       # csharp
