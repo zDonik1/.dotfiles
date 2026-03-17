@@ -45,7 +45,6 @@ return {
 		"abeldekat/cmp-mini-snippets",
 		"saadparwaiz1/cmp_luasnip",
 
-		"VonHeikemen/lsp-zero.nvim",
 		"onsails/lspkind.nvim",
 	},
 	opts = function(_, opts)
