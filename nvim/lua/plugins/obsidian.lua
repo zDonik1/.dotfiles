@@ -27,7 +27,8 @@ local function offset_daily(offset)
 end
 
 return {
-	"obsidian-nvim/obsidian.nvim",
+	"zDonik1/obsidian.nvim",
+	branch = "disable-lsp",
 	-- dir = "~/projects/obsidian.nvim",
 
 	ft = "markdown",
