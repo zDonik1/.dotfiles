@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/cfdc068760e4548d74531df8890218e26ace478f";
+    nixpkgs-latest.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nix-darwin = {
       url = "github:LnL7/nix-darwin/master";
@@ -56,6 +57,7 @@
   outputs =
     {
       nixpkgs,
+      nixpkgs-latest,
       nix-darwin,
       nixos-wsl,
       home-manager,
@@ -84,7 +86,7 @@
           (final: prev: { ftdv = prev.callPackage ./pkgs/ftdv.nix { }; })
 
         ]
-        ++ (import ./upgrades.nix);
+        ++ (import ./upgrades.nix nixpkgs-latest);
 
       makeHomeManagerModules =
         {

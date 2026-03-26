@@ -1,4 +1,4 @@
-[
+nixpkgs-latest: [
   (final: prev: {
     gh-dash = prev.gh-dash.overrideAttrs rec {
       version = "4.23.1";
@@ -45,5 +45,7 @@
         hash = "sha256-GdfCaKNe/qPaUV2NJPXY+ATnQNWnyFTFnkOYDyLhTNg=";
       };
     };
+
+    zellij = (import nixpkgs-latest { inherit (prev) system; }).zellij;
   })
 ]

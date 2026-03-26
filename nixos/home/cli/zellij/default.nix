@@ -388,10 +388,6 @@ in
         };
     };
 
-    themes = {
-      catppuccin-mocha = ./catppuccin-mocha.kdl;
-    };
-
     layouts = {
       inherit (layouts) default time;
 
