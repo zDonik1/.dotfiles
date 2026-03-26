@@ -21,6 +21,7 @@
     ./vdirsyncer
     ./cargo
     ./tmux
+    ./mise
   ];
 
   programs = {
