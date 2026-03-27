@@ -12,6 +12,7 @@
         ../home/ghostty
         ../home/raycast
         ../home/wm/aerospace
+        ../home/wallpaper
       ];
 
       home.packages = with pkgs; [
