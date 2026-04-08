@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./moar
+    ./moor
     ./delta
     ./ftdv
     ./diffnav

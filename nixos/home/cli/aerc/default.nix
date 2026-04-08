@@ -85,9 +85,9 @@ in
 
         viewer.pager =
           let
-            moar = config.programs.moar;
+            moor = config.programs.moor;
           in
-          lib.mkIf moar.enable "${lib.getExe moar.package}";
+          lib.mkIf moor.enable "${lib.getExe moor.package}";
 
         compose.empty-subject-warning = true;
 
