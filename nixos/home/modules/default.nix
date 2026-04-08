@@ -7,5 +7,6 @@
     ./ftdv
     ./diffnav
     ./marksman
+    ./goose-cli
   ];
 }
