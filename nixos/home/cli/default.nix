@@ -31,6 +31,7 @@
     mise.enable = true;
     oama.enable = true;
     sops.enable = true;
+    opencode.enable = true;
   };
 
   home.packages = with pkgs; [

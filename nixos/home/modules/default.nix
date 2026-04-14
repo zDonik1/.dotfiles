@@ -11,5 +11,6 @@
     ./mise
     ./oama
     ./sops
+    ./opencode
   ];
 }
