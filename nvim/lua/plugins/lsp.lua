@@ -70,15 +70,13 @@ return {
 		lazy = false,
 
 		keys = function()
-			local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
-			local next_diagnostic, prev_diagnostic = ts_repeat_move.make_repeatable_move_pair(
-				function()
-					vim.diagnostic.jump({ count = 1, float = true })
-				end,
-				function()
-					vim.diagnostic.jump({ count = -1, float = true })
-				end
-			)
+			local ts_repeat_move = require("nvim-treesitter-textobjects.repeatable_move")
+			local next_diagnostic = ts_repeat_move.make_repeatable_move(function()
+				vim.diagnostic.jump({ count = 1, float = true })
+			end)
+			local prev_diagnostic = ts_repeat_move.make_repeatable_move(function()
+				vim.diagnostic.jump({ count = -1, float = true })
+			end)
 
 			return {
 				{

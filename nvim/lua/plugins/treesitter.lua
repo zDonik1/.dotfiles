@@ -1,16 +1,72 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-context",
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
-		build = function()
-			vim.cmd("TSUpdate")
+		build = vim.cmd.TSUpdate,
+		lazy = false,
+
+		config = function()
+			local ignore_ft = {
+				"csv",
+			}
+
+			-- packaged in nvim
+			local ignore_install = {
+				"c",
+				"lua",
+				"markdown",
+				"markdown_inline",
+				"query",
+				"vim",
+				"vimdoc",
+			}
+
+			vim.api.nvim_create_autocmd("FileType", {
+				group = vim.api.nvim_create_augroup("treesitter.setup", {}),
+				callback = function(args)
+					local buf = args.buf
+					local filetype = args.match
+
+					if vim.list_contains(ignore_ft, filetype) then
+						return
+					end
+
+					local language = vim.treesitter.language.get_lang(filetype) or filetype
+					if not vim.treesitter.language.add(language) then
+						return
+					end
+
+					if vim.list_contains(ignore_install, language) then
+						vim.treesitter.start(buf, language)
+					else
+						require("nvim-treesitter").install(language):await(function()
+							vim.treesitter.start(buf, language)
+						end)
+					end
+
+					-- vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+					-- vim.wo.foldmethod = "expr"
+
+					vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end,
+			})
 		end,
+	},
+
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		optional = true,
+		branch = "main",
 
 		keys = function()
-			local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
+			local ts_repeat_move = require("nvim-treesitter-textobjects.repeatable_move")
+			local select_textobject =
+				require("nvim-treesitter-textobjects.select").select_textobject
+
 			return {
 				{
 					";",
@@ -52,63 +108,76 @@ return {
 					desc = "Go to letter not reaching backwards",
 					mode = { "n", "x", "o" },
 				},
+
+				{
+					"am",
+					function()
+						select_textobject("@function.outer", "textobjects")
+					end,
+					desc = "Text object: outer function",
+					mode = { "x", "o" },
+				},
+				{
+					"im",
+					function()
+						select_textobject("@function.inner", "textobjects")
+					end,
+					desc = "Text object: inner function",
+					mode = { "x", "o" },
+				},
+				{
+					"ac",
+					function()
+						select_textobject("@class.outer", "textobjects")
+					end,
+					desc = "Text object: outer class",
+					mode = { "x", "o" },
+				},
+				{
+					"ic",
+					function()
+						select_textobject("@class.inner", "textobjects")
+					end,
+					desc = "Text object: inner class",
+					mode = { "x", "o" },
+				},
+				{
+					"ar",
+					function()
+						select_textobject("@parameter.outer", "textobjects")
+					end,
+					desc = "Text object: outer parameter",
+					mode = { "x", "o" },
+				},
+				{
+					"ir",
+					function()
+						select_textobject("@parameter.inner", "textobjects")
+					end,
+					desc = "Text object: inner parameter",
+					mode = { "x", "o" },
+				},
+				{
+					"as",
+					function()
+						select_textobject("@local.scope", "locals")
+					end,
+					desc = "Text object: local scope",
+					mode = { "x", "o" },
+				},
 			}
 		end,
 
 		opts = {
-			auto_install = true,
-			ensure_installed = { "lua" },
-			highlight = {
-				enable = true,
-				additional_vim_regex_highlighting = false,
-				disable = { "csv" },
-			},
-			indent = { enable = true },
-			textobjects = {
-				select = {
-					enable = true,
-					lookahead = true,
-					keymaps = {
-						["af"] = "@function.outer",
-						["if"] = "@function.inner",
-						["ac"] = "@class.outer",
-						["ic"] = "@class.inner",
-						["as"] = "@scope.outer",
-						["ar"] = "@parameter.outer",
-						["ir"] = "@parameter.inner",
-					},
-					selection_modes = {
-						["@function.outer"] = "V",
-						["@class.outer"] = "V",
-					},
-					include_surrounding_whitespace = true,
+			select = {
+				lookahead = true,
+				selection_modes = {
+					["@function.outer"] = "V",
+					["@class.outer"] = "V",
 				},
-				move = {
-					enable = true,
-					set_jumps = true,
-					goto_next_start = {
-						["]f"] = "@function.outer",
-						["]c"] = "@class.outer",
-					},
-					goto_next_end = {
-						["]F"] = "@function.outer",
-						["]C"] = "@class.outer",
-					},
-					goto_previous_start = {
-						["[f"] = "@function.outer",
-						["[c"] = "@class.outer",
-					},
-					goto_previous_end = {
-						["[F"] = "@function.outer",
-						["[C"] = "@class.outer",
-					},
-				},
+				include_surrounding_whitespace = true,
 			},
 		},
-
-		config = function(_, opts)
-			require("nvim-treesitter.configs").setup(opts)
-		end,
 	},
 
 	{

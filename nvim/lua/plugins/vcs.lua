@@ -9,10 +9,11 @@ return {
 		dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
 		event = "VeryLazy",
 		keys = function()
-			local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
-			local next_hunk, prev_hunk = ts_repeat_move.make_repeatable_move_pair(function()
+			local ts_repeat_move = require("nvim-treesitter-textobjects.repeatable_move")
+			local next_hunk = ts_repeat_move.make_repeatable_move(function()
 				require("vcsigns").actions.hunk_next(0, vim.v.count1)
-			end, function()
+			end)
+			local prev_hunk = ts_repeat_move.make_repeatable_move(function()
 				require("vcsigns").actions.hunk_prev(0, vim.v.count1)
 			end)
 

@@ -6,8 +6,8 @@
     [
       neovim
 
-      # compiling fzf-native
-      cmake
+      # tree-sitter
+      tree-sitter
       (if stdenv.isDarwin then clang else gcc)
 
       # lua
