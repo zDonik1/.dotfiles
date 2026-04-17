@@ -21,6 +21,7 @@
         libqalculate
         kubectl
         claude-code
+        sox
       ];
 
       home.sessionPath = [
