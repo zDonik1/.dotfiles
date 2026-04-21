@@ -10,29 +10,6 @@
 -- 	},
 -- })
 
-vim.lsp.enable({
-	"lua_ls",
-	"csharp_ls",
-	"rust_analyzer",
-	"wgsl_analyzer",
-	"nushell",
-	"gdscript",
-	"nil_ls",
-	"nixd",
-	"pylsp",
-	"ruff",
-	"clangd",
-	"cmake",
-	"yamlls",
-	"taplo",
-	"gopls",
-	"dartls",
-	"helm_ls",
-	"eslint",
-	"ts_ls",
-	"markdown_oxide",
-})
-
 vim.diagnostic.config({
 	float = {
 		focusable = false,
@@ -92,6 +69,31 @@ return {
 					mode = { "n", "x", "o" },
 				},
 			}
+		end,
+
+		config = function()
+			vim.lsp.enable({
+				"lua_ls",
+				"csharp_ls",
+				"rust_analyzer",
+				"wgsl_analyzer",
+				"nushell",
+				"gdscript",
+				"nil_ls",
+				"nixd",
+				"pylsp",
+				"ruff",
+				"clangd",
+				"cmake",
+				"yamlls",
+				"taplo",
+				"gopls",
+				"dartls",
+				"helm_ls",
+				"eslint",
+				"ts_ls",
+				"markdown_oxide",
+			})
 		end,
 	},
 
