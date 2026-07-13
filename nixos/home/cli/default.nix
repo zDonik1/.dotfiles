@@ -21,7 +21,6 @@
     ./vdirsyncer
     ./cargo
     ./tmux
-    ./mise
   ];
 
   programs = {
@@ -29,6 +28,7 @@
     btop.enable = true;
     moor.enable = true;
     k9s.enable = true;
+    mise.enable = true;
   };
 
   home.packages = with pkgs; [

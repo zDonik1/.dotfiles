@@ -8,5 +8,6 @@
     ./diffnav
     ./marksman
     ./goose-cli
+    ./mise
   ];
 }
