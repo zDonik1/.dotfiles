@@ -9,5 +9,6 @@
     ./marksman
     ./goose-cli
     ./mise
+    ./oama
   ];
 }

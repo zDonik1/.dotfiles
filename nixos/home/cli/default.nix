@@ -29,6 +29,7 @@
     moor.enable = true;
     k9s.enable = true;
     mise.enable = true;
+    oama.enable = true;
   };
 
   home.packages = with pkgs; [

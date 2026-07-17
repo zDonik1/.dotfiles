@@ -22,19 +22,19 @@ let
   signature = {
     showSignature = "append";
     text = ''
-      With best regards,
+      Best regards,
       Doniyor T.
     '';
   };
 in
 {
   accounts.email.accounts = {
-    main = {
+    main = rec {
       primary = true;
       inherit realName signature;
       address = "doniyor@tokhirov.uz";
 
-      userName = "doniyor@tokhirov.uz";
+      userName = address;
       passwordCommand = "${lib.getExe getKeepassEntry} password main-email";
 
       imap.host = "mail.tokhirov.uz";
@@ -42,20 +42,39 @@ in
     }
     // toolConfig;
 
-    gmail = {
+    gmail = rec {
       inherit realName signature;
       address = "tokhirovdoniyor@gmail.com";
 
-      userName = "tokhirovdoniyor@gmail.com";
+      userName = address;
       passwordCommand = "${lib.getExe getKeepassEntry} password gmail-email";
 
       flavor = "gmail.com";
     }
     // toolConfig;
+
+    toptal = lib.recursiveUpdate rec {
+      inherit realName signature;
+      address = "doniyor.tokhirov@toptal.com";
+
+      userName = address;
+      passwordCommand = "${lib.getExe config.programs.oama.package} access ${address}";
+
+      flavor = "gmail.com";
+
+      aerc = {
+        smtpAuth = "xoauth2";
+      };
+
+      mbsync.extraConfig.account.AuthMechs = "XOAUTH2";
+    } toolConfig;
   };
 
   programs = {
-    mbsync.enable = true;
+    mbsync = {
+      enable = true;
+      package = pkgs.isync.override { withCyrusSaslXoauth2 = true; };
+    };
 
     aerc = {
       enable = true;
