@@ -10,5 +10,6 @@
     ./goose-cli
     ./mise
     ./oama
+    ./sops
   ];
 }

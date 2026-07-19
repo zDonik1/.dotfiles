@@ -30,6 +30,7 @@
     k9s.enable = true;
     mise.enable = true;
     oama.enable = true;
+    sops.enable = true;
   };
 
   home.packages = with pkgs; [
